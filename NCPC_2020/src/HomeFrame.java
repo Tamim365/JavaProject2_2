@@ -43,11 +43,20 @@ public class HomeFrame extends javax.swing.JFrame {
         eventDetailsButton.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         eventDetailsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_2.png"))); // NOI18N
         eventDetailsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eventDetailsButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 eventDetailsButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 eventDetailsButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                eventDetailsButtonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                eventDetailsButtonMouseReleased(evt);
             }
         });
 
@@ -80,6 +89,21 @@ public class HomeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         eventDetailsButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_2.png")));
     }//GEN-LAST:event_eventDetailsButtonMouseExited
+
+    private void eventDetailsButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMousePressed
+        // TODO add your handling code here:
+        eventDetailsButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_3.png")));
+    }//GEN-LAST:event_eventDetailsButtonMousePressed
+
+    private void eventDetailsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_eventDetailsButtonMouseClicked
+
+    private void eventDetailsButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMouseReleased
+        // TODO add your handling code here:
+        eventDetailsButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_1.png")));
+    }//GEN-LAST:event_eventDetailsButtonMouseReleased
 
     /**
      * @param args the command line arguments
