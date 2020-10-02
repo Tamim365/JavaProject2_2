@@ -4,8 +4,5 @@ public class mainClass {
         home.setVisible(true);
         System.out.println("Hello");
         
-        System.out.println("hiiii"); 
-        
-        System.out.println("hfheb");
     }
 }
