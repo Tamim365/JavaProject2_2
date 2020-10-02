@@ -3,5 +3,7 @@ public class mainClass {
         HomeFrame home = new HomeFrame();
         home.setVisible(true);
         System.out.println("Hello");
+        
+        System.out.println("hiiii"); 
     }
 }
