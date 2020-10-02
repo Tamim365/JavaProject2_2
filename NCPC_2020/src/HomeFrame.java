@@ -34,29 +34,25 @@ public class HomeFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        eventDetailsButton = new javax.swing.JLabel();
+        eventDetailsButtonTwo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(1080, 720));
 
-        eventDetailsButton.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        eventDetailsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_2.png"))); // NOI18N
-        eventDetailsButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eventDetailsButtonMouseClicked(evt);
-            }
+        eventDetailsButtonTwo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_1.png"))); // NOI18N
+        eventDetailsButtonTwo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                eventDetailsButtonMouseEntered(evt);
+                eventDetailsButtonTwoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                eventDetailsButtonMouseExited(evt);
+                eventDetailsButtonTwoMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                eventDetailsButtonMousePressed(evt);
+                eventDetailsButtonTwoMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                eventDetailsButtonMouseReleased(evt);
+                eventDetailsButtonTwoMouseReleased(evt);
             }
         });
 
@@ -65,45 +61,40 @@ public class HomeFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(443, 443, 443)
-                .addComponent(eventDetailsButton)
-                .addContainerGap(451, Short.MAX_VALUE))
+                .addGap(369, 369, 369)
+                .addComponent(eventDetailsButtonTwo)
+                .addContainerGap(525, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(eventDetailsButton)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGap(204, 204, 204)
+                .addComponent(eventDetailsButtonTwo)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eventDetailsButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMouseEntered
+    private void eventDetailsButtonTwoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseEntered
         // TODO add your handling code here:
-        eventDetailsButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_1.png")));
-    }//GEN-LAST:event_eventDetailsButtonMouseEntered
+        eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_2.png")));
+    }//GEN-LAST:event_eventDetailsButtonTwoMouseEntered
 
-    private void eventDetailsButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMouseExited
+    private void eventDetailsButtonTwoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseExited
         // TODO add your handling code here:
-        eventDetailsButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_2.png")));
-    }//GEN-LAST:event_eventDetailsButtonMouseExited
+        eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_1.png")));
+    }//GEN-LAST:event_eventDetailsButtonTwoMouseExited
 
-    private void eventDetailsButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMousePressed
+    private void eventDetailsButtonTwoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMousePressed
         // TODO add your handling code here:
-        eventDetailsButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_3.png")));
-    }//GEN-LAST:event_eventDetailsButtonMousePressed
+        eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_3.png")));
+    }//GEN-LAST:event_eventDetailsButtonTwoMousePressed
 
-    private void eventDetailsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMouseClicked
+    private void eventDetailsButtonTwoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseReleased
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_eventDetailsButtonMouseClicked
-
-    private void eventDetailsButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonMouseReleased
-        // TODO add your handling code here:
-        eventDetailsButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/eventDetailsButton_1.png")));
-    }//GEN-LAST:event_eventDetailsButtonMouseReleased
+        eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_2.png")));
+    }//GEN-LAST:event_eventDetailsButtonTwoMouseReleased
 
     /**
      * @param args the command line arguments
@@ -141,6 +132,6 @@ public class HomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel eventDetailsButton;
+    private javax.swing.JLabel eventDetailsButtonTwo;
     // End of variables declaration//GEN-END:variables
 }
