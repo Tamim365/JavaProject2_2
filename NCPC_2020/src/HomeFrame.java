@@ -35,6 +35,10 @@ public class HomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         eventDetailsButtonTwo = new javax.swing.JLabel();
+        logInButton = new javax.swing.JLabel();
+        registrationButton = new javax.swing.JLabel();
+        rulesButton = new javax.swing.JLabel();
+        exitButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -56,45 +60,198 @@ public class HomeFrame extends javax.swing.JFrame {
             }
         });
 
+        logInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/logInButton_1.png"))); // NOI18N
+        logInButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logInButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logInButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logInButtonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                logInButtonMouseReleased(evt);
+            }
+        });
+
+        registrationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_1.png"))); // NOI18N
+        registrationButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrationButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrationButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                registrationButtonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                registrationButtonMouseReleased(evt);
+            }
+        });
+
+        rulesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_1.png"))); // NOI18N
+        rulesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rulesButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rulesButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rulesButtonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                rulesButtonMouseReleased(evt);
+            }
+        });
+
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/exitButton_1.png"))); // NOI18N
+        exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exitButtonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                exitButtonMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(369, 369, 369)
-                .addComponent(eventDetailsButtonTwo)
-                .addContainerGap(525, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(578, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitButton)
+                    .addComponent(rulesButton)
+                    .addComponent(registrationButton)
+                    .addComponent(eventDetailsButtonTwo)
+                    .addComponent(logInButton))
+                .addGap(316, 316, 316))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(204, 204, 204)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(logInButton)
+                .addGap(39, 39, 39)
+                .addComponent(registrationButton)
+                .addGap(43, 43, 43)
                 .addComponent(eventDetailsButtonTwo)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(rulesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(exitButton)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void eventDetailsButtonTwoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseEntered
-        // TODO add your handling code here:
+      
         eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_2.png")));
     }//GEN-LAST:event_eventDetailsButtonTwoMouseEntered
 
     private void eventDetailsButtonTwoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseExited
-        // TODO add your handling code here:
+        
         eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_1.png")));
     }//GEN-LAST:event_eventDetailsButtonTwoMouseExited
 
     private void eventDetailsButtonTwoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMousePressed
-        // TODO add your handling code here:
+      
         eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_3.png")));
     }//GEN-LAST:event_eventDetailsButtonTwoMousePressed
 
     private void eventDetailsButtonTwoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseReleased
-        // TODO add your handling code here:
+       
         eventDetailsButtonTwo.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_2.png")));
     }//GEN-LAST:event_eventDetailsButtonTwoMouseReleased
+
+    private void logInButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseEntered
+       
+        logInButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/logInButton_2.png")));
+    }//GEN-LAST:event_logInButtonMouseEntered
+
+    private void logInButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMousePressed
+        
+        logInButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/logInButton_3.png")));
+    }//GEN-LAST:event_logInButtonMousePressed
+
+    private void logInButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseExited
+       
+        logInButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/logInButton_1.png")));
+    }//GEN-LAST:event_logInButtonMouseExited
+
+    private void logInButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseReleased
+        
+        logInButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/logInButton_2.png")));
+    }//GEN-LAST:event_logInButtonMouseReleased
+
+    private void registrationButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrationButtonMouseEntered
+        registrationButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_2.png")));
+    }//GEN-LAST:event_registrationButtonMouseEntered
+
+    private void registrationButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrationButtonMouseExited
+        registrationButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_1.png")));
+    }//GEN-LAST:event_registrationButtonMouseExited
+
+    private void registrationButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrationButtonMousePressed
+       registrationButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_3.png")));
+    }//GEN-LAST:event_registrationButtonMousePressed
+
+    private void registrationButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrationButtonMouseReleased
+       registrationButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_2.png")));
+    }//GEN-LAST:event_registrationButtonMouseReleased
+
+    private void rulesButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rulesButtonMouseEntered
+        // TODO add your handling code here:
+        rulesButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_2.png")));
+    }//GEN-LAST:event_rulesButtonMouseEntered
+
+    private void rulesButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rulesButtonMouseExited
+        // TODO add your handling code here:
+         rulesButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_1.png")));
+    }//GEN-LAST:event_rulesButtonMouseExited
+
+    private void rulesButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rulesButtonMousePressed
+        // TODO add your handling code here:
+         rulesButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_3.png")));
+    }//GEN-LAST:event_rulesButtonMousePressed
+
+    private void rulesButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rulesButtonMouseReleased
+        // TODO add your handling code here:
+         rulesButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_2.png")));
+    }//GEN-LAST:event_rulesButtonMouseReleased
+
+    private void exitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseEntered
+        // TODO add your handling code here:
+         exitButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/exitButton_2.png")));
+    }//GEN-LAST:event_exitButtonMouseEntered
+
+    private void exitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseExited
+        // TODO add your handling code here:
+        exitButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/exitButton_1.png")));
+    }//GEN-LAST:event_exitButtonMouseExited
+
+    private void exitButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMousePressed
+        // TODO add your handling code here:
+        exitButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/exitButton_3.png")));
+    }//GEN-LAST:event_exitButtonMousePressed
+
+    private void exitButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseReleased
+        // TODO add your handling code here:
+        exitButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/exitButton_2.png")));
+    }//GEN-LAST:event_exitButtonMouseReleased
 
     /**
      * @param args the command line arguments
@@ -133,5 +290,9 @@ public class HomeFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel eventDetailsButtonTwo;
+    private javax.swing.JLabel exitButton;
+    private javax.swing.JLabel logInButton;
+    private javax.swing.JLabel registrationButton;
+    private javax.swing.JLabel rulesButton;
     // End of variables declaration//GEN-END:variables
 }
