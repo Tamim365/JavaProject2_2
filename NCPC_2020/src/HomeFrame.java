@@ -251,6 +251,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private void exitButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseReleased
         // TODO add your handling code here:
         exitButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/exitButton_2.png")));
+        
     }//GEN-LAST:event_exitButtonMouseReleased
 
     /**
