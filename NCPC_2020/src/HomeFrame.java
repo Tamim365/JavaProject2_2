@@ -18,8 +18,8 @@ public class HomeFrame extends javax.swing.JFrame {
      */
     public HomeFrame() {
         initComponents();
+        this.setSize(1366,768);
         this.setLocationRelativeTo(null);
-        this.setSize(1080,720);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("NCPC 2021");
@@ -39,10 +39,13 @@ public class HomeFrame extends javax.swing.JFrame {
         registrationButton = new javax.swing.JLabel();
         rulesButton = new javax.swing.JLabel();
         exitButton = new javax.swing.JLabel();
+        homeBackgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(1080, 720));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         eventDetailsButtonTwo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_1.png"))); // NOI18N
         eventDetailsButtonTwo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -59,6 +62,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 eventDetailsButtonTwoMouseReleased(evt);
             }
         });
+        getContentPane().add(eventDetailsButtonTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 340, -1, -1));
 
         logInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/logInButton_1.png"))); // NOI18N
         logInButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,6 +79,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 logInButtonMouseReleased(evt);
             }
         });
+        getContentPane().add(logInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 200, -1, -1));
 
         registrationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_1.png"))); // NOI18N
         registrationButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,6 +96,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 registrationButtonMouseReleased(evt);
             }
         });
+        getContentPane().add(registrationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 270, -1, -1));
 
         rulesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_1.png"))); // NOI18N
         rulesButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,9 +113,13 @@ public class HomeFrame extends javax.swing.JFrame {
                 rulesButtonMouseReleased(evt);
             }
         });
+        getContentPane().add(rulesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 410, -1, 62));
 
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/exitButton_1.png"))); // NOI18N
         exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 exitButtonMouseEntered(evt);
             }
@@ -123,36 +133,11 @@ public class HomeFrame extends javax.swing.JFrame {
                 exitButtonMouseReleased(evt);
             }
         });
+        getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 490, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(578, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exitButton)
-                    .addComponent(rulesButton)
-                    .addComponent(registrationButton)
-                    .addComponent(eventDetailsButtonTwo)
-                    .addComponent(logInButton))
-                .addGap(316, 316, 316))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(logInButton)
-                .addGap(39, 39, 39)
-                .addComponent(registrationButton)
-                .addGap(43, 43, 43)
-                .addComponent(eventDetailsButtonTwo)
-                .addGap(34, 34, 34)
-                .addComponent(rulesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(exitButton)
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
+        homeBackgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/homeBackground.png"))); // NOI18N
+        homeBackgroundLabel.setText("jLabel1");
+        getContentPane().add(homeBackgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -254,6 +239,12 @@ public class HomeFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_exitButtonMouseReleased
 
+    private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
+        // TODO add your handling code here:
+        int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
+        if(opt == 0) System.exit(0);
+    }//GEN-LAST:event_exitButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -292,6 +283,7 @@ public class HomeFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel eventDetailsButtonTwo;
     private javax.swing.JLabel exitButton;
+    private javax.swing.JLabel homeBackgroundLabel;
     private javax.swing.JLabel logInButton;
     private javax.swing.JLabel registrationButton;
     private javax.swing.JLabel rulesButton;
