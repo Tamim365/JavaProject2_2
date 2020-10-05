@@ -62,7 +62,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 eventDetailsButtonTwoMouseReleased(evt);
             }
         });
-        getContentPane().add(eventDetailsButtonTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 340, -1, -1));
+        getContentPane().add(eventDetailsButtonTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 330, -1, -1));
 
         logInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/logInButton_1.png"))); // NOI18N
         logInButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,7 +79,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 logInButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(logInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 200, -1, -1));
+        getContentPane().add(logInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 190, -1, -1));
 
         registrationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_1.png"))); // NOI18N
         registrationButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,7 +96,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 registrationButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(registrationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 270, -1, -1));
+        getContentPane().add(registrationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 260, -1, -1));
 
         rulesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_1.png"))); // NOI18N
         rulesButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,7 +113,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 rulesButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(rulesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 410, -1, 62));
+        getContentPane().add(rulesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 400, -1, 62));
 
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/exitButton_1.png"))); // NOI18N
         exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,11 +133,10 @@ public class HomeFrame extends javax.swing.JFrame {
                 exitButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 490, -1, -1));
+        getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 480, -1, -1));
 
         homeBackgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/homeBackground.png"))); // NOI18N
-        homeBackgroundLabel.setText("jLabel1");
-        getContentPane().add(homeBackgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(homeBackgroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
