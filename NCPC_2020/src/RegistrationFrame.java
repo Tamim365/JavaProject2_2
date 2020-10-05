@@ -1,4 +1,7 @@
 
+import java.awt.event.ItemListener;
+import java.util.Calendar;
+import javax.swing.JComboBox;
 import javax.swing.WindowConstants;
 
 /*
@@ -34,21 +37,484 @@ public class RegistrationFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        backButton = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        participantNameTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        participantEmailTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        participantHandleIdTextField = new javax.swing.JTextField();
+        participantMobileTextField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        participantUniversityTextField = new javax.swing.JTextField();
+        participantMonthComboBox = new javax.swing.JComboBox<>();
+        participantYearComboBox = new javax.swing.JComboBox<>();
+        participantDayComboBox = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        participantGenderComboBox = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        participantPresentAddressTextArea = new javax.swing.JTextArea();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        coachNameTextField1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        coachEmailTextField1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        coachHandleIdTextField1 = new javax.swing.JTextField();
+        coachMobileTextField1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        coachUniversityTextField1 = new javax.swing.JTextField();
+        coachMonthComboBox1 = new javax.swing.JComboBox<>();
+        coachYearComboBox1 = new javax.swing.JComboBox<>();
+        coachDayComboBox1 = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        coachGenderComboBox1 = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        coachPresentAddressTextArea1 = new javax.swing.JTextArea();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1366, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/participantButton_1.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/coachButton_1.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
+
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/backButton_1.png"))); // NOI18N
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        participantNameTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        participantNameTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantNameTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 320, 30));
+
+        jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Full Name                  :");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 190, 30));
+
+        participantEmailTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        participantEmailTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantEmailTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantEmailTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantEmailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 320, 30));
+
+        jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Email Address           :");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 190, 30));
+
+        jLabel8.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Handle Id                   :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 190, 30));
+
+        participantHandleIdTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        participantHandleIdTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantHandleIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantHandleIdTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantHandleIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 320, 30));
+
+        participantMobileTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        participantMobileTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantMobileTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantMobileTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantMobileTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 320, 30));
+
+        jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Mobile No.                 :");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 190, 30));
+
+        jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("University/College     :");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 190, 30));
+
+        participantUniversityTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        participantUniversityTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantUniversityTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantUniversityTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantUniversityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 320, 30));
+
+        participantMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        participantMonthComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantMonthComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantMonthComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 100, 30));
+
+        participantYearComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980" }));
+        participantYearComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantYearComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantYearComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 100, 30));
+
+        participantDayComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day" }));
+        jPanel1.add(participantDayComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 100, 30));
+
+        jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Date of Birth               :");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 190, 30));
+
+        jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Gender                        :");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 190, 30));
+
+        participantGenderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Male", "Female", "Other" }));
+        participantGenderComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantGenderComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantGenderComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 100, 30));
+
+        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Present Address         :");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 190, 30));
+
+        participantPresentAddressTextArea.setColumns(20);
+        participantPresentAddressTextArea.setRows(5);
+        participantPresentAddressTextArea.setTabSize(4);
+        participantPresentAddressTextArea.setToolTipText("");
+        participantPresentAddressTextArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane1.setViewportView(participantPresentAddressTextArea);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 320, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/participantBanner.png"))); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 440, 90));
+
+        jTabbedPane1.addTab("tab1", jPanel1);
+
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        coachNameTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachNameTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachNameTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachNameTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachNameTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 320, 30));
+
+        jLabel15.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Full Name                  :");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 190, 30));
+
+        coachEmailTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachEmailTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachEmailTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachEmailTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachEmailTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 320, 30));
+
+        jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Email Address           :");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 190, 30));
+
+        jLabel17.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Position                       :");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 190, 30));
+
+        coachHandleIdTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachHandleIdTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachHandleIdTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachHandleIdTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachHandleIdTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 320, 30));
+
+        coachMobileTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachMobileTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachMobileTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachMobileTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachMobileTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 320, 30));
+
+        jLabel18.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Mobile No.                 :");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 190, 30));
+
+        jLabel19.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("University/College     :");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 190, 30));
+
+        coachUniversityTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachUniversityTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachUniversityTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachUniversityTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachUniversityTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 320, 30));
+
+        coachMonthComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        coachMonthComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachMonthComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachMonthComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 100, 30));
+
+        coachYearComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980" }));
+        coachYearComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachYearComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachYearComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 100, 30));
+
+        coachDayComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day" }));
+        jPanel2.add(coachDayComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 100, 30));
+
+        jLabel20.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Date of Birth               :");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 190, 30));
+
+        jLabel21.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Gender                        :");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 190, 30));
+
+        coachGenderComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Male", "Female", "Other" }));
+        coachGenderComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachGenderComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(coachGenderComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 100, 30));
+
+        jLabel22.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Present Address         :");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 190, 30));
+
+        coachPresentAddressTextArea1.setColumns(20);
+        coachPresentAddressTextArea1.setRows(5);
+        coachPresentAddressTextArea1.setTabSize(4);
+        coachPresentAddressTextArea1.setToolTipText("");
+        coachPresentAddressTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane2.setViewportView(coachPresentAddressTextArea1);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 320, -1));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/coachBanner.png"))); // NOI18N
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, 90));
+
+        jTabbedPane1.addTab("tab2", jPanel2);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, -30, 990, 800));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/loginRegistrationBackground.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void participantNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantNameTextFieldActionPerformed
+
+    private void participantEmailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantEmailTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantEmailTextFieldActionPerformed
+
+    private void participantHandleIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantHandleIdTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantHandleIdTextFieldActionPerformed
+
+    private void participantMobileTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantMobileTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantMobileTextFieldActionPerformed
+
+    private void participantUniversityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantUniversityTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantUniversityTextFieldActionPerformed
+
+    private void participantYearComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantYearComboBoxActionPerformed
+        // TODO add your handling code here:
+        participantDayComboBox.removeAllItems();
+        participantDayComboBox.addItem("Day");
+        String[] days_31 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+        String[] days_30 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
+        String[] days_29 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"};
+        String[] days_28 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"};
+        String year = participantYearComboBox.getSelectedItem().toString();
+        String month = participantMonthComboBox.getSelectedItem().toString();
+        System.out.println(month);
+        if(year.equals("Year") != true && month.equals("Month") != true) {
+            int yearValue = Integer.parseInt(year);
+            boolean leap = false;
+            if (((yearValue % 4 == 0) && (yearValue % 100!= 0)) || (yearValue%400 == 0)) leap = true;
+            if(month.equals("January") || month.equals("March") || month.equals("May") || month.equals("July") || month.equals("August") || month.equals("October") || month.equals("December")) {
+                participantDayComboBox.removeAllItems();
+                for(String s : days_31) participantDayComboBox.addItem(s);
+            }
+            else if(month.equals("April") || month.equals("June") || month.equals("September") || month.equals("November")) {
+                participantDayComboBox.removeAllItems();
+                for(String s : days_30) participantDayComboBox.addItem(s);
+            }
+            else if(month.equals("February")) {
+                participantDayComboBox.removeAllItems();
+                if(leap) 
+                    for(String s : days_29) participantDayComboBox.addItem(s);
+                else for(String s : days_28) participantDayComboBox.addItem(s);
+            }
+        }
+    }//GEN-LAST:event_participantYearComboBoxActionPerformed
+
+    private void participantMonthComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantMonthComboBoxActionPerformed
+        // TODO add your handling code here:
+        participantDayComboBox.removeAllItems();
+        participantDayComboBox.addItem("Day");
+        String[] days_31 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+        String[] days_30 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
+        String[] days_29 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"};
+        String[] days_28 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"};
+        String year = participantYearComboBox.getSelectedItem().toString();
+        String month = participantMonthComboBox.getSelectedItem().toString();
+        System.out.println(month);
+        if(year.equals("Year") != true && month.equals("Month") != true) {
+            int yearValue = Integer.parseInt(year);
+            boolean leap = false;
+            if (((yearValue % 4 == 0) && (yearValue % 100!= 0)) || (yearValue%400 == 0)) leap = true;
+            if(month.equals("January") || month.equals("March") || month.equals("May") || month.equals("July") || month.equals("August") || month.equals("October") || month.equals("December")) {
+                participantDayComboBox.removeAllItems();
+                for(String s : days_31) participantDayComboBox.addItem(s);
+            }
+            else if(month.equals("April") || month.equals("June") || month.equals("September") || month.equals("November")) {
+                participantDayComboBox.removeAllItems();
+                for(String s : days_30) participantDayComboBox.addItem(s);
+            }
+            else if(month.equals("February")) {
+                participantDayComboBox.removeAllItems();
+                if(leap) 
+                    for(String s : days_29) participantDayComboBox.addItem(s);
+                else for(String s : days_28) participantDayComboBox.addItem(s);
+            }
+        }
+    }//GEN-LAST:event_participantMonthComboBoxActionPerformed
+
+    private void participantGenderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantGenderComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantGenderComboBoxActionPerformed
+
+    private void coachNameTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachNameTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachNameTextField1ActionPerformed
+
+    private void coachEmailTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachEmailTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachEmailTextField1ActionPerformed
+
+    private void coachMobileTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachMobileTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachMobileTextField1ActionPerformed
+
+    private void coachUniversityTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachUniversityTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachUniversityTextField1ActionPerformed
+
+    private void coachMonthComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachMonthComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachMonthComboBox1ActionPerformed
+
+    private void coachYearComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachYearComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachYearComboBox1ActionPerformed
+
+    private void coachGenderComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachGenderComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachGenderComboBox1ActionPerformed
+
+    private void coachHandleIdTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachHandleIdTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coachHandleIdTextField1ActionPerformed
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        HomeFrame home = new HomeFrame();
+        home.setVisible(true);
+    }//GEN-LAST:event_backButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -86,5 +552,52 @@ public class RegistrationFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backButton;
+    private javax.swing.JComboBox<String> coachDayComboBox1;
+    private javax.swing.JTextField coachEmailTextField1;
+    private javax.swing.JComboBox<String> coachGenderComboBox1;
+    private javax.swing.JTextField coachHandleIdTextField1;
+    private javax.swing.JTextField coachMobileTextField1;
+    private javax.swing.JComboBox<String> coachMonthComboBox1;
+    private javax.swing.JTextField coachNameTextField1;
+    private javax.swing.JTextArea coachPresentAddressTextArea1;
+    private javax.swing.JTextField coachUniversityTextField1;
+    private javax.swing.JComboBox<String> coachYearComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> participantDayComboBox;
+    private javax.swing.JTextField participantEmailTextField;
+    private javax.swing.JComboBox<String> participantGenderComboBox;
+    private javax.swing.JTextField participantHandleIdTextField;
+    private javax.swing.JTextField participantMobileTextField;
+    private javax.swing.JComboBox<String> participantMonthComboBox;
+    private javax.swing.JTextField participantNameTextField;
+    private javax.swing.JTextArea participantPresentAddressTextArea;
+    private javax.swing.JTextField participantUniversityTextField;
+    private javax.swing.JComboBox<String> participantYearComboBox;
     // End of variables declaration//GEN-END:variables
 }
