@@ -83,6 +83,9 @@ public class HomeFrame extends javax.swing.JFrame {
 
         registrationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/registrationButton_1.png"))); // NOI18N
         registrationButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registrationButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 registrationButtonMouseEntered(evt);
             }
@@ -243,6 +246,13 @@ public class HomeFrame extends javax.swing.JFrame {
         int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
         if(opt == 0) System.exit(0);
     }//GEN-LAST:event_exitButtonMouseClicked
+
+    private void registrationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrationButtonMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        RegistrationFrame rg = new RegistrationFrame();
+        rg.setVisible(true);
+    }//GEN-LAST:event_registrationButtonMouseClicked
 
     /**
      * @param args the command line arguments
