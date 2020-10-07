@@ -2,7 +2,5 @@ public class mainClass {
     public static void main(String[] args) {
         HomeFrame home = new HomeFrame();
         home.setVisible(true);
-        System.out.println("Hello");
-        System.out.println("baaaaaaaal");
     }
 }

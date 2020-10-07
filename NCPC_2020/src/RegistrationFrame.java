@@ -1,7 +1,16 @@
 
+import com.opencsv.CSVWriter;
 import java.awt.event.ItemListener;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 /*
@@ -62,6 +71,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         participantPresentAddressTextArea = new javax.swing.JTextArea();
         jLabel12 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        participantPasswordField = new javax.swing.JPasswordField();
+        participantGenderComboBox1 = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         coachNameTextField1 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -234,10 +248,41 @@ public class RegistrationFrame extends javax.swing.JFrame {
         participantPresentAddressTextArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(participantPresentAddressTextArea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 320, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 320, 120));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/participantBanner.png"))); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 440, 90));
+
+        jLabel24.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("Choose a Password    :");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 610, 190, 30));
+
+        jButton1.setBackground(new java.awt.Color(153, 255, 153));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton1.setText("Submit");
+        jButton1.setMaximumSize(new java.awt.Dimension(90, 30));
+        jButton1.setPreferredSize(new java.awt.Dimension(90, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 660, 140, 50));
+        jPanel1.add(participantPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 610, 320, -1));
+
+        participantGenderComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "S", "M", "L", "XL", "XXL" }));
+        participantGenderComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantGenderComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(participantGenderComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 110, 30));
+
+        jLabel25.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("T-shirt  :");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 80, 30));
 
         jTabbedPane1.addTab("tab1", jPanel1);
 
@@ -419,7 +464,6 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String[] days_28 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"};
         String year = participantYearComboBox.getSelectedItem().toString();
         String month = participantMonthComboBox.getSelectedItem().toString();
-        System.out.println(month);
         if(year.equals("Year") != true && month.equals("Month") != true) {
             int yearValue = Integer.parseInt(year);
             boolean leap = false;
@@ -451,7 +495,6 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String[] days_28 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"};
         String year = participantYearComboBox.getSelectedItem().toString();
         String month = participantMonthComboBox.getSelectedItem().toString();
-        System.out.println(month);
         if(year.equals("Year") != true && month.equals("Month") != true) {
             int yearValue = Integer.parseInt(year);
             boolean leap = false;
@@ -516,6 +559,74 @@ public class RegistrationFrame extends javax.swing.JFrame {
         home.setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FileOutputStream fos = null;
+        boolean success = false;
+        List<String> allInformations = new ArrayList<>();
+        try {
+            // TODO add your handling code here:
+            String participantName = participantNameTextField.getText().toString(); 
+            allInformations.add(participantName);
+            String participantEmail = participantEmailTextField.getText().toString();
+            allInformations.add(participantEmail);
+            String participantHandleId = participantHandleIdTextField.getText().toString();
+            allInformations.add(participantHandleId);
+            String participantMobile = participantMobileTextField.getText().toString();
+            allInformations.add(participantMobile);
+            String participantUniversity = participantUniversityTextField.getText().toString();
+            allInformations.add(participantUniversity);
+            String DOBYear = participantYearComboBox.getSelectedItem().toString();
+            String DOBMonth = participantMonthComboBox.getSelectedItem().toString();
+            String DOBDay = participantDayComboBox.getSelectedItem().toString();
+            String participantDOB = DOBDay+"-"+DOBMonth+"-"+DOBYear;
+            allInformations.add(participantDOB);
+            String participantGender = participantGenderComboBox.getSelectedItem().toString();
+            allInformations.add(participantGender);
+            String participantTshirt = participantGenderComboBox1.getSelectedItem().toString();
+            allInformations.add(participantTshirt);
+            String participantPresentAddress = participantPresentAddressTextArea.getText().toString();
+            allInformations.add(participantPresentAddress);
+            String participantPassword = new String(participantPasswordField.getPassword());
+            allInformations.add(participantPassword);
+            
+            String fileName = "src/data/participant/" + participantHandleId.trim() + ".csv";
+            fos = new FileOutputStream(fileName);
+            PrintWriter pw = new PrintWriter(fos);
+            String all = "";
+            for(String s : allInformations) pw.print(s+",");
+            pw.close();
+            int opt = JOptionPane.showConfirmDialog(null, "Do you want to Submit?","Confirmation",JOptionPane.YES_NO_OPTION);
+            if(opt == 0) 
+            {
+                participantNameTextField.setText("");
+                participantEmailTextField.setText("");
+                participantHandleIdTextField.setText("");
+                participantMobileTextField.setText("");
+                participantPasswordField.setText("");
+                participantUniversityTextField.setText("");
+                participantGenderComboBox.setSelectedIndex(0);
+                participantYearComboBox.setSelectedIndex(0);
+                participantMonthComboBox.setSelectedIndex(0);
+                participantDayComboBox.setSelectedIndex(0);
+                participantGenderComboBox1.setSelectedIndex(0);
+                participantPresentAddressTextArea.setText("");
+                JOptionPane.showMessageDialog(null, "Registration Successful");
+            }
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "File Not Found! Try again..", "Unknown Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Registration Failed! Try again..", "Unknown Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void participantGenderComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantGenderComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantGenderComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -563,6 +674,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea coachPresentAddressTextArea1;
     private javax.swing.JTextField coachUniversityTextField1;
     private javax.swing.JComboBox<String> coachYearComboBox1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -579,6 +691,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -592,10 +706,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> participantDayComboBox;
     private javax.swing.JTextField participantEmailTextField;
     private javax.swing.JComboBox<String> participantGenderComboBox;
+    private javax.swing.JComboBox<String> participantGenderComboBox1;
     private javax.swing.JTextField participantHandleIdTextField;
     private javax.swing.JTextField participantMobileTextField;
     private javax.swing.JComboBox<String> participantMonthComboBox;
     private javax.swing.JTextField participantNameTextField;
+    private javax.swing.JPasswordField participantPasswordField;
     private javax.swing.JTextArea participantPresentAddressTextArea;
     private javax.swing.JTextField participantUniversityTextField;
     private javax.swing.JComboBox<String> participantYearComboBox;

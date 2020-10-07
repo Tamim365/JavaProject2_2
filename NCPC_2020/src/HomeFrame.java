@@ -66,6 +66,9 @@ public class HomeFrame extends javax.swing.JFrame {
 
         logInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/logInButton_1.png"))); // NOI18N
         logInButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logInButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 logInButtonMouseEntered(evt);
             }
@@ -253,6 +256,13 @@ public class HomeFrame extends javax.swing.JFrame {
         RegistrationFrame rg = new RegistrationFrame();
         rg.setVisible(true);
     }//GEN-LAST:event_registrationButtonMouseClicked
+
+    private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        LoginFrame lg = new LoginFrame();
+        lg.setVisible(true);
+    }//GEN-LAST:event_logInButtonMouseClicked
 
     /**
      * @param args the command line arguments
