@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -107,6 +108,18 @@ public class RegistrationFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel1MouseReleased(evt);
+            }
         });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
@@ -115,6 +128,18 @@ public class RegistrationFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
         });
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
 
@@ -122,6 +147,18 @@ public class RegistrationFrame extends javax.swing.JFrame {
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backButtonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                backButtonMouseReleased(evt);
             }
         });
         getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
@@ -626,6 +663,66 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void participantGenderComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantGenderComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_participantGenderComboBox1ActionPerformed
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        // TODO add your handling code here:
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/participantButton_2.png")));
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        // TODO add your handling code here:
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/participantButton_1.png")));
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+        // TODO add your handling code here:
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/participantButton_3.png")));
+    }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+        // TODO add your handling code here:
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/participantButton_2.png")));
+    }//GEN-LAST:event_jLabel1MouseReleased
+
+    private void backButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseEntered
+        // TODO add your handling code here:
+        backButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/backButton_2.png")));
+    }//GEN-LAST:event_backButtonMouseEntered
+
+    private void backButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseExited
+        // TODO add your handling code here:
+        backButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/backButton_1.png")));
+    }//GEN-LAST:event_backButtonMouseExited
+
+    private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
+        // TODO add your handling code here:
+        backButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/backButton_3.png")));
+    }//GEN-LAST:event_backButtonMousePressed
+
+    private void backButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseReleased
+        // TODO add your handling code here:
+        backButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/backButton_2.png")));
+    }//GEN-LAST:event_backButtonMouseReleased
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/coachButton_2.png")));
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        // TODO add your handling code here:
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/coachButton_3.png")));
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        // TODO add your handling code here:
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/coachButton_1.png")));
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+        // TODO add your handling code here:
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/images/buttons/home/coachButton_2.png")));
+    }//GEN-LAST:event_jLabel2MouseReleased
 
     /**
      * @param args the command line arguments

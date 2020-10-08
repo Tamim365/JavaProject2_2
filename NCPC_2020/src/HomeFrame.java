@@ -49,6 +49,9 @@ public class HomeFrame extends javax.swing.JFrame {
 
         eventDetailsButtonTwo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/eventDetailsButton_1.png"))); // NOI18N
         eventDetailsButtonTwo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eventDetailsButtonTwoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 eventDetailsButtonTwoMouseEntered(evt);
             }
@@ -106,6 +109,9 @@ public class HomeFrame extends javax.swing.JFrame {
 
         rulesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/home/rulesButton_1.png"))); // NOI18N
         rulesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rulesButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 rulesButtonMouseEntered(evt);
             }
@@ -263,6 +269,20 @@ public class HomeFrame extends javax.swing.JFrame {
         LoginFrame lg = new LoginFrame();
         lg.setVisible(true);
     }//GEN-LAST:event_logInButtonMouseClicked
+
+    private void eventDetailsButtonTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        EventDetailsFrame ed = new EventDetailsFrame();
+        ed.setVisible(true);
+    }//GEN-LAST:event_eventDetailsButtonTwoMouseClicked
+
+    private void rulesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rulesButtonMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        RulesFrame rf = new RulesFrame();
+        rf.setVisible(true);
+    }//GEN-LAST:event_rulesButtonMouseClicked
 
     /**
      * @param args the command line arguments
