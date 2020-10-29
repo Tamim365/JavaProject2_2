@@ -23,7 +23,7 @@ public class HomeFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setTitle("NCPC 2021");
+        this.setTitle("NCPC - National Collegiate Programming Contest");
     }
 
     /**
@@ -263,7 +263,7 @@ public class HomeFrame extends javax.swing.JFrame {
         RegistrationFrame rg = new RegistrationFrame();
         rg.setVisible(true);
         ParticipantInfo pt = new ParticipantInfo();
-        System.out.println(pt.find("splash365"));
+        System.out.println(pt.find("tamim365"));
     }//GEN-LAST:event_registrationButtonMouseClicked
 
     private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
