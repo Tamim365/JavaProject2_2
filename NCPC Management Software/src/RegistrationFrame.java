@@ -197,7 +197,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 backButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 550, -1, -1));
 
         jPanel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jPanel1.setOpaque(false);

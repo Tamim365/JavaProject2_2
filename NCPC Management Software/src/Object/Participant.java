@@ -49,6 +49,9 @@ public class Participant implements Serializable{
     public String getId(){
         return handleId;
     }
+    public String getName(){
+        return name;
+    }
     public boolean match(String pass){
         return this.password.equals(pass);
     }

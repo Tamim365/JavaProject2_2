@@ -39,6 +39,7 @@ public class ParticipantInfo {
             System.out.println("Done!");
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Unable to read!");
+                e.printStackTrace();
             }
             finally{
                 try {
@@ -55,7 +56,7 @@ public class ParticipantInfo {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Unavail To Read");
+            System.out.println("Failed to load");
         }
     }
 

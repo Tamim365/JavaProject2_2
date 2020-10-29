@@ -1,4 +1,5 @@
 
+import Module.ParticipantModule;
 import Object.ParticipantInfo;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -390,7 +391,10 @@ public class LoginFrame extends javax.swing.JFrame {
         String password = new String(partLoginPasswordField.getPassword());
         ParticipantInfo PI = new ParticipantInfo();
         if(PI.isValid(id) && PI.match(id, password)){
-            JOptionPane.showMessageDialog(null, "Login Successful");
+            //JOptionPane.showMessageDialog(null, "Login Successful");
+            ParticipantModule PM = new ParticipantModule(PI.find(id));
+            this.setVisible(false);
+            PM.setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
