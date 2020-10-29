@@ -7,7 +7,9 @@
 package Object;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
@@ -25,19 +27,39 @@ public class ParticipantInfo {
     }
     
 
-    public void readData() {
+    synchronized public void readData() {
         String file = "src/data/participant/participants.txt";
         try {
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        allInfo = (HashMap<String, Participant>) ois.readObject();
-        }
-        catch (Exception e) {
-            System.out.println("End of file!");
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            try {
+            fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+            allInfo = (HashMap<String, Participant>) ois.readObject();
+            System.out.println("Done!");
+            } catch (IOException | ClassNotFoundException e) {
+                System.out.println("Unable to read!");
+            }
+            finally{
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    System.out.println("Unable to close FIS!");
+                } finally{
+                    try {
+                        ois.close();
+                    } catch (Exception e) {
+                        System.out.println("Unable to close OIS!");
+                    }
+                    
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Unavail To Read");
         }
     }
 
-    public void writeData() throws Exception {
+    synchronized public void writeData() throws IOException, ClassNotFoundException, Exception {
         String file = "src/data/participant/participants.txt";
         FileOutputStream fos = new FileOutputStream(file);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -50,10 +72,18 @@ public class ParticipantInfo {
         allInfo.put(obj.getId(), obj);
     }
     
+    public boolean isValid(String id){
+        return allInfo.containsKey(id);
+    }
+    
     public Participant find(String id) {
         return allInfo.get(id);
     }
-
+    
+    public boolean match(String id, String pass) {
+        return find(id).match(pass);
+    }
+    
     public void delete(String id) {
         allInfo.remove(id);
     }

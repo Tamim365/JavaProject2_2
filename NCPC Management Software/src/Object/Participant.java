@@ -49,8 +49,11 @@ public class Participant implements Serializable{
     public String getId(){
         return handleId;
     }
+    public boolean match(String pass){
+        return this.password.equals(pass);
+    }
     public String toString(){
-        String st = new String("Name: " + name + "\nhandleID: " + handleId + "\nUniversity: " + university);
+        String st = new String("Name: " + name + "\nhandleID: " + handleId + "\nUniversity: " + university + "\nEmail: " + email);
         return st;
     }
 }

@@ -15,6 +15,8 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import Object.ParticipantInfo;
+import java.awt.HeadlessException;
+import java.util.regex.Pattern;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,6 +41,30 @@ public class RegistrationFrame extends javax.swing.JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("Registration");
     }
+    
+    public static boolean isValid(String email) 
+    { 
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        return pat.matcher(email).matches(); 
+    } 
+    
+    public static boolean isValidMobile(String mobile) 
+    { 
+        String mobileRegex = "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$" 
+	      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?){2}\\d{3}$" 
+	      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?)(\\d{2}[ ]?){2}\\d{2}$";
+        Pattern pat = Pattern.compile(mobileRegex); 
+        if (mobile == null) 
+            return false; 
+        return pat.matcher(mobile).matches(); 
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,6 +105,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
         participantPasswordField = new javax.swing.JPasswordField();
         participantTshirtComboBox = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
+        emailCheckLabel = new javax.swing.JLabel();
+        handleCheckLabel = new javax.swing.JLabel();
+        mobileCheckLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         coachNameTextField1 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -170,6 +199,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         });
         getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
 
+        jPanel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -189,6 +219,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
         participantEmailTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         participantEmailTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantEmailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                participantEmailTextFieldFocusLost(evt);
+            }
+        });
         participantEmailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 participantEmailTextFieldActionPerformed(evt);
@@ -208,6 +243,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
         participantHandleIdTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         participantHandleIdTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantHandleIdTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                participantHandleIdTextFieldFocusLost(evt);
+            }
+        });
         participantHandleIdTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 participantHandleIdTextFieldActionPerformed(evt);
@@ -217,6 +257,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
         participantMobileTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         participantMobileTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        participantMobileTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                participantMobileTextFieldFocusLost(evt);
+            }
+        });
         participantMobileTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 participantMobileTextFieldActionPerformed(evt);
@@ -286,13 +331,13 @@ public class RegistrationFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 190, 30));
 
         participantPresentAddressTextArea.setColumns(20);
-        participantPresentAddressTextArea.setRows(5);
+        participantPresentAddressTextArea.setRows(3);
         participantPresentAddressTextArea.setTabSize(4);
         participantPresentAddressTextArea.setToolTipText("");
         participantPresentAddressTextArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(participantPresentAddressTextArea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 320, 70));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 320, 80));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/participantBanner.png"))); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 440, 90));
@@ -327,6 +372,18 @@ public class RegistrationFrame extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("T-shirt  :");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 80, 30));
+
+        emailCheckLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emailCheckLabel.setForeground(new java.awt.Color(255, 51, 51));
+        jPanel1.add(emailCheckLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, 210, 30));
+
+        handleCheckLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        handleCheckLabel.setForeground(new java.awt.Color(255, 51, 51));
+        jPanel1.add(handleCheckLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, 210, 30));
+
+        mobileCheckLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        mobileCheckLabel.setForeground(new java.awt.Color(255, 51, 51));
+        jPanel1.add(mobileCheckLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 210, 30));
 
         jTabbedPane1.addTab("tab1", jPanel1);
 
@@ -687,9 +744,10 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 participantPresentAddressTextArea.setText("");
                 JOptionPane.showMessageDialog(null, "Registration Successful");
             }
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Registration Failed! Try again..", "Unknown Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+        }catch (HeadlessException | IOException e){
+            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase I/O Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase Element Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -766,6 +824,31 @@ public class RegistrationFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void participantEmailTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_participantEmailTextFieldFocusLost
+        // TODO add your handling code here:
+        String email = participantEmailTextField.getText().toString();
+        if(!isValid(email)){
+            emailCheckLabel.setText("Invalid Email Address!");
+        }
+        else 
+            emailCheckLabel.setText("");
+    }//GEN-LAST:event_participantEmailTextFieldFocusLost
+
+    private void participantHandleIdTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_participantHandleIdTextFieldFocusLost
+        // TODO add your handling code here:
+        String handle = participantHandleIdTextField.getText().toString();
+        ParticipantInfo PI = new ParticipantInfo();
+        if(PI.isValid(handle)) handleCheckLabel.setText("Handle Id Already Exists!");
+        else handleCheckLabel.setText("");
+    }//GEN-LAST:event_participantHandleIdTextFieldFocusLost
+
+    private void participantMobileTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_participantMobileTextFieldFocusLost
+        // TODO add your handling code here:
+        String mobile = participantMobileTextField.getText().toString();
+        if(!isValidMobile(mobile)) mobileCheckLabel.setText("Invalid Mobile No!");
+        else mobileCheckLabel.setText("");
+    }//GEN-LAST:event_participantMobileTextFieldFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -815,6 +898,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> coachTshirtComboBox;
     private javax.swing.JTextField coachUniversityTextField1;
     private javax.swing.JComboBox<String> coachYearComboBox1;
+    private javax.swing.JLabel emailCheckLabel;
+    private javax.swing.JLabel handleCheckLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -847,6 +932,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel mobileCheckLabel;
     private javax.swing.JComboBox<String> participantDayComboBox;
     private javax.swing.JTextField participantEmailTextField;
     private javax.swing.JComboBox<String> participantGenderComboBox;

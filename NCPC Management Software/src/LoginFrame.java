@@ -1,5 +1,7 @@
 
+import Object.ParticipantInfo;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 /*
@@ -44,25 +46,25 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         participantLoginTextField = new javax.swing.JTextField();
-        participantPasswordTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         partLoginBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        partLoginPasswordField = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        coachPasswordTextField = new javax.swing.JTextField();
         coachLoginBtn = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         coachLoginTextField = new javax.swing.JTextField();
+        coachLoginPasswordField = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        adminPasswordTextField = new javax.swing.JTextField();
         adminLoginBtn = new javax.swing.JButton();
         adminLoginTextField = new javax.swing.JTextField();
+        adminLoginPasswordField = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,19 +162,13 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3.setText("Handle ID/Email  :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 200, 40));
 
+        participantLoginTextField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         participantLoginTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 participantLoginTextFieldActionPerformed(evt);
             }
         });
         jPanel1.add(participantLoginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 450, 40));
-
-        participantPasswordTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                participantPasswordTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(participantPasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,12 +178,20 @@ public class LoginFrame extends javax.swing.JFrame {
 
         partLoginBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         partLoginBtn.setText("Login");
+        partLoginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partLoginBtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(partLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 130, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Password            :");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 200, 40));
+
+        partLoginPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jPanel1.add(partLoginPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
 
         jTabbedPane1.addTab("tab1", jPanel1);
 
@@ -207,13 +211,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel8.setText("Password            :");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 200, 40));
 
-        coachPasswordTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coachPasswordTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel2.add(coachPasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
-
         coachLoginBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         coachLoginBtn.setText("Login");
         jPanel2.add(coachLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 130, 50));
@@ -230,6 +227,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(coachLoginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 450, 40));
+        jPanel2.add(coachLoginPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
 
         jTabbedPane1.addTab("tab2", jPanel2);
 
@@ -249,13 +247,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel11.setText("Password            :");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 200, 40));
 
-        adminPasswordTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminPasswordTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel3.add(adminPasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
-
         adminLoginBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         adminLoginBtn.setText("Login");
         jPanel3.add(adminLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 130, 50));
@@ -266,6 +257,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         jPanel3.add(adminLoginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 450, 40));
+        jPanel3.add(adminLoginPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
 
         jTabbedPane1.addTab("tab2", jPanel3);
 
@@ -384,25 +376,27 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_participantLoginTextFieldActionPerformed
 
-    private void participantPasswordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantPasswordTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_participantPasswordTextFieldActionPerformed
-
-    private void coachPasswordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachPasswordTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_coachPasswordTextFieldActionPerformed
-
     private void coachLoginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachLoginTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_coachLoginTextFieldActionPerformed
 
-    private void adminPasswordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminPasswordTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminPasswordTextFieldActionPerformed
-
     private void adminLoginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminLoginTextFieldActionPerformed
+
+    private void partLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partLoginBtnActionPerformed
+        // TODO add your handling code here:
+        String id = participantLoginTextField.getText().toString();
+        String password = new String(partLoginPasswordField.getPassword());
+        ParticipantInfo PI = new ParticipantInfo();
+        if(PI.isValid(id) && PI.match(id, password)){
+            JOptionPane.showMessageDialog(null, "Login Successful");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_partLoginBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -442,12 +436,12 @@ public class LoginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminButton;
     private javax.swing.JButton adminLoginBtn;
+    private javax.swing.JPasswordField adminLoginPasswordField;
     private javax.swing.JTextField adminLoginTextField;
-    private javax.swing.JTextField adminPasswordTextField;
     private javax.swing.JLabel backButton;
     private javax.swing.JButton coachLoginBtn;
+    private javax.swing.JPasswordField coachLoginPasswordField;
     private javax.swing.JTextField coachLoginTextField;
-    private javax.swing.JTextField coachPasswordTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -467,7 +461,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton partLoginBtn;
+    private javax.swing.JPasswordField partLoginPasswordField;
     private javax.swing.JTextField participantLoginTextField;
-    private javax.swing.JTextField participantPasswordTextField;
     // End of variables declaration//GEN-END:variables
 }
