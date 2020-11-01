@@ -1,3 +1,5 @@
+package Module;
+
 
 import javax.swing.WindowConstants;
 
@@ -35,7 +37,6 @@ public class EventDetailsFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

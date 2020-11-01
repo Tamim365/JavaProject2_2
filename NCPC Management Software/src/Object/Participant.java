@@ -13,16 +13,16 @@ import java.io.Serializable;
  * @author splash365 <tamim.365.ti at gmail.com>
  */
 public class Participant implements Serializable{
-    private String name;
-    private String email;
-    private String handleId;
-    private String mobile;
-    private String university;
-    private String dateOfBirth;
-    private String gender;
-    private String tShirt;
-    private String presentAddress;
-    private String password;
+    public String name;
+    public String email;
+    public String handleId;
+    public String mobile;
+    public String university;
+    public String dateOfBirth;
+    public String gender;
+    public String tShirt;
+    public String presentAddress;
+    public String password;
     public Participant(){}
     public Participant(
         String name,
