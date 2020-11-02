@@ -3,9 +3,14 @@ package Module;
 
 import Module.HomeFrame;
 import Module.ParticipantModule;
+import Object.Participant;
 import Object.ParticipantInfo;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -22,10 +27,22 @@ import javax.swing.WindowConstants;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginFrame
-     */
+    HashMap<String, Participant> allParticipantInfo;
+    
     public LoginFrame() {
+        setupFrame();
+    }
+    public LoginFrame(HashMap<String, Participant> Info){
+        allParticipantInfo = new HashMap<String, Participant>();
+        allParticipantInfo.putAll(Info);
+        setupFrame();
+//        Iterator it = allParticipantInfo.entrySet().iterator();
+//         while(it.hasNext()) {
+//            Map.Entry obj = (Map.Entry)it.next();
+//            System.out.println(obj.getValue());
+//         }
+    }
+    public void setupFrame(){
         initComponents();
         this.setSize(1366,768);
         this.setLocationRelativeTo(null);
@@ -38,7 +55,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 try
                 {
                     int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
-                    if(opt == 0) System.exit(0);
+                    if(opt == 0) {
+                        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+                        PI.writeData();
+                        System.exit(0);
+                    }
                 }
                 catch(Exception e)
                 {
@@ -344,7 +365,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        HomeFrame home = new HomeFrame();
+        HomeFrame home = new HomeFrame(allParticipantInfo);
         home.setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 
@@ -412,8 +433,8 @@ public class LoginFrame extends javax.swing.JFrame {
         ParticipantInfo PI = new ParticipantInfo();
         if(PI.isValid(id) && PI.match(id, password)){
             //JOptionPane.showMessageDialog(null, "Login Successful");
-            ParticipantModule PM = new ParticipantModule(PI.find(id));
             this.setVisible(false);
+            ParticipantModule PM = new ParticipantModule(allParticipantInfo, PI.find(id));
             PM.setVisible(true);
         }
         else{

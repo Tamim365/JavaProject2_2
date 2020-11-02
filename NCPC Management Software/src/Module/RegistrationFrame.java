@@ -26,10 +26,19 @@ import java.util.regex.Pattern;
  */
 public class RegistrationFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrationFrame
-     */
+    HashMap<String, Participant> allParticipantInfo;
+    
     public RegistrationFrame() {
+        setupFrame();
+    }
+    
+    public RegistrationFrame(HashMap<String, Participant> Info){
+        allParticipantInfo = new HashMap<String, Participant>();
+        allParticipantInfo.putAll(Info);
+        setupFrame();
+    }
+    
+    public void setupFrame(){
         initComponents();
         this.setSize(1366,768);
         this.setLocationRelativeTo(null);
@@ -42,7 +51,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 try
                 {
                     int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
-                    if(opt == 0) System.exit(0);
+                    if(opt == 0) 
+                    {
+                        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+                        PI.writeData();
+                        System.exit(0);
+                    }
                 }
                 catch(Exception e)
                 {
@@ -698,49 +712,39 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        HomeFrame home = new HomeFrame();
+        HomeFrame home = new HomeFrame(allParticipantInfo);
         home.setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        boolean success = false;
-        List<String> allInformations = new ArrayList<>();
         try {
             // TODO add your handling code here:
             String participantName = participantNameTextField.getText().toString(); 
-            allInformations.add(participantName);
             String participantEmail = participantEmailTextField.getText().toString();
-            allInformations.add(participantEmail);
             String participantHandleId = participantHandleIdTextField.getText().toString();
-            allInformations.add(participantHandleId);
             String participantMobile = participantMobileTextField.getText().toString();
-            allInformations.add(participantMobile);
             String participantUniversity = participantUniversityTextField.getText().toString();
-            allInformations.add(participantUniversity);
             String DOBYear = participantYearComboBox.getSelectedItem().toString();
             String DOBMonth = participantMonthComboBox.getSelectedItem().toString();
             String DOBDay = participantDayComboBox.getSelectedItem().toString();
             String participantDOB = DOBDay+"-"+DOBMonth+"-"+DOBYear;
-            allInformations.add(participantDOB);
             String participantGender = participantGenderComboBox.getSelectedItem().toString();
-            allInformations.add(participantGender);
             String participantTshirt = participantTshirtComboBox.getSelectedItem().toString();
-            allInformations.add(participantTshirt);
             String participantPresentAddress = participantPresentAddressTextArea.getText().toString();
-            allInformations.add(participantPresentAddress);
             String participantPassword = new String(participantPasswordField.getPassword());
-            allInformations.add(participantPassword);
             
             Participant P = new Participant(participantName,participantEmail, participantHandleId, participantMobile, participantUniversity, participantDOB, participantGender, participantTshirt, participantPresentAddress, participantPassword);
             
-            ParticipantInfo pt = new ParticipantInfo();
-            pt.add(P);
+//            ParticipantInfo pt = new ParticipantInfo();
+//            pt.add(P);
             
             int opt = JOptionPane.showConfirmDialog(null, "Do you want to Submit?","Confirmation",JOptionPane.YES_NO_OPTION);
             if(opt == 0) 
             {
-                pt.writeData();
+//                pt.writeData();
+                allParticipantInfo.put(participantHandleId, P);
+                
                 participantNameTextField.setText("");
                 participantEmailTextField.setText("");
                 participantHandleIdTextField.setText("");
@@ -755,9 +759,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 participantPresentAddressTextArea.setText("");
                 JOptionPane.showMessageDialog(null, "Registration Successful");
             }
-        }catch (HeadlessException | IOException e){
-            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase I/O Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception ex) {
+        }
+//        catch (HeadlessException | IOException e){
+//            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase I/O Error", JOptionPane.ERROR_MESSAGE);
+//        } 
+        catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase Element Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

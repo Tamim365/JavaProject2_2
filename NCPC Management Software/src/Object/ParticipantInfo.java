@@ -26,6 +26,11 @@ public class ParticipantInfo {
         readData();
     }
     
+    public ParticipantInfo(HashMap<String, Participant> Info){
+        allInfo = new HashMap<String, Participant>();
+        allInfo.putAll(Info);
+    }
+    
 
     synchronized public void readData() {
         String file = "src/data/participant/participants.txt";
@@ -67,6 +72,7 @@ public class ParticipantInfo {
         oos.writeObject(allInfo);
         oos.close();
         fos.close();
+        System.out.println("Write Done!");
     }
     
     public void add(Participant obj){

@@ -6,8 +6,10 @@
 package Module;
 
 import Object.Participant;
+import Object.ParticipantInfo;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -18,15 +20,25 @@ import javax.swing.WindowConstants;
  */
 public class ParticipantModule extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ParticipantModule
-     */
+    HashMap<String, Participant> allParticipantInfo;
+    
     public ParticipantModule() {
+        setupFrame();
+    }
+    
+    public ParticipantModule(HashMap<String, Participant> Info, Participant participant) {
+        allParticipantInfo = new HashMap<String, Participant>();
+        //allParticipantInfo.putAll(Info);
+        setupFrame();
+        String title = participant.getName();
+        this.setTitle(title); 
+        setValues(participant);
+    }
+    public void setupFrame(){
         initComponents();
         this.setSize(1366,768);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setTitle("Registration");
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() 
         {
@@ -34,7 +46,11 @@ public class ParticipantModule extends javax.swing.JFrame {
                 try
                 {
                     int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
-                    if(opt == 0) System.exit(0);
+                    if(opt == 0) {
+                        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+                        PI.writeData();
+                        System.exit(0);
+                    }
                 }
                 catch(Exception e)
                 {
@@ -43,16 +59,6 @@ public class ParticipantModule extends javax.swing.JFrame {
                 }
             }
         });
-    }
-    public ParticipantModule(Participant participant) {
-        initComponents();
-        this.setSize(1366,768);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        String title = participant.getName();
-        setValues(participant);
-        this.setTitle(title); 
     }
     public void setValues(Participant pt){
         // In Profile

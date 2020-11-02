@@ -1,10 +1,14 @@
 package Module;
 
 
+import Object.Participant;
 import javax.swing.*;
 import Object.ParticipantInfo;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,10 +22,22 @@ import java.awt.event.WindowEvent;
  */
 public class HomeFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form HomeFrame
-     */
+    public HashMap<String, Participant> allParticipantInfo;
     public HomeFrame() {
+        setupFrame();
+        //Reading All Participant Info
+        ParticipantInfo pt = new ParticipantInfo();
+        allParticipantInfo = new HashMap<String, Participant>();
+        allParticipantInfo.putAll(pt.allInfo);
+    }
+    
+    public HomeFrame(HashMap<String, Participant> Info){
+        setupFrame();
+        allParticipantInfo = new HashMap<String, Participant>();
+        allParticipantInfo.putAll(Info);
+    }
+    
+    public void setupFrame(){
         initComponents();
         this.setSize(1366,768);
         this.setLocationRelativeTo(null);
@@ -34,7 +50,11 @@ public class HomeFrame extends javax.swing.JFrame {
                 try
                 {
                     int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
-                    if(opt == 0) System.exit(0);
+                    if(opt == 0) {
+                        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+                        PI.writeData();
+                        System.exit(0);
+                    }
                 }
                 catch(Exception e)
                 {
@@ -44,7 +64,7 @@ public class HomeFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -271,23 +291,33 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
         // TODO add your handling code here:
-        int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
-        if(opt == 0) System.exit(0);
+        try
+        {
+            int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
+            if(opt == 0) {
+                ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+                PI.writeData();
+                System.exit(0);
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Oops! There are some problems!", "Unknown Error Occured!", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        }
     }//GEN-LAST:event_exitButtonMouseClicked
 
     private void registrationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrationButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        RegistrationFrame rg = new RegistrationFrame();
+        RegistrationFrame rg = new RegistrationFrame(allParticipantInfo);
         rg.setVisible(true);
-        ParticipantInfo pt = new ParticipantInfo();
-        System.out.println(pt.find("tamim365"));
     }//GEN-LAST:event_registrationButtonMouseClicked
 
     private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        LoginFrame lg = new LoginFrame();
+        LoginFrame lg = new LoginFrame(allParticipantInfo);
         lg.setVisible(true);
     }//GEN-LAST:event_logInButtonMouseClicked
 
