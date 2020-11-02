@@ -3,22 +3,15 @@ package Module;
 
 import Module.HomeFrame;
 import Object.Participant;
-import com.opencsv.CSVWriter;
-import java.awt.event.ItemListener;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import Object.ParticipantInfo;
 import java.awt.HeadlessException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.regex.Pattern;
 
 /*
@@ -41,8 +34,23 @@ public class RegistrationFrame extends javax.swing.JFrame {
         this.setSize(1366,768);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("Registration");
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() 
+        {
+            public void windowClosing(WindowEvent evt) {
+                try
+                {
+                    int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
+                    if(opt == 0) System.exit(0);
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null, "Oops! There are some problems!", "Unknown Error Occured!", JOptionPane.ERROR_MESSAGE);
+                    System.exit(0);
+                }
+            }
+        });
     }
     
     public static boolean isValid(String email) 

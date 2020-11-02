@@ -6,6 +6,8 @@
 package Module;
 
 import Object.Participant;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -24,8 +26,23 @@ public class ParticipantModule extends javax.swing.JFrame {
         this.setSize(1366,768);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("Registration");
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() 
+        {
+            public void windowClosing(WindowEvent evt) {
+                try
+                {
+                    int opt = JOptionPane.showConfirmDialog(null, "Do you want to Exit?","Close",JOptionPane.YES_NO_OPTION);
+                    if(opt == 0) System.exit(0);
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null, "Oops! There are some problems!", "Unknown Error Occured!", JOptionPane.ERROR_MESSAGE);
+                    System.exit(0);
+                }
+            }
+        });
     }
     public ParticipantModule(Participant participant) {
         initComponents();
