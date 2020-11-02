@@ -41,7 +41,7 @@ public class ParticipantInfo {
             fis = new FileInputStream(file);
             ois = new ObjectInputStream(fis);
             allInfo = (HashMap<String, Participant>) ois.readObject();
-            System.out.println("Done!");
+            System.out.println("Read Done!");
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Unable to read!");
                 e.printStackTrace();

@@ -28,7 +28,7 @@ public class ParticipantModule extends javax.swing.JFrame {
     
     public ParticipantModule(HashMap<String, Participant> Info, Participant participant) {
         allParticipantInfo = new HashMap<String, Participant>();
-        //allParticipantInfo.putAll(Info);
+        allParticipantInfo.putAll(Info);
         setupFrame();
         String title = participant.getName();
         this.setTitle(title); 
@@ -582,7 +582,7 @@ public class ParticipantModule extends javax.swing.JFrame {
         int opt = JOptionPane.showConfirmDialog(null, "Do you want to Log out?","Close",JOptionPane.YES_NO_OPTION);
         if(opt == 0) {
             this.setVisible(false);
-            HomeFrame home = new HomeFrame();
+            HomeFrame home = new HomeFrame(allParticipantInfo);
             home.setVisible(true);
         }
     }//GEN-LAST:event_logoutBtnMouseClicked

@@ -854,7 +854,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void participantHandleIdTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_participantHandleIdTextFieldFocusLost
         // TODO add your handling code here:
         String handle = participantHandleIdTextField.getText().toString();
-        ParticipantInfo PI = new ParticipantInfo();
+        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
         if(PI.isValid(handle)) handleCheckLabel.setText("Handle Id Already Exists!");
         else handleCheckLabel.setText("");
     }//GEN-LAST:event_participantHandleIdTextFieldFocusLost

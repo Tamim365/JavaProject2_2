@@ -430,7 +430,7 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = participantLoginTextField.getText().toString();
         String password = new String(partLoginPasswordField.getPassword());
-        ParticipantInfo PI = new ParticipantInfo();
+        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
         if(PI.isValid(id) && PI.match(id, password)){
             //JOptionPane.showMessageDialog(null, "Login Successful");
             this.setVisible(false);
