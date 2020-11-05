@@ -7,9 +7,13 @@ package Module;
 
 import Object.Participant;
 import Object.ParticipantInfo;
+import com.sun.glass.events.KeyEvent;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
+import java.awt.List;
+import java.util.Vector;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -40,6 +44,8 @@ public class ParticipantModule extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        //In Search
+        jScrollPane2.setVisible(false);
         this.addWindowListener(new WindowAdapter() 
         {
             public void windowClosing(WindowEvent evt) {
@@ -71,6 +77,9 @@ public class ParticipantModule extends javax.swing.JFrame {
         genderLabel.setText(pt.gender);
         tshirtLabel.setText(pt.tShirt);
         addressLabel.setText(pt.presentAddress);
+        //In Search
+        jScrollPane2.setVisible(false);
+        searchList.removeAll();
         // In Edit Profile
         mobileCheckLabel.setText("");
         emailCheckLabel.setText("");
@@ -118,6 +127,7 @@ public class ParticipantModule extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        searchTextField = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         homePanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -179,6 +189,8 @@ public class ParticipantModule extends javax.swing.JFrame {
         mobileCheckLabel = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        searchList = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
         viewProfileBtn = new javax.swing.JLabel();
         viewTeamBtn = new javax.swing.JLabel();
@@ -189,6 +201,39 @@ public class ParticipantModule extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        searchTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        searchTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchTextFieldFocusLost(evt);
+            }
+        });
+        searchTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchTextFieldMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchTextFieldMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchTextFieldMouseExited(evt);
+            }
+        });
+        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchTextFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchTextFieldKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchTextFieldKeyTyped(evt);
+            }
+        });
+        getContentPane().add(searchTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 83, 240, 40));
 
         homePanel.setOpaque(false);
         homePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -523,13 +568,38 @@ public class ParticipantModule extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, -30, 940, 820));
 
+        jScrollPane2.setAutoscrolls(true);
+
+        searchList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        searchList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        searchList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        searchList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchList.setOpaque(false);
+        searchList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchListKeyPressed(evt);
+            }
+        });
+        searchList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                searchListValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(searchList);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 240, 60));
+
         jButton4.setText("Home");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 110, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         viewProfileBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/participant/viewProfileButton_1.png"))); // NOI18N
         viewProfileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -537,7 +607,7 @@ public class ParticipantModule extends javax.swing.JFrame {
                 viewProfileBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        getContentPane().add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
         viewTeamBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/participant/viewTeamButton_1.png"))); // NOI18N
         viewTeamBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -545,7 +615,7 @@ public class ParticipantModule extends javax.swing.JFrame {
                 viewTeamBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(viewTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
+        getContentPane().add(viewTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
         viewInstructionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/participant/viewInstructionButton_1.png"))); // NOI18N
         viewInstructionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -553,7 +623,7 @@ public class ParticipantModule extends javax.swing.JFrame {
                 viewInstructionBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(viewInstructionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        getContentPane().add(viewInstructionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
 
         logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/participant/logOutButton_1.png"))); // NOI18N
         logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -561,7 +631,7 @@ public class ParticipantModule extends javax.swing.JFrame {
                 logoutBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 560, -1, -1));
+        getContentPane().add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 630, -1, -1));
 
         editProfileBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/participant/editProfileButton_1.png"))); // NOI18N
         editProfileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -569,7 +639,7 @@ public class ParticipantModule extends javax.swing.JFrame {
                 editProfileBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(editProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+        getContentPane().add(editProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/participantModuleBG.jpg"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -665,6 +735,77 @@ public class ParticipantModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_participantUniversityTextFieldActionPerformed
 
+    private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldFocusGained
+
+    private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
+        // TODO add your handling code here:
+        jScrollPane2.setVisible(false);
+        searchList.removeAll();
+    }//GEN-LAST:event_searchTextFieldFocusLost
+
+    private void searchTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_searchTextFieldKeyTyped
+
+    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
+        // TODO add your handling code here:
+        CharSequence s = searchTextField.getText().toString().trim();
+        if(s.length()<1) 
+        {
+            jScrollPane2.setVisible(false);
+            searchList.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchList.setListData(list);
+        if(list.size()>=1){
+            searchList.setSelectedIndex(0);
+            jScrollPane2.setVisible(true);
+        }
+        else{
+            jScrollPane2.setVisible(false);
+            searchList.removeAll();
+        }
+    }//GEN-LAST:event_searchTextFieldKeyReleased
+
+    private void searchListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchListKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchListKeyPressed
+
+    private void searchTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchList.getSelectedIndex() >= 0){
+                searchTextField.setText(searchList.getSelectedValue());
+            }
+        }
+    }//GEN-LAST:event_searchTextFieldKeyPressed
+
+    private void searchListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_searchListValueChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_searchListValueChanged
+
+    private void searchTextFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseEntered
+        // TODO add your handling code here
+    }//GEN-LAST:event_searchTextFieldMouseEntered
+
+    private void searchTextFieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldMouseExited
+
+    private void searchTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -746,6 +887,7 @@ public class ParticipantModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel logoutBtn;
     private javax.swing.JLabel mobileCheckLabel;
@@ -763,6 +905,8 @@ public class ParticipantModule extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> participantTshirtComboBox;
     private javax.swing.JTextField participantUniversityTextField;
     private javax.swing.JPanel profilePanel;
+    private javax.swing.JList<String> searchList;
+    private javax.swing.JTextField searchTextField;
     private javax.swing.JPanel teamPanel;
     private javax.swing.JLabel tshirtLabel;
     private javax.swing.JLabel unilabel;
