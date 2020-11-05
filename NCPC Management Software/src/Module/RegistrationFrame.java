@@ -2,6 +2,8 @@ package Module;
 
 
 import Module.HomeFrame;
+import Object.Coach;
+import Object.CoachInfo;
 import Object.Participant;
 import java.io.*;
 import java.util.*;
@@ -27,14 +29,19 @@ import java.util.regex.Pattern;
 public class RegistrationFrame extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
+    HashMap<String, Coach> allCoachInfo;
     
     public RegistrationFrame() {
         setupFrame();
     }
     
-    public RegistrationFrame(HashMap<String, Participant> Info){
+    public RegistrationFrame(HashMap<String, Participant> PartInfo , HashMap<String, Coach> CoachInfo){
         allParticipantInfo = new HashMap<String, Participant>();
-        allParticipantInfo.putAll(Info);
+        allParticipantInfo.putAll(PartInfo);
+        
+        ///added
+        allCoachInfo= new HashMap<String, Coach> ();
+        allCoachInfo.putAll(CoachInfo);
         setupFrame();
     }
     
@@ -56,6 +63,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
                         ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
                         PI.writeData();
                         System.exit(0);
+                        
+                        ///added
+                        CoachInfo ci = new CoachInfo(allCoachInfo);
+                        ci.writeData();
+                        System.exit(0);
+                        
                     }
                 }
                 catch(Exception e)
@@ -139,7 +152,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         coachEmailTextField1 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        coachHandleIdTextField1 = new javax.swing.JTextField();
+        coachPositionTextField = new javax.swing.JTextField();
         coachMobileTextField1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -159,6 +172,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
         coachTshirtComboBox = new javax.swing.JComboBox<>();
         jLabel27 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        coachEmailCheckLabel = new javax.swing.JLabel();
+        coachMobileCheckLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -330,11 +345,6 @@ public class RegistrationFrame extends javax.swing.JFrame {
         jPanel1.add(participantYearComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 100, 30));
 
         participantDayComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day" }));
-        participantDayComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                participantDayComboBoxActionPerformed(evt);
-            }
-        });
         jPanel1.add(participantDayComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
@@ -436,6 +446,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
         coachEmailTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         coachEmailTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachEmailTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                coachEmailTextField1FocusLost(evt);
+            }
+        });
         coachEmailTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 coachEmailTextField1ActionPerformed(evt);
@@ -453,17 +468,22 @@ public class RegistrationFrame extends javax.swing.JFrame {
         jLabel17.setText("Position                       :");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 190, 30));
 
-        coachHandleIdTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        coachHandleIdTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        coachHandleIdTextField1.addActionListener(new java.awt.event.ActionListener() {
+        coachPositionTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachPositionTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachPositionTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coachHandleIdTextField1ActionPerformed(evt);
+                coachPositionTextFieldActionPerformed(evt);
             }
         });
-        jPanel2.add(coachHandleIdTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 320, 30));
+        jPanel2.add(coachPositionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 320, 30));
 
         coachMobileTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         coachMobileTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachMobileTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                coachMobileTextField1FocusLost(evt);
+            }
+        });
         coachMobileTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 coachMobileTextField1ActionPerformed(evt);
@@ -574,6 +594,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 660, 140, 50));
+
+        coachEmailCheckLabel.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel2.add(coachEmailCheckLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 181, 220, 30));
+
+        coachMobileCheckLabel.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(coachMobileCheckLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 231, 220, 30));
 
         jTabbedPane1.addTab("tab2", jPanel2);
 
@@ -700,26 +726,81 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
     private void coachMonthComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachMonthComboBox1ActionPerformed
         // TODO add your handling code here:
+        coachDayComboBox1.removeAllItems();
+        coachDayComboBox1.addItem("DAY");
         
+        String[] days_31 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+        String[] days_30 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
+        String[] days_29 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"};
+        String[] days_28 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"};
+        
+        String year = coachYearComboBox1.getSelectedItem().toString();
+        String month = coachMonthComboBox1.getSelectedItem().toString();
+        
+        if(year.equals("Year") != true && month.equals("Month") != true) {
+            int yearValue = Integer.parseInt(year);
+            boolean leap = false;
+            if (((yearValue % 4 == 0) && (yearValue % 100!= 0)) || (yearValue%400 == 0)) leap = true;
+            if(month.equals("January") || month.equals("March") || month.equals("May") || month.equals("July") || month.equals("August") || month.equals("October") || month.equals("December")) {
+                coachDayComboBox1.removeAllItems();
+                for(String s : days_31) coachDayComboBox1.addItem(s);
+            }
+            else if(month.equals("April") || month.equals("June") || month.equals("September") || month.equals("November")) {
+                coachDayComboBox1.removeAllItems();
+                for(String s : days_30) coachDayComboBox1.addItem(s);
+            }
+            else if(month.equals("February")) {
+                coachDayComboBox1.removeAllItems();
+                if(leap) 
+                    for(String s : days_29) coachDayComboBox1.addItem(s);
+                else for(String s : days_28) coachDayComboBox1.addItem(s);
+            }
+        }
     }//GEN-LAST:event_coachMonthComboBox1ActionPerformed
 
     private void coachYearComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachYearComboBox1ActionPerformed
         // TODO add your handling code here:
-        
+        coachDayComboBox1.removeAllItems();
+        coachDayComboBox1.addItem("Day");
+        String[] days_31 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+        String[] days_30 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
+        String[] days_29 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"};
+        String[] days_28 = {"Day","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"};
+        String year = coachYearComboBox1.getSelectedItem().toString();
+        String month = coachMonthComboBox1.getSelectedItem().toString();
+        if(year.equals("Year") != true && month.equals("Month") != true) {
+            int yearValue = Integer.parseInt(year);
+            boolean leap = false;
+            if (((yearValue % 4 == 0) && (yearValue % 100!= 0)) || (yearValue%400 == 0)) leap = true;
+            if(month.equals("January") || month.equals("March") || month.equals("May") || month.equals("July") || month.equals("August") || month.equals("October") || month.equals("December")) {
+                coachDayComboBox1.removeAllItems();
+                for(String s : days_31) coachDayComboBox1.addItem(s);
+            }
+            else if(month.equals("April") || month.equals("June") || month.equals("September") || month.equals("November")) {
+                coachDayComboBox1.removeAllItems();
+                for(String s : days_30) coachDayComboBox1.addItem(s);
+            }
+            else if(month.equals("February")) {
+                coachDayComboBox1.removeAllItems();
+                if(leap) 
+                    for(String s : days_29) coachDayComboBox1.addItem(s);
+                else for(String s : days_28) coachDayComboBox1.addItem(s);
+            }
+        }
     }//GEN-LAST:event_coachYearComboBox1ActionPerformed
 
     private void coachGenderComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachGenderComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_coachGenderComboBox1ActionPerformed
 
-    private void coachHandleIdTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachHandleIdTextField1ActionPerformed
+    private void coachPositionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachPositionTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_coachHandleIdTextField1ActionPerformed
+    }//GEN-LAST:event_coachPositionTextFieldActionPerformed
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        HomeFrame home = new HomeFrame(allParticipantInfo);
+        HomeFrame home = new HomeFrame(allParticipantInfo ,allCoachInfo);
         home.setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 
@@ -742,14 +823,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
             String participantPassword = new String(participantPasswordField.getPassword());
             
             Participant P = new Participant(participantName,participantEmail, participantHandleId, participantMobile, participantUniversity, participantDOB, participantGender, participantTshirt, participantPresentAddress, participantPassword);
-            
-//            ParticipantInfo pt = new ParticipantInfo();
-//            pt.add(P);
+
             
             int opt = JOptionPane.showConfirmDialog(null, "Do you want to Submit?","Confirmation",JOptionPane.YES_NO_OPTION);
             if(opt == 0) 
             {
-//                pt.writeData();
+
                 allParticipantInfo.put(participantHandleId, P);
                 
                 participantNameTextField.setText("");
@@ -846,6 +925,55 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
+               try {
+            
+            String coachName = coachNameTextField1.getText().toString(); 
+            String coachEmail = coachEmailTextField1.getText().toString();
+            String coachMobile = coachMobileTextField1.getText().toString();
+            String coachUniversity = coachUniversityTextField1.getText().toString();
+            String DOBYear = coachYearComboBox1.getSelectedItem().toString();
+            String DOBMonth = coachMonthComboBox1.getSelectedItem().toString();
+            String DOBDay = coachDayComboBox1.getSelectedItem().toString();
+            String coachDOB = DOBDay+"-"+DOBMonth+"-"+DOBYear;
+            String coachGender = coachGenderComboBox1.getSelectedItem().toString();
+            String coachTshirt = coachTshirtComboBox.getSelectedItem().toString();
+            String coachPresentAddress = coachPresentAddressTextArea1.getText().toString();
+            String coachPassword = new String(coachPasswordField.getPassword());
+            String coachPosString = coachPositionTextField.getText().toString();
+            
+            Coach c  = new Coach(coachName,coachEmail,  coachMobile, coachUniversity, coachPosString, coachDOB, coachGender, coachTshirt, coachPresentAddress, coachPassword);
+
+            
+            int opt = JOptionPane.showConfirmDialog(null, "Do you want to Submit?","Confirmation",JOptionPane.YES_NO_OPTION);
+            
+            if(opt == 0) 
+            {
+
+                allCoachInfo.put(coachEmail, c);
+                CoachInfo ci = new CoachInfo(allCoachInfo);
+                ci.writeData();
+                coachNameTextField1.setText("");
+                coachEmailTextField1.setText("");
+                coachMobileTextField1.setText("");
+                coachPasswordField.setText("");
+                coachUniversityTextField1.setText("");
+                coachGenderComboBox1.setSelectedIndex(0);
+                coachYearComboBox1.setSelectedIndex(0);
+                coachMonthComboBox1.setSelectedIndex(0);
+                coachDayComboBox1.setSelectedIndex(0);
+                coachTshirtComboBox.setSelectedIndex(0);
+                coachPresentAddressTextArea1.setText("");
+                coachPositionTextField.setText("");
+                JOptionPane.showMessageDialog(null, "Registration Successful");
+            }
+        }
+//        catch (HeadlessException | IOException e){
+//            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase I/O Error", JOptionPane.ERROR_MESSAGE);
+//        } 
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase Element Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void participantEmailTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_participantEmailTextFieldFocusLost
@@ -873,9 +1001,28 @@ public class RegistrationFrame extends javax.swing.JFrame {
         else mobileCheckLabel.setText("");
     }//GEN-LAST:event_participantMobileTextFieldFocusLost
 
-    private void participantDayComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantDayComboBoxActionPerformed
+    private void coachEmailTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coachEmailTextField1FocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_participantDayComboBoxActionPerformed
+         String email = coachEmailTextField1.getText().toString();
+        if(!isValid(email)){
+            coachEmailCheckLabel.setText("Invalid Email Address!");
+        }
+        else 
+        {
+           CoachInfo ci = new CoachInfo(allCoachInfo);
+           if(ci.isValid(email)) coachEmailCheckLabel.setText("Email Already Exists!");
+           else coachEmailCheckLabel.setText("");
+        }
+        
+        
+    }//GEN-LAST:event_coachEmailTextField1FocusLost
+
+    private void coachMobileTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coachMobileTextField1FocusLost
+        // TODO add your handling code here:
+         String mobile = coachMobileTextField1.getText().toString();
+        if(!isValidMobile(mobile)) coachMobileCheckLabel.setText("Invalid Mobile No!");
+        else coachMobileCheckLabel.setText("");
+    }//GEN-LAST:event_coachMobileTextField1FocusLost
 
     /**
      * @param args the command line arguments
@@ -915,13 +1062,15 @@ public class RegistrationFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backButton;
     private javax.swing.JComboBox<String> coachDayComboBox1;
+    private javax.swing.JLabel coachEmailCheckLabel;
     private javax.swing.JTextField coachEmailTextField1;
     private javax.swing.JComboBox<String> coachGenderComboBox1;
-    private javax.swing.JTextField coachHandleIdTextField1;
+    private javax.swing.JLabel coachMobileCheckLabel;
     private javax.swing.JTextField coachMobileTextField1;
     private javax.swing.JComboBox<String> coachMonthComboBox1;
     private javax.swing.JTextField coachNameTextField1;
     private javax.swing.JPasswordField coachPasswordField;
+    private javax.swing.JTextField coachPositionTextField;
     private javax.swing.JTextArea coachPresentAddressTextArea1;
     private javax.swing.JComboBox<String> coachTshirtComboBox;
     private javax.swing.JTextField coachUniversityTextField1;
