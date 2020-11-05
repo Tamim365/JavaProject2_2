@@ -9,7 +9,7 @@ import Object.Coach;
 import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
