@@ -47,7 +47,7 @@ public class HomeFrame extends javax.swing.JFrame {
         allParticipantInfo = new HashMap<String, Participant>();
         allParticipantInfo.putAll(PartInfo);
         
-         allCoachInfo= new HashMap<String, Coach> ();
+        allCoachInfo= new HashMap<String, Coach> ();
         allCoachInfo.putAll(CoachInfo);
         
         
@@ -71,9 +71,8 @@ public class HomeFrame extends javax.swing.JFrame {
                     if(opt == 0) {
                         ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
                         PI.writeData();
-                        System.exit(0);
                         
-                         CoachInfo ci = new CoachInfo(allCoachInfo);
+                        CoachInfo ci = new CoachInfo(allCoachInfo);
                         ci.writeData();
                         System.exit(0);
                     }

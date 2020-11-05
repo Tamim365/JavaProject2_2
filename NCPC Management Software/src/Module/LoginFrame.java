@@ -66,9 +66,8 @@ public class LoginFrame extends javax.swing.JFrame {
                     if(opt == 0) {
                         ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
                         PI.writeData();
-                        System.exit(0);
                         
-                         CoachInfo ci = new CoachInfo(allCoachInfo);
+                        CoachInfo ci = new CoachInfo(allCoachInfo);
                         ci.writeData();
                         System.exit(0);
                     }
@@ -267,6 +266,11 @@ public class LoginFrame extends javax.swing.JFrame {
 
         coachLoginBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         coachLoginBtn.setText("Login");
+        coachLoginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coachLoginBtnActionPerformed(evt);
+            }
+        });
         jPanel2.add(coachLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 130, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
@@ -275,12 +279,15 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 200, 40));
 
+        coachLoginTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         coachLoginTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 coachLoginTextFieldActionPerformed(evt);
             }
         });
         jPanel2.add(coachLoginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 450, 40));
+
+        coachLoginPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel2.add(coachLoginPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
 
         jTabbedPane1.addTab("tab2", jPanel2);
@@ -305,12 +312,15 @@ public class LoginFrame extends javax.swing.JFrame {
         adminLoginBtn.setText("Login");
         jPanel3.add(adminLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 130, 50));
 
+        adminLoginTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         adminLoginTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminLoginTextFieldActionPerformed(evt);
             }
         });
         jPanel3.add(adminLoginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 450, 40));
+
+        adminLoginPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel3.add(adminLoginPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 450, 40));
 
         jTabbedPane1.addTab("tab2", jPanel3);
@@ -454,6 +464,22 @@ public class LoginFrame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_partLoginBtnActionPerformed
+
+    private void coachLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachLoginBtnActionPerformed
+        // TODO add your handling code here:
+        String email = coachLoginTextField.getText().toString();
+        String password = new String(coachLoginPasswordField.getPassword());
+        CoachInfo CI = new CoachInfo(allCoachInfo);
+        if(CI.isValid(email) && CI.match(email, password)){
+            //JOptionPane.showMessageDialog(null, "Login Successful");
+            this.setVisible(false);
+            CoachModule CM = new CoachModule(allParticipantInfo, CI.find(email) , allCoachInfo);
+            CM.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_coachLoginBtnActionPerformed
 
     /**
      * @param args the command line arguments
