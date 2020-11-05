@@ -330,6 +330,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
         jPanel1.add(participantYearComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 100, 30));
 
         participantDayComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day" }));
+        participantDayComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantDayComboBoxActionPerformed(evt);
+            }
+        });
         jPanel1.add(participantDayComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
@@ -695,10 +700,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
     private void coachMonthComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachMonthComboBox1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_coachMonthComboBox1ActionPerformed
 
     private void coachYearComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachYearComboBox1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_coachYearComboBox1ActionPerformed
 
     private void coachGenderComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachGenderComboBox1ActionPerformed
@@ -865,6 +872,10 @@ public class RegistrationFrame extends javax.swing.JFrame {
         if(!isValidMobile(mobile)) mobileCheckLabel.setText("Invalid Mobile No!");
         else mobileCheckLabel.setText("");
     }//GEN-LAST:event_participantMobileTextFieldFocusLost
+
+    private void participantDayComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantDayComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_participantDayComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
