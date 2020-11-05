@@ -5,6 +5,8 @@
  */
 package Module;
 
+import Object.Coach;
+import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
 import java.awt.event.WindowAdapter;
@@ -21,14 +23,19 @@ import javax.swing.WindowConstants;
 public class ParticipantModule extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
+      HashMap<String, Coach> allCoachInfo;
     
     public ParticipantModule() {
         setupFrame();
     }
     
-    public ParticipantModule(HashMap<String, Participant> Info, Participant participant) {
+    public ParticipantModule(HashMap<String, Participant> PartInfo, Participant participant , HashMap<String, Coach> CoachInfo ) {
         allParticipantInfo = new HashMap<String, Participant>();
-        allParticipantInfo.putAll(Info);
+        allParticipantInfo.putAll(PartInfo);
+        
+        allCoachInfo= new HashMap<String, Coach> ();
+        allCoachInfo.putAll(CoachInfo);
+        
         setupFrame();
         String title = participant.getName();
         this.setTitle(title); 
@@ -49,6 +56,10 @@ public class ParticipantModule extends javax.swing.JFrame {
                     if(opt == 0) {
                         ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
                         PI.writeData();
+                        System.exit(0);
+                        
+                         CoachInfo ci = new CoachInfo(allCoachInfo);
+                        ci.writeData();
                         System.exit(0);
                     }
                 }
@@ -582,7 +593,7 @@ public class ParticipantModule extends javax.swing.JFrame {
         int opt = JOptionPane.showConfirmDialog(null, "Do you want to Log out?","Close",JOptionPane.YES_NO_OPTION);
         if(opt == 0) {
             this.setVisible(false);
-            HomeFrame home = new HomeFrame(allParticipantInfo);
+            HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo);
             home.setVisible(true);
         }
     }//GEN-LAST:event_logoutBtnMouseClicked

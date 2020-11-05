@@ -4,37 +4,41 @@ package Object;
 import java.io.Serializable;
 
 /**
- * 
- * @author splash365 <tamim.365.ti at gmail.com>
+ *
+ * @author Shiary29 <shiaryk29 at gmail.com>
  */
-public class Participant implements Serializable{
+public class Coach implements Serializable{
     public String name;
     public String email;
-    public String handleId;
     public String mobile;
     public String university;
+    public String position;
     public String dateOfBirth;
     public String gender;
-    public String tShirt;
     public String presentAddress;
     public String password;
-    public Participant(){}
-    public Participant(
+    public String tShirt;
+    
+    public Coach(){}
+    
+    public Coach(
         String name,
         String email,
-        String handleId,
         String mobile,
         String university,
+        String position,
         String dateOfBirth,
         String gender,
         String tShirt,
         String presentAddress,
-        String password){
+        String password
+    )
+    {
         this.name = name;
         this.email = email;
-        this.handleId = handleId;
         this.mobile = mobile;
         this.university = university;
+        this.position = position;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.tShirt = tShirt;
@@ -42,16 +46,14 @@ public class Participant implements Serializable{
         this.password = password;
     }
     public String getId(){
-        return handleId;
+        return email;
     }
-    public String getName(){
-        return name;
-    }
-    public boolean match(String pass){
+     public boolean match(String pass){
         return this.password.equals(pass);
     }
+     
     public String toString(){
-        String st = new String("Name: " + name + "\nhandleID: " + handleId + "\nUniversity: " + university + "\nEmail: " + email);
+        String st = new String("Coach Name: " + name + "\nCoach email: " + email + "\nCoach University: " + university + "\nCoachgender " + gender);
         return st;
     }
 }

@@ -1,6 +1,8 @@
 package Module;
 
 
+import Object.Coach;
+import Object.CoachInfo;
 import Object.Participant;
 import javax.swing.*;
 import Object.ParticipantInfo;
@@ -23,19 +25,35 @@ import java.util.Map;
 public class HomeFrame extends javax.swing.JFrame {
 
     public HashMap<String, Participant> allParticipantInfo;
+    public HashMap<String, Coach> allCoachInfo;
     public HomeFrame() {
         setupFrame();
         //Reading All Participant Info
         ParticipantInfo pt = new ParticipantInfo();
         allParticipantInfo = new HashMap<String, Participant>();
         allParticipantInfo.putAll(pt.allInfo);
+        
+        CoachInfo ci = new CoachInfo();
+        allCoachInfo= new HashMap<String, Coach> ();
+        allCoachInfo.putAll(ci.allInfo);
+        
+        
+        System.out.println(ci.find("bb"));
+                
     }
     
-    public HomeFrame(HashMap<String, Participant> Info){
+    public HomeFrame(HashMap<String, Participant> PartInfo , HashMap<String, Coach> CoachInfo){
         setupFrame();
         allParticipantInfo = new HashMap<String, Participant>();
-        allParticipantInfo.putAll(Info);
+        allParticipantInfo.putAll(PartInfo);
+        
+         allCoachInfo= new HashMap<String, Coach> ();
+        allCoachInfo.putAll(CoachInfo);
+        
+        
     }
+
+    
     
     public void setupFrame(){
         initComponents();
@@ -53,6 +71,10 @@ public class HomeFrame extends javax.swing.JFrame {
                     if(opt == 0) {
                         ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
                         PI.writeData();
+                        System.exit(0);
+                        
+                         CoachInfo ci = new CoachInfo(allCoachInfo);
+                        ci.writeData();
                         System.exit(0);
                     }
                 }
@@ -310,14 +332,14 @@ public class HomeFrame extends javax.swing.JFrame {
     private void registrationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrationButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        RegistrationFrame rg = new RegistrationFrame(allParticipantInfo);
+        RegistrationFrame rg = new RegistrationFrame(allParticipantInfo , allCoachInfo);
         rg.setVisible(true);
     }//GEN-LAST:event_registrationButtonMouseClicked
 
     private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        LoginFrame lg = new LoginFrame(allParticipantInfo);
+        LoginFrame lg = new LoginFrame(allParticipantInfo , allCoachInfo);
         lg.setVisible(true);
     }//GEN-LAST:event_logInButtonMouseClicked
 
