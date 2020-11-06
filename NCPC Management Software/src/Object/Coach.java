@@ -18,6 +18,7 @@ public class Coach implements Serializable{
     public String presentAddress;
     public String password;
     public String tShirt;
+    public String teamId;
     
     public Coach(){}
     
@@ -44,6 +45,7 @@ public class Coach implements Serializable{
         this.tShirt = tShirt;
         this.presentAddress = presentAddress;
         this.password = password;
+        this.teamId = "null";
     }
     public String getId(){
         return email;
