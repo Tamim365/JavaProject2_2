@@ -10,11 +10,9 @@ import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
 import java.awt.event.KeyEvent;
-import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
-import java.awt.List;
 import java.util.Vector;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -22,28 +20,15 @@ import javax.swing.WindowConstants;
 
 /**
  *
- * @author splash365 <tamim.365.ti at gmail.com>
+ * @author Tamim-PC
  */
-public class ParticipantModule extends javax.swing.JFrame {
+public class AdminModule extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
-      HashMap<String, Coach> allCoachInfo;
-    
-    public ParticipantModule() {
+    HashMap<String, Coach> allCoachInfo;
+      
+    public AdminModule() {
         setupFrame();
-    }
-    
-    public ParticipantModule(HashMap<String, Participant> PartInfo, Participant participant , HashMap<String, Coach> CoachInfo ) {
-        allParticipantInfo = new HashMap<String, Participant>();
-        allParticipantInfo.putAll(PartInfo);
-        
-        allCoachInfo= new HashMap<String, Coach> ();
-        allCoachInfo.putAll(CoachInfo);
-        
-        setupFrame();
-        String title = participant.getName();
-        this.setTitle(title); 
-        setValues(participant);
     }
     public void setupFrame(){
         initComponents();
@@ -74,35 +59,6 @@ public class ParticipantModule extends javax.swing.JFrame {
             }
         });
     }
-    public void setValues(Participant pt){
-        // In Profile
-        handleLabel.setText(pt.handleId);
-        nameLabel.setText(pt.name);
-        emailLabel.setText(pt.email);
-        contactLabel.setText(pt.mobile);
-        dobLabel.setText(pt.dateOfBirth);
-        unilabel.setText(pt.university);
-        genderLabel.setText(pt.gender);
-        tshirtLabel.setText(pt.tShirt);
-        addressLabel.setText(pt.presentAddress);
-        //In Search
-        jScrollPane2.setVisible(false);
-        searchList.removeAll();
-        // In Edit Profile
-        mobileCheckLabel.setText("");
-        emailCheckLabel.setText("");
-        //In general
-        participantNameTextField.setText(pt.name);
-        participantUniversityTextField.setText(pt.university);
-        participantDOBTextField.setText(pt.dateOfBirth);
-        participantGenderComboBox.setSelectedItem(pt.gender);
-        participantTshirtComboBox.setSelectedItem(pt.tShirt);
-        participantPresentAddressTextArea.setText(pt.presentAddress);
-        // In Account
-        participantHandleIdTextField.setText(pt.handleId);
-        participantEmailTextField.setText(pt.email);
-        participantMobileTextField.setText(pt.mobile);
-    }
     public static boolean isValid(String email) 
     { 
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
@@ -126,6 +82,7 @@ public class ParticipantModule extends javax.swing.JFrame {
             return false; 
         return pat.matcher(mobile).matches(); 
     } 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -655,40 +612,67 @@ public class ParticipantModule extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+    private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
         // TODO add your handling code here:
-        int opt = JOptionPane.showConfirmDialog(null, "Do you want to Log out?","Close",JOptionPane.YES_NO_OPTION);
-        if(opt == 0) {
-            this.setVisible(false);
-            HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo);
-            home.setVisible(true);
+    }//GEN-LAST:event_searchTextFieldFocusGained
+
+    private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
+        // TODO add your handling code here:
+        jScrollPane2.setVisible(false);
+        searchList.removeAll();
+    }//GEN-LAST:event_searchTextFieldFocusLost
+
+    private void searchTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldMouseClicked
+
+    private void searchTextFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseEntered
+        // TODO add your handling code here
+    }//GEN-LAST:event_searchTextFieldMouseEntered
+
+    private void searchTextFieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldMouseExited
+
+    private void searchTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchList.getSelectedIndex() >= 0){
+                searchTextField.setText(searchList.getSelectedValue());
+            }
         }
-    }//GEN-LAST:event_logoutBtnMouseClicked
+    }//GEN-LAST:event_searchTextFieldKeyPressed
 
-    private void viewTeamBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseClicked
+    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(2);
-    }//GEN-LAST:event_viewTeamBtnMouseClicked
+        CharSequence s = searchTextField.getText().toString().trim();
+        if(s.length()<1)
+        {
+            jScrollPane2.setVisible(false);
+            searchList.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchList.setListData(list);
+        if(list.size()>=1){
+            searchList.setSelectedIndex(0);
+            jScrollPane2.setVisible(true);
+        }
+        else{
+            jScrollPane2.setVisible(false);
+            searchList.removeAll();
+        }
+    }//GEN-LAST:event_searchTextFieldKeyReleased
 
-    private void viewProfileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseClicked
+    private void searchTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyTyped
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(1);
-    }//GEN-LAST:event_viewProfileBtnMouseClicked
 
-    private void editProfileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseClicked
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(4);
-    }//GEN-LAST:event_editProfileBtnMouseClicked
-
-    private void viewInstructionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMouseClicked
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(3);
-    }//GEN-LAST:event_viewInstructionBtnMouseClicked
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_searchTextFieldKeyTyped
 
     private void participantNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantNameTextFieldActionPerformed
         // TODO add your handling code here:
@@ -743,76 +727,49 @@ public class ParticipantModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_participantUniversityTextFieldActionPerformed
 
-    private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldFocusGained
-
-    private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
-        // TODO add your handling code here:
-        jScrollPane2.setVisible(false);
-        searchList.removeAll();
-    }//GEN-LAST:event_searchTextFieldFocusLost
-
-    private void searchTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyTyped
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_searchTextFieldKeyTyped
-
-    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
-        // TODO add your handling code here:
-        CharSequence s = searchTextField.getText().toString().trim();
-        if(s.length()<1) 
-        {
-            jScrollPane2.setVisible(false);
-            searchList.removeAll();
-            return;
-        }
-        Vector<String> list = new Vector<String>();
-        for(String str : allParticipantInfo.keySet()) {
-            if(str.contains(s)){
-                list.add(str);
-            }
-        }
-        searchList.setListData(list);
-        if(list.size()>=1){
-            searchList.setSelectedIndex(0);
-            jScrollPane2.setVisible(true);
-        }
-        else{
-            jScrollPane2.setVisible(false);
-            searchList.removeAll();
-        }
-    }//GEN-LAST:event_searchTextFieldKeyReleased
-
     private void searchListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchListKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchListKeyPressed
 
-    private void searchTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            if(searchList.getSelectedIndex() >= 0){
-                searchTextField.setText(searchList.getSelectedValue());
-            }
-        }
-    }//GEN-LAST:event_searchTextFieldKeyPressed
-
     private void searchListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_searchListValueChanged
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_searchListValueChanged
 
-    private void searchTextFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseEntered
-        // TODO add your handling code here
-    }//GEN-LAST:event_searchTextFieldMouseEntered
-
-    private void searchTextFieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseExited
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldMouseExited
+        jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void searchTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseClicked
+    private void viewProfileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldMouseClicked
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_viewProfileBtnMouseClicked
+
+    private void viewTeamBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_viewTeamBtnMouseClicked
+
+    private void viewInstructionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(3);
+    }//GEN-LAST:event_viewInstructionBtnMouseClicked
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+        // TODO add your handling code here:
+        int opt = JOptionPane.showConfirmDialog(null, "Do you want to Log out?","Close",JOptionPane.YES_NO_OPTION);
+        if(opt == 0) {
+            this.setVisible(false);
+            HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo);
+            home.setVisible(true);
+        }
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void editProfileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(4);
+    }//GEN-LAST:event_editProfileBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -831,20 +788,20 @@ public class ParticipantModule extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ParticipantModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ParticipantModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ParticipantModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ParticipantModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ParticipantModule().setVisible(true);
+                new AdminModule().setVisible(true);
             }
         });
     }
