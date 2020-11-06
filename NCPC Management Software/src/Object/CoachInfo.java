@@ -80,7 +80,6 @@ public class CoachInfo {
     }
     
     
-    
     public void add(Coach c){
         allInfo.put(c.getId(), c);
     }
