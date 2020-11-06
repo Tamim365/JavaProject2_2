@@ -1532,6 +1532,9 @@ public class CoachModule extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase Element Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
+        finally{
+            jTabbedPane1.setSelectedComponent(editTeamPanel);
+        }
     }//GEN-LAST:event_registerBtnActionPerformed
 
     /**
