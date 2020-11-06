@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import Object.ParticipantInfo;
+import Object.Team;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -30,18 +31,23 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
     HashMap<String, Coach> allCoachInfo;
+    HashMap<String, Team> allTeamInfo;
     
     public RegistrationFrame() {
         setupFrame();
     }
     
-    public RegistrationFrame(HashMap<String, Participant> PartInfo , HashMap<String, Coach> CoachInfo){
+    public RegistrationFrame(HashMap<String, Participant> PartInfo , HashMap<String, Coach> CoachInfo, HashMap<String, Team> teamInfo){
         allParticipantInfo = new HashMap<String, Participant>();
         allParticipantInfo.putAll(PartInfo);
         
         ///added
         allCoachInfo= new HashMap<String, Coach> ();
         allCoachInfo.putAll(CoachInfo);
+        
+        allTeamInfo = new HashMap<String, Team> ();
+        allTeamInfo.putAll(teamInfo);
+        
         setupFrame();
     }
     
@@ -800,7 +806,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        HomeFrame home = new HomeFrame(allParticipantInfo ,allCoachInfo);
+        HomeFrame home = new HomeFrame(allParticipantInfo ,allCoachInfo, allTeamInfo);
         home.setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 

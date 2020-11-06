@@ -7,6 +7,8 @@ import Object.Coach;
 import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
+import Object.Team;
+import Object.TeamInfo;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
@@ -31,23 +33,22 @@ public class LoginFrame extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
     HashMap<String, Coach> allCoachInfo;
+    HashMap<String, Team> allTeamInfo;
     
     public LoginFrame() {
         setupFrame();
     }
-    public LoginFrame(HashMap<String, Participant> PartInfo , HashMap<String, Coach> CoachInfo ){
+    public LoginFrame(HashMap<String, Participant> PartInfo , HashMap<String, Coach> CoachInfo, HashMap<String, Team> teamInfo){
         allParticipantInfo = new HashMap<String, Participant>();
         allParticipantInfo.putAll(PartInfo);
         
         allCoachInfo= new HashMap<String, Coach> ();
         allCoachInfo.putAll(CoachInfo);
         
+        allTeamInfo = new HashMap<String, Team>();
+        allTeamInfo.putAll(teamInfo);
+        
         setupFrame();
-//        Iterator it = allParticipantInfo.entrySet().iterator();
-//         while(it.hasNext()) {
-//            Map.Entry obj = (Map.Entry)it.next();
-//            System.out.println(obj.getValue());
-//         }
     }
 
     public void setupFrame(){
@@ -387,7 +388,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo);
+        HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo, allTeamInfo);
         home.setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 
@@ -456,7 +457,7 @@ public class LoginFrame extends javax.swing.JFrame {
         if(PI.isValid(id) && PI.match(id, password)){
             //JOptionPane.showMessageDialog(null, "Login Successful");
             this.setVisible(false);
-            ParticipantModule PM = new ParticipantModule(allParticipantInfo, PI.find(id) , allCoachInfo);
+            ParticipantModule PM = new ParticipantModule(allParticipantInfo, PI.find(id) , allCoachInfo, allTeamInfo);
             PM.setVisible(true);
         }
         else{
@@ -473,7 +474,11 @@ public class LoginFrame extends javax.swing.JFrame {
         if(CI.isValid(email) && CI.match(email, password)){
             //JOptionPane.showMessageDialog(null, "Login Successful");
             this.setVisible(false);
-            CoachModule CM = new CoachModule(allParticipantInfo, CI.find(email) , allCoachInfo);
+            TeamInfo TI = new TeamInfo(allTeamInfo);
+            //System.out.println(TI);
+            //System.out.println("Helllllllooooooo");
+            CoachModule CM = new CoachModule(allParticipantInfo, CI.find(email) , allCoachInfo, allTeamInfo);
+            //System.out.println("Helllllllooooooo2222222");
             CM.setVisible(true);
         }
         else{

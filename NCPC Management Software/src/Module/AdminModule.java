@@ -9,6 +9,7 @@ import Object.Coach;
 import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
+import Object.Team;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -26,8 +27,22 @@ public class AdminModule extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
     HashMap<String, Coach> allCoachInfo;
-      
+    HashMap<String, Team> allTeamInfo;
+    
     public AdminModule() {
+        setupFrame();
+    }
+    public AdminModule(HashMap<String, Participant> PartInfo , HashMap<String, Coach> CoachInfo, HashMap<String, Team> teamInfo){
+        allParticipantInfo = new HashMap<String, Participant>();
+        allParticipantInfo.putAll(PartInfo);
+        
+        ///added
+        allCoachInfo= new HashMap<String, Coach> ();
+        allCoachInfo.putAll(CoachInfo);
+        
+        allTeamInfo = new HashMap<String, Team> ();
+        allTeamInfo.putAll(teamInfo);
+        
         setupFrame();
     }
     public void setupFrame(){
@@ -761,7 +776,7 @@ public class AdminModule extends javax.swing.JFrame {
         int opt = JOptionPane.showConfirmDialog(null, "Do you want to Log out?","Close",JOptionPane.YES_NO_OPTION);
         if(opt == 0) {
             this.setVisible(false);
-            HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo);
+            HomeFrame home = new HomeFrame(allParticipantInfo, allCoachInfo, allTeamInfo);
             home.setVisible(true);
         }
     }//GEN-LAST:event_logoutBtnMouseClicked

@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
@@ -104,5 +106,14 @@ public class CoachInfo {
         delete(c.getId());
         add(c);
     }
-    
+    public String toString(){
+        String st = new String("");
+        Iterator it = allInfo.entrySet().iterator();
+        while(it.hasNext()) {
+            Map.Entry obj = (Map.Entry)it.next();
+            System.out.println(obj.getValue());
+            st += obj.getValue().toString() + '\n';
+         }
+        return st;
+    }
 }

@@ -14,22 +14,25 @@ import java.util.ArrayList;
  * @author splash365 <tamim.365.ti at gmail.com>
  */
 public class Team implements Serializable{
-    ArrayList<String> members;
-    
     public String teamName;
     public String university;
     public String coahEmail;
     public String teamId;
     public String coachName;
+    public String member1;
+    public String member2;
+    public String member3;
     public boolean paymentStatus;
     
-    public Team(ArrayList<String> getMem, String teamName, String university, String coachName, String coachEmail, String teamId) {
-        members = new ArrayList<String>();
-        members.addAll(getMem);
+    public Team(String teamName, String university, String coachName, String coachEmail, String member1, String member2, String member3, String teamId) {
         this.teamName = teamName;
         this.university = university;
+        this.coachName = coachName;
         this.coahEmail = coachEmail;
         this.teamId = teamId;
+        this.member1 = member1;
+        this.member2 = member2;
+        this.member3 = member3;
         this.paymentStatus = false;
     }
     

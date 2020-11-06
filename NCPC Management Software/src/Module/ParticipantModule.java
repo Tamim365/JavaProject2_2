@@ -9,6 +9,7 @@ import Object.Coach;
 import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
+import Object.Team;
 import java.awt.event.KeyEvent;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
@@ -27,18 +28,22 @@ import javax.swing.WindowConstants;
 public class ParticipantModule extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
-      HashMap<String, Coach> allCoachInfo;
+    HashMap<String, Coach> allCoachInfo;
+    HashMap<String, Team> allTeamInfo;
     
     public ParticipantModule() {
         setupFrame();
     }
     
-    public ParticipantModule(HashMap<String, Participant> PartInfo, Participant participant , HashMap<String, Coach> CoachInfo ) {
+    public ParticipantModule(HashMap<String, Participant> PartInfo, Participant participant , HashMap<String, Coach> CoachInfo, HashMap<String, Team> teamInfo) {
         allParticipantInfo = new HashMap<String, Participant>();
         allParticipantInfo.putAll(PartInfo);
         
         allCoachInfo= new HashMap<String, Coach> ();
         allCoachInfo.putAll(CoachInfo);
+        
+        allTeamInfo = new HashMap<String, Team> ();
+        allTeamInfo.putAll(teamInfo);
         
         setupFrame();
         String title = participant.getName();
@@ -660,7 +665,7 @@ public class ParticipantModule extends javax.swing.JFrame {
         int opt = JOptionPane.showConfirmDialog(null, "Do you want to Log out?","Close",JOptionPane.YES_NO_OPTION);
         if(opt == 0) {
             this.setVisible(false);
-            HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo);
+            HomeFrame home = new HomeFrame(allParticipantInfo , allCoachInfo, allTeamInfo);
             home.setVisible(true);
         }
     }//GEN-LAST:event_logoutBtnMouseClicked
