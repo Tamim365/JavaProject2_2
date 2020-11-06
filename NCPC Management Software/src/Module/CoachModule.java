@@ -131,16 +131,17 @@ public class CoachModule extends javax.swing.JFrame {
     {
         TeamInfo Ti = new TeamInfo(allTeamInfo);
         Team team = Ti.find(coach.teamId);
-        System.out.println(team);
+//        System.out.println(team);
         ParticipantInfo pi = new ParticipantInfo(allParticipantInfo);
-        System.out.println(team.member1);
-        System.out.println(team.member2);
-        System.out.println(team.member3);
+//        System.out.println(team.member1);
+//        System.out.println(team.member2);
+//        System.out.println(team.member3);
         String member1 = pi.find(team.member1).name + " (" + pi.find(team.member1).handleId + ")";
         String member2 = pi.find(team.member2).name + " (" + pi.find(team.member2).handleId + ")";
         String member3 = pi.find(team.member3).name + " (" + pi.find(team.member3).handleId + ")";
         viewTeamTeamName.setText(team.teamName);
         viewTeamUniversityName.setText(team.university);
+        viewTeamTeamId.setText(team.teamId);
         viewTeamCoachName.setText(team.coachName);
         viewTeamCoachEmail.setText(team.coahEmail);
         viewTeamMember1.setText(member1);
@@ -215,7 +216,7 @@ public class CoachModule extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         viewExistingTeamPanel = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
-        viewTeamUniversityName = new javax.swing.JLabel();
+        viewTeamTeamId = new javax.swing.JLabel();
         viewTeamTeamName = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
         viewTeamCoachEmail = new javax.swing.JLabel();
@@ -229,6 +230,8 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel75 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
         teamCompletePaymentBtn = new javax.swing.JButton();
+        viewTeamUniversityName = new javax.swing.JLabel();
+        viewTeamUniversityName2 = new javax.swing.JLabel();
         instructionPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         editProfilePanel = new javax.swing.JPanel();
@@ -498,11 +501,11 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel40.setText("My Team");
         viewExistingTeamPanel.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 230, 60));
 
-        viewTeamUniversityName.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        viewTeamUniversityName.setForeground(new java.awt.Color(255, 255, 255));
-        viewTeamUniversityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        viewTeamUniversityName.setText("University_Name");
-        viewExistingTeamPanel.add(viewTeamUniversityName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 490, -1));
+        viewTeamTeamId.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        viewTeamTeamId.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamTeamId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamTeamId.setText("Team_Id");
+        viewExistingTeamPanel.add(viewTeamTeamId, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 200, -1));
 
         viewTeamTeamName.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         viewTeamTeamName.setForeground(new java.awt.Color(255, 255, 255));
@@ -511,56 +514,79 @@ public class CoachModule extends javax.swing.JFrame {
         viewExistingTeamPanel.add(viewTeamTeamName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 490, -1));
 
         jLabel66.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(255, 255, 0));
         jLabel66.setText("Coach:");
         viewExistingTeamPanel.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 100, -1));
 
         viewTeamCoachEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamCoachEmail.setForeground(new java.awt.Color(255, 255, 255));
         viewTeamCoachEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewTeamCoachEmail.setText("Coach_email");
         viewExistingTeamPanel.add(viewTeamCoachEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 290, -1));
 
         viewTeamCoachName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamCoachName.setForeground(new java.awt.Color(255, 255, 255));
         viewTeamCoachName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewTeamCoachName.setText("Coach_name");
         viewExistingTeamPanel.add(viewTeamCoachName, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, 290, -1));
 
         viewTeamMember1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamMember1.setForeground(new java.awt.Color(255, 255, 255));
         viewTeamMember1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewTeamMember1.setText("Member_name");
         viewExistingTeamPanel.add(viewTeamMember1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 290, -1));
 
         viewTeamPaymentStatus.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        viewTeamPaymentStatus.setForeground(new java.awt.Color(153, 255, 255));
         viewTeamPaymentStatus.setText("Payment_Status");
         viewExistingTeamPanel.add(viewTeamPaymentStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 150, -1));
 
         viewTeamMember2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamMember2.setForeground(new java.awt.Color(255, 255, 255));
         viewTeamMember2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewTeamMember2.setText("Member_name");
         viewExistingTeamPanel.add(viewTeamMember2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 290, -1));
 
         jLabel72.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel72.setForeground(new java.awt.Color(255, 255, 0));
         jLabel72.setText("Member - 2:");
         viewExistingTeamPanel.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 150, -1));
 
         viewTeamMember3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamMember3.setForeground(new java.awt.Color(255, 255, 255));
         viewTeamMember3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewTeamMember3.setText("Member_name");
         viewExistingTeamPanel.add(viewTeamMember3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 290, -1));
 
         jLabel74.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel74.setForeground(new java.awt.Color(255, 255, 0));
         jLabel74.setText("Member - 3:");
         viewExistingTeamPanel.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 150, -1));
 
         jLabel75.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel75.setForeground(new java.awt.Color(255, 255, 0));
         jLabel75.setText("Member - 1:");
         viewExistingTeamPanel.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 150, -1));
 
         jLabel76.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel76.setForeground(new java.awt.Color(255, 255, 0));
         jLabel76.setText("Payment Status:");
         viewExistingTeamPanel.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 150, -1));
 
         teamCompletePaymentBtn.setText("Complete Payment");
         viewExistingTeamPanel.add(teamCompletePaymentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, -1, -1));
+
+        viewTeamUniversityName.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        viewTeamUniversityName.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamUniversityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamUniversityName.setText("University_Name");
+        viewExistingTeamPanel.add(viewTeamUniversityName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 490, -1));
+
+        viewTeamUniversityName2.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        viewTeamUniversityName2.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamUniversityName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamUniversityName2.setText("Team ID:");
+        viewExistingTeamPanel.add(viewTeamUniversityName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 100, -1));
 
         jTabbedPane1.addTab("tab1", viewExistingTeamPanel);
 
@@ -2427,7 +2453,9 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel viewTeamMember2;
     private javax.swing.JLabel viewTeamMember3;
     private javax.swing.JLabel viewTeamPaymentStatus;
+    private javax.swing.JLabel viewTeamTeamId;
     private javax.swing.JLabel viewTeamTeamName;
     private javax.swing.JLabel viewTeamUniversityName;
+    private javax.swing.JLabel viewTeamUniversityName2;
     // End of variables declaration//GEN-END:variables
 }
