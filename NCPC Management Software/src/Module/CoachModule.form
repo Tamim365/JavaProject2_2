@@ -1148,7 +1148,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="instructionPanel1">
+        <Container class="javax.swing.JPanel" name="TeamRegistrationPanel">
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>

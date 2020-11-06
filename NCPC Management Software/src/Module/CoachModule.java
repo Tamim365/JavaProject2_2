@@ -203,7 +203,7 @@ public class CoachModule extends javax.swing.JFrame {
         searchList = new javax.swing.JList<>();
         jLabel36 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        instructionPanel1 = new javax.swing.JPanel();
+        TeamRegistrationPanel = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         coachMobileTextField1 = new javax.swing.JTextField();
         coachEmailTextField1 = new javax.swing.JTextField();
@@ -655,13 +655,13 @@ public class CoachModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab3", editTeamPanel);
 
-        instructionPanel1.setOpaque(false);
-        instructionPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        TeamRegistrationPanel.setOpaque(false);
+        TeamRegistrationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel37.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 51, 51));
         jLabel37.setText("Register New Team");
-        instructionPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 500, 90));
+        TeamRegistrationPanel.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 500, 90));
 
         coachMobileTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         coachMobileTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
@@ -675,7 +675,7 @@ public class CoachModule extends javax.swing.JFrame {
                 coachMobileTextField1ActionPerformed(evt);
             }
         });
-        instructionPanel1.add(coachMobileTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 310, 30));
+        TeamRegistrationPanel.add(coachMobileTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 310, 30));
 
         coachEmailTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         coachEmailTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
@@ -689,7 +689,7 @@ public class CoachModule extends javax.swing.JFrame {
                 coachEmailTextField1ActionPerformed(evt);
             }
         });
-        instructionPanel1.add(coachEmailTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 310, 30));
+        TeamRegistrationPanel.add(coachEmailTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 310, 30));
 
         searchTextFieldM1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchTextFieldM1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -722,7 +722,7 @@ public class CoachModule extends javax.swing.JFrame {
                 searchTextFieldM1KeyTyped(evt);
             }
         });
-        instructionPanel1.add(searchTextFieldM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 290, 40));
+        TeamRegistrationPanel.add(searchTextFieldM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 290, 40));
 
         jScrollPaneM1.setAutoscrolls(true);
 
@@ -747,7 +747,7 @@ public class CoachModule extends javax.swing.JFrame {
         });
         jScrollPaneM1.setViewportView(searchListM1);
 
-        instructionPanel1.add(jScrollPaneM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 290, 50));
+        TeamRegistrationPanel.add(jScrollPaneM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 290, 50));
 
         searchTextFieldM2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchTextFieldM2.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -780,7 +780,7 @@ public class CoachModule extends javax.swing.JFrame {
                 searchTextFieldM2KeyTyped(evt);
             }
         });
-        instructionPanel1.add(searchTextFieldM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 290, 40));
+        TeamRegistrationPanel.add(searchTextFieldM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 290, 40));
 
         jScrollPaneM2.setAutoscrolls(true);
 
@@ -805,7 +805,7 @@ public class CoachModule extends javax.swing.JFrame {
         });
         jScrollPaneM2.setViewportView(searchListM2);
 
-        instructionPanel1.add(jScrollPaneM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 290, 50));
+        TeamRegistrationPanel.add(jScrollPaneM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 290, 50));
 
         searchTextFieldM3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchTextFieldM3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -838,7 +838,7 @@ public class CoachModule extends javax.swing.JFrame {
                 searchTextFieldM3KeyTyped(evt);
             }
         });
-        instructionPanel1.add(searchTextFieldM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, 290, 40));
+        TeamRegistrationPanel.add(searchTextFieldM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, 290, 40));
 
         jScrollPaneM3.setAutoscrolls(true);
 
@@ -863,32 +863,32 @@ public class CoachModule extends javax.swing.JFrame {
         });
         jScrollPaneM3.setViewportView(searchListM3);
 
-        instructionPanel1.add(jScrollPaneM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 630, 290, 50));
+        TeamRegistrationPanel.add(jScrollPaneM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 630, 290, 50));
 
         jLabel42.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("University :");
-        instructionPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 110, 30));
+        TeamRegistrationPanel.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 110, 30));
 
         jLabel43.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(255, 255, 255));
         jLabel43.setText("Team Name :");
-        instructionPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 120, 30));
+        TeamRegistrationPanel.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 120, 30));
 
         jLabel45.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
         jLabel45.setText("TeamID :");
-        instructionPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 80, 30));
+        TeamRegistrationPanel.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 80, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ncpc_team_");
-        instructionPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 240, -1));
+        TeamRegistrationPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 240, -1));
 
         jLabel46.setFont(new java.awt.Font("Nirmala UI", 1, 36)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 51, 51));
         jLabel46.setText("Members Information");
-        instructionPanel1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 380, 40));
+        TeamRegistrationPanel.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 380, 40));
 
         coachUniversityTextField3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         coachUniversityTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
@@ -897,17 +897,17 @@ public class CoachModule extends javax.swing.JFrame {
                 coachUniversityTextField3ActionPerformed(evt);
             }
         });
-        instructionPanel1.add(coachUniversityTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 290, 30));
+        TeamRegistrationPanel.add(coachUniversityTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 290, 30));
 
         jLabel47.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setText("Email             :");
-        instructionPanel1.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 120, 30));
+        TeamRegistrationPanel.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 120, 30));
 
         jLabel48.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
         jLabel48.setText("Full Name     :");
-        instructionPanel1.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, 30));
+        TeamRegistrationPanel.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, 30));
 
         coachNameTextField2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         coachNameTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
@@ -916,32 +916,32 @@ public class CoachModule extends javax.swing.JFrame {
                 coachNameTextField2ActionPerformed(evt);
             }
         });
-        instructionPanel1.add(coachNameTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 290, 30));
+        TeamRegistrationPanel.add(coachNameTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 290, 30));
 
         jLabel49.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("Handle ID  :");
-        instructionPanel1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 110, 30));
+        TeamRegistrationPanel.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 110, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 51));
         jLabel3.setText("Member - 1");
-        instructionPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 170, -1));
+        TeamRegistrationPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 51));
         jLabel5.setText("Member - 2");
-        instructionPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 170, -1));
+        TeamRegistrationPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 51));
         jLabel6.setText("Member - 3");
-        instructionPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 170, -1));
+        TeamRegistrationPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 170, -1));
 
         jLabel52.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 51));
         jLabel52.setText("Coach");
-        instructionPanel1.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 100, -1));
+        TeamRegistrationPanel.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 100, -1));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton3.setText("Cancel");
@@ -950,38 +950,38 @@ public class CoachModule extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        instructionPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 110, 40));
+        TeamRegistrationPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 110, 40));
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton5.setText("Register");
-        instructionPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 110, 40));
+        TeamRegistrationPanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 110, 40));
 
         jLabel53.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(255, 255, 255));
         jLabel53.setText("Handle ID  :");
-        instructionPanel1.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 110, 30));
+        TeamRegistrationPanel.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 110, 30));
 
         jLabel54.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("Handle ID  :");
-        instructionPanel1.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 110, 30));
+        TeamRegistrationPanel.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 110, 30));
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 0, 0));
         jLabel38.setText("Handle Id Not Found!");
-        instructionPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 160, 30));
+        TeamRegistrationPanel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 160, 30));
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 0, 0));
         jLabel39.setText("Handle Id Not Found!");
-        instructionPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 160, 30));
+        TeamRegistrationPanel.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 160, 30));
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 0, 0));
         jLabel40.setText("Handle Id Not Found!");
-        instructionPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 160, 30));
+        TeamRegistrationPanel.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 160, 30));
 
-        jTabbedPane1.addTab("tab3", instructionPanel1);
+        jTabbedPane1.addTab("tab3", TeamRegistrationPanel);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, -30, 940, 820));
 
@@ -1263,10 +1263,37 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM1KeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchListM1.getSelectedIndex() >= 0){
+                searchTextFieldM1.setText(searchListM1.getSelectedValue());
+            }
+        }
     }//GEN-LAST:event_searchTextFieldM1KeyPressed
 
     private void searchTextFieldM1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM1KeyReleased
         // TODO add your handling code here:
+        CharSequence s = searchTextFieldM1.getText().toString().trim();
+        if(s.length()<1)
+        {
+            jScrollPaneM1.setVisible(false);
+            searchListM1.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchListM1.setListData(list);
+        if(list.size()>=1){
+            searchListM1.setSelectedIndex(0);
+            jScrollPaneM1.setVisible(true);
+        }
+        else{
+            jScrollPaneM1.setVisible(false);
+            searchListM1.removeAll();
+        }
     }//GEN-LAST:event_searchTextFieldM1KeyReleased
 
     private void searchTextFieldM1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM1KeyTyped
@@ -1303,10 +1330,37 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM2KeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchListM2.getSelectedIndex() >= 0){
+                searchTextFieldM2.setText(searchListM2.getSelectedValue());
+            }
+        }
     }//GEN-LAST:event_searchTextFieldM2KeyPressed
 
     private void searchTextFieldM2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM2KeyReleased
         // TODO add your handling code here:
+        CharSequence s = searchTextFieldM2.getText().toString().trim();
+        if(s.length()<1)
+        {
+            jScrollPaneM2.setVisible(false);
+            searchListM2.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchListM2.setListData(list);
+        if(list.size()>=1){
+            searchListM2.setSelectedIndex(0);
+            jScrollPaneM2.setVisible(true);
+        }
+        else{
+            jScrollPaneM2.setVisible(false);
+            searchListM2.removeAll();
+        }
     }//GEN-LAST:event_searchTextFieldM2KeyReleased
 
     private void searchTextFieldM2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM2KeyTyped
@@ -1343,10 +1397,37 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM3KeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchListM3.getSelectedIndex() >= 0){
+                searchTextFieldM3.setText(searchListM3.getSelectedValue());
+            }
+        }
     }//GEN-LAST:event_searchTextFieldM3KeyPressed
 
     private void searchTextFieldM3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM3KeyReleased
         // TODO add your handling code here:
+        CharSequence s = searchTextFieldM3.getText().toString().trim();
+        if(s.length()<1)
+        {
+            jScrollPaneM3.setVisible(false);
+            searchListM3.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchListM3.setListData(list);
+        if(list.size()>=1){
+            searchListM3.setSelectedIndex(0);
+            jScrollPaneM3.setVisible(true);
+        }
+        else{
+            jScrollPaneM3.setVisible(false);
+            searchListM3.removeAll();
+        }
     }//GEN-LAST:event_searchTextFieldM3KeyReleased
 
     private void searchTextFieldM3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM3KeyTyped
@@ -1398,6 +1479,7 @@ public class CoachModule extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
+    private javax.swing.JPanel TeamRegistrationPanel;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField coachDOBTextField;
     private javax.swing.JTextField coachEmailTextField;
@@ -1425,7 +1507,6 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel genderLabel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel instructionPanel;
-    private javax.swing.JPanel instructionPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
