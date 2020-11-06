@@ -6,13 +6,14 @@
 
 package Object;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * 
  * @author splash365 <tamim.365.ti at gmail.com>
  */
-public class Team {
+public class Team implements Serializable{
     ArrayList<String> members;
     
     public String teamName;
@@ -22,13 +23,13 @@ public class Team {
     public String coachName;
     public boolean paymentStatus;
     
-    public Team(ArrayList<String> getMem, String teamName, String university, String coachName, String coachEmail, int cnt) {
+    public Team(ArrayList<String> getMem, String teamName, String university, String coachName, String coachEmail, String teamId) {
         members = new ArrayList<String>();
         members.addAll(getMem);
         this.teamName = teamName;
         this.university = university;
         this.coahEmail = coachEmail;
-        this.teamId = "ncpc_team_" + Integer.toString(cnt);
+        this.teamId = teamId;
         this.paymentStatus = false;
     }
     

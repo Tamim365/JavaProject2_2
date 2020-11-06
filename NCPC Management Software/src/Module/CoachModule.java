@@ -9,10 +9,14 @@ import Object.Coach;
 import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
+import Object.Team;
+import Object.TeamInfo;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Vector;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -25,7 +29,8 @@ import javax.swing.WindowConstants;
 public class CoachModule extends javax.swing.JFrame {
 
     HashMap<String, Participant> allParticipantInfo;
-      HashMap<String, Coach> allCoachInfo;
+    HashMap<String, Coach> allCoachInfo;
+    HashMap<String, Team> allTeamInfo;
     
     public CoachModule() {
         setupFrame();
@@ -37,6 +42,8 @@ public class CoachModule extends javax.swing.JFrame {
         
         allCoachInfo= new HashMap<String, Coach> ();
         allCoachInfo.putAll(CoachInfo);
+        
+        allTeamInfo = new HashMap<String, Team>();
         
         setupFrame();
         String title = coach.name;
@@ -88,12 +95,6 @@ public class CoachModule extends javax.swing.JFrame {
         //In Search
         jScrollPane2.setVisible(false);
         searchList.removeAll();
-        jScrollPaneM1.setVisible(false);
-        searchListM1.removeAll();
-        jScrollPaneM2.setVisible(false);
-        searchListM2.removeAll();
-        jScrollPaneM3.setVisible(false);
-        searchListM3.removeAll();
         // In Edit Profile
         mobileCheckLabel.setText("");
         emailCheckLabel.setText("");
@@ -107,6 +108,19 @@ public class CoachModule extends javax.swing.JFrame {
         // In Account
         coachEmailTextField.setText(ch.email);
         coachMobileTextField.setText(ch.mobile);
+        //Team Registration
+        jScrollPaneM1.setVisible(false);
+        searchListM1.removeAll();
+        jScrollPaneM2.setVisible(false);
+        searchListM2.removeAll();
+        jScrollPaneM3.setVisible(false);
+        searchListM3.removeAll();
+        handleNotFoundM1.setText("");
+        handleNotFoundM2.setText("");
+        handleNotFoundM3.setText("");
+        coachRegNameTextField.setText(ch.name);
+        coachRegEmailTextField.setText(ch.email);
+        universityRegNameTextField.setText(ch.university);
     }
     public static boolean isValid(String email) 
     { 
@@ -205,8 +219,8 @@ public class CoachModule extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         TeamRegistrationPanel = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
-        coachMobileTextField1 = new javax.swing.JTextField();
-        coachEmailTextField1 = new javax.swing.JTextField();
+        universityRegNameTextField = new javax.swing.JTextField();
+        teamRegNameTextField = new javax.swing.JTextField();
         searchTextFieldM1 = new javax.swing.JTextField();
         jScrollPaneM1 = new javax.swing.JScrollPane();
         searchListM1 = new javax.swing.JList<>();
@@ -221,22 +235,22 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel45 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        coachUniversityTextField3 = new javax.swing.JTextField();
+        coachRegEmailTextField = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        coachNameTextField2 = new javax.swing.JTextField();
+        coachRegNameTextField = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        registerBtn = new javax.swing.JButton();
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
+        handleNotFoundM3 = new javax.swing.JLabel();
+        handleNotFoundM1 = new javax.swing.JLabel();
+        handleNotFoundM2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         viewProfileBtn = new javax.swing.JLabel();
         viewTeamBtn = new javax.swing.JLabel();
@@ -663,33 +677,34 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel37.setText("Register New Team");
         TeamRegistrationPanel.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 500, 90));
 
-        coachMobileTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        coachMobileTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        coachMobileTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        universityRegNameTextField.setEditable(false);
+        universityRegNameTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        universityRegNameTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        universityRegNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                coachMobileTextField1FocusLost(evt);
+                universityRegNameTextFieldFocusLost(evt);
             }
         });
-        coachMobileTextField1.addActionListener(new java.awt.event.ActionListener() {
+        universityRegNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coachMobileTextField1ActionPerformed(evt);
+                universityRegNameTextFieldActionPerformed(evt);
             }
         });
-        TeamRegistrationPanel.add(coachMobileTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 310, 30));
+        TeamRegistrationPanel.add(universityRegNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 310, 30));
 
-        coachEmailTextField1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        coachEmailTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        coachEmailTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        teamRegNameTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        teamRegNameTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        teamRegNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                coachEmailTextField1FocusLost(evt);
+                teamRegNameTextFieldFocusLost(evt);
             }
         });
-        coachEmailTextField1.addActionListener(new java.awt.event.ActionListener() {
+        teamRegNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coachEmailTextField1ActionPerformed(evt);
+                teamRegNameTextFieldActionPerformed(evt);
             }
         });
-        TeamRegistrationPanel.add(coachEmailTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 310, 30));
+        TeamRegistrationPanel.add(teamRegNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 310, 30));
 
         searchTextFieldM1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchTextFieldM1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -890,14 +905,15 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel46.setText("Members Information");
         TeamRegistrationPanel.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 380, 40));
 
-        coachUniversityTextField3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        coachUniversityTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        coachUniversityTextField3.addActionListener(new java.awt.event.ActionListener() {
+        coachRegEmailTextField.setEditable(false);
+        coachRegEmailTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachRegEmailTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachRegEmailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coachUniversityTextField3ActionPerformed(evt);
+                coachRegEmailTextFieldActionPerformed(evt);
             }
         });
-        TeamRegistrationPanel.add(coachUniversityTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 290, 30));
+        TeamRegistrationPanel.add(coachRegEmailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 290, 30));
 
         jLabel47.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
@@ -909,14 +925,15 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel48.setText("Full Name     :");
         TeamRegistrationPanel.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, 30));
 
-        coachNameTextField2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        coachNameTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        coachNameTextField2.addActionListener(new java.awt.event.ActionListener() {
+        coachRegNameTextField.setEditable(false);
+        coachRegNameTextField.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        coachRegNameTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        coachRegNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coachNameTextField2ActionPerformed(evt);
+                coachRegNameTextFieldActionPerformed(evt);
             }
         });
-        TeamRegistrationPanel.add(coachNameTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 290, 30));
+        TeamRegistrationPanel.add(coachRegNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 290, 30));
 
         jLabel49.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
@@ -952,9 +969,14 @@ public class CoachModule extends javax.swing.JFrame {
         });
         TeamRegistrationPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 110, 40));
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton5.setText("Register");
-        TeamRegistrationPanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 110, 40));
+        registerBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        registerBtn.setText("Register");
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBtnActionPerformed(evt);
+            }
+        });
+        TeamRegistrationPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 110, 40));
 
         jLabel53.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(255, 255, 255));
@@ -966,20 +988,20 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel54.setText("Handle ID  :");
         TeamRegistrationPanel.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 110, 30));
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel38.setText("Handle Id Not Found!");
-        TeamRegistrationPanel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 160, 30));
+        handleNotFoundM3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        handleNotFoundM3.setForeground(new java.awt.Color(255, 0, 0));
+        handleNotFoundM3.setText("Handle Id Not Found!");
+        TeamRegistrationPanel.add(handleNotFoundM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 160, 30));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel39.setText("Handle Id Not Found!");
-        TeamRegistrationPanel.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 160, 30));
+        handleNotFoundM1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        handleNotFoundM1.setForeground(new java.awt.Color(255, 0, 0));
+        handleNotFoundM1.setText("Handle Id Not Found!");
+        TeamRegistrationPanel.add(handleNotFoundM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 160, 30));
 
-        jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel40.setText("Handle Id Not Found!");
-        TeamRegistrationPanel.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 160, 30));
+        handleNotFoundM2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        handleNotFoundM2.setForeground(new java.awt.Color(255, 0, 0));
+        handleNotFoundM2.setText("Handle Id Not Found!");
+        TeamRegistrationPanel.add(handleNotFoundM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 160, 30));
 
         jTabbedPane1.addTab("tab3", TeamRegistrationPanel);
 
@@ -1106,7 +1128,6 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyTyped
         // TODO add your handling code here:
-
     }//GEN-LAST:event_searchTextFieldKeyTyped
 
     private void coachNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachNameTextFieldActionPerformed
@@ -1212,29 +1233,29 @@ public class CoachModule extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void coachMobileTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coachMobileTextField1FocusLost
+    private void universityRegNameTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_universityRegNameTextFieldFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_coachMobileTextField1FocusLost
+    }//GEN-LAST:event_universityRegNameTextFieldFocusLost
 
-    private void coachMobileTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachMobileTextField1ActionPerformed
+    private void universityRegNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_universityRegNameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_coachMobileTextField1ActionPerformed
+    }//GEN-LAST:event_universityRegNameTextFieldActionPerformed
 
-    private void coachEmailTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coachEmailTextField1FocusLost
+    private void teamRegNameTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teamRegNameTextFieldFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_coachEmailTextField1FocusLost
+    }//GEN-LAST:event_teamRegNameTextFieldFocusLost
 
-    private void coachEmailTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachEmailTextField1ActionPerformed
+    private void teamRegNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamRegNameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_coachEmailTextField1ActionPerformed
+    }//GEN-LAST:event_teamRegNameTextFieldActionPerformed
 
-    private void coachUniversityTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachUniversityTextField3ActionPerformed
+    private void coachRegEmailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachRegEmailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_coachUniversityTextField3ActionPerformed
+    }//GEN-LAST:event_coachRegEmailTextFieldActionPerformed
 
-    private void coachNameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachNameTextField2ActionPerformed
+    private void coachRegNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachRegNameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_coachNameTextField2ActionPerformed
+    }//GEN-LAST:event_coachRegNameTextFieldActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -1247,6 +1268,12 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldM1FocusLost
         // TODO add your handling code here:
+        String handle = searchTextFieldM1.getText().toString();
+        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+        if(!PI.isValid(handle)) handleNotFoundM1.setText("Handle Id Not Found!");
+        else handleNotFoundM1.setText("");
+        jScrollPaneM1.setVisible(false);
+        searchListM1.removeAll();
     }//GEN-LAST:event_searchTextFieldM1FocusLost
 
     private void searchTextFieldM1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldM1MouseClicked
@@ -1302,6 +1329,7 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchListM1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchListM1KeyPressed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_searchListM1KeyPressed
 
     private void searchListM1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_searchListM1ValueChanged
@@ -1314,6 +1342,12 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldM2FocusLost
         // TODO add your handling code here:
+        String handle = searchTextFieldM2.getText().toString();
+        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+        if(!PI.isValid(handle)) handleNotFoundM2.setText("Handle Id Not Found!");
+        else handleNotFoundM2.setText("");
+        jScrollPaneM2.setVisible(false);
+        searchListM2.removeAll();
     }//GEN-LAST:event_searchTextFieldM2FocusLost
 
     private void searchTextFieldM2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldM2MouseClicked
@@ -1381,6 +1415,12 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldM3FocusLost
         // TODO add your handling code here:
+        String handle = searchTextFieldM3.getText().toString();
+        ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+        if(!PI.isValid(handle)) handleNotFoundM3.setText("Handle Id Not Found!");
+        else handleNotFoundM3.setText("");
+        jScrollPaneM3.setVisible(false);
+        searchListM3.removeAll();
     }//GEN-LAST:event_searchTextFieldM3FocusLost
 
     private void searchTextFieldM3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldM3MouseClicked
@@ -1442,6 +1482,58 @@ public class CoachModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchListM3ValueChanged
 
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            String teamName = teamRegNameTextField.getText().toString(); 
+            String teamUniversity = universityRegNameTextField.getText().toString();
+            String coachName = coachRegNameTextField.getText().toString();
+            String coachEmail = coachRegEmailTextField.getText().toString();
+            
+            String member1 = searchTextFieldM1.getText().toString();
+            String member2 = searchTextFieldM2.getText().toString();
+            String member3 = searchTextFieldM3.getText().toString();
+            
+            ArrayList<String> members = new ArrayList<String>();
+            members.add(member1);
+            members.add(member2);
+            members.add(member3);
+            
+            TeamInfo TI = new TeamInfo(allTeamInfo);
+            Random rand = new Random();
+            int Id = (int) rand.nextInt(5000);
+            while (TI.isValid("ncpc_team_"+Id)) {  
+                Id = (int) rand.nextInt(5000);
+            }
+            String teamId = "ncpc_team_" + Integer.toString(Id);
+            Team team = new Team(members, teamName, teamUniversity, coachName, coachEmail, teamId);
+            
+            int opt = JOptionPane.showConfirmDialog(null, "Do you want to Submit?","Confirmation",JOptionPane.YES_NO_OPTION);
+            if(opt == 0) 
+            {
+
+                allTeamInfo.put(teamId, team);
+                TI = new TeamInfo(allTeamInfo);
+                TI.writeData();
+                
+                teamRegNameTextField.setText("");
+                searchTextFieldM1.setText("");
+                searchTextFieldM2.setText("");
+                searchTextFieldM3.setText("");
+                
+                JOptionPane.showMessageDialog(null, "Registration Successful");
+            }
+        }
+//        catch (HeadlessException | IOException e){
+//            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase I/O Error", JOptionPane.ERROR_MESSAGE);
+//        } 
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Registration Failed! Try again later..", "DataBase Element Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_registerBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1483,19 +1575,17 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField coachDOBTextField;
     private javax.swing.JTextField coachEmailTextField;
-    private javax.swing.JTextField coachEmailTextField1;
     private javax.swing.JComboBox<String> coachGenderComboBox;
     private javax.swing.JTextField coachMobileTextField;
-    private javax.swing.JTextField coachMobileTextField1;
     private javax.swing.JTextField coachNameTextField;
-    private javax.swing.JTextField coachNameTextField2;
     private javax.swing.JPasswordField coachNewPasswordField;
     private javax.swing.JPasswordField coachPasswordField;
     private javax.swing.JTextField coachPositionTextField;
     private javax.swing.JTextArea coachPresentAddressTextArea;
+    private javax.swing.JTextField coachRegEmailTextField;
+    private javax.swing.JTextField coachRegNameTextField;
     private javax.swing.JComboBox<String> coachTshirtComboBox;
     private javax.swing.JTextField coachUniversityTextField;
-    private javax.swing.JTextField coachUniversityTextField3;
     private javax.swing.JLabel contactLabel;
     private javax.swing.JLabel dobLabel;
     private javax.swing.JLabel editProfileBtn;
@@ -1505,13 +1595,15 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel emailCheckLabel;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel genderLabel;
+    private javax.swing.JLabel handleNotFoundM1;
+    private javax.swing.JLabel handleNotFoundM2;
+    private javax.swing.JLabel handleNotFoundM3;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel instructionPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1543,10 +1635,7 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel45;
@@ -1574,6 +1663,7 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JPasswordField participantPasswordField2;
     private javax.swing.JLabel positionLabel;
     private javax.swing.JPanel profilePanel;
+    private javax.swing.JButton registerBtn;
     private javax.swing.JList<String> searchList;
     private javax.swing.JList<String> searchListM1;
     private javax.swing.JList<String> searchListM2;
@@ -1583,8 +1673,10 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JTextField searchTextFieldM2;
     private javax.swing.JTextField searchTextFieldM3;
     private javax.swing.JPanel teamPanel;
+    private javax.swing.JTextField teamRegNameTextField;
     private javax.swing.JLabel tshirtLabel;
     private javax.swing.JLabel unilabel;
+    private javax.swing.JTextField universityRegNameTextField;
     private javax.swing.JLabel viewInstructionBtn;
     private javax.swing.JLabel viewProfileBtn;
     private javax.swing.JLabel viewTeamBtn;
