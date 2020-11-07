@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.awt.List;
 import java.util.Vector;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
@@ -204,7 +205,7 @@ public class ParticipantModule extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         searchList = new javax.swing.JList<>();
-        jButton4 = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
         viewProfileBtn = new javax.swing.JLabel();
         viewTeamBtn = new javax.swing.JLabel();
         viewInstructionBtn = new javax.swing.JLabel();
@@ -606,18 +607,30 @@ public class ParticipantModule extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 240, 60));
 
-        jButton4.setText("Home");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        homeButton.setText("Home");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
+        getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         viewProfileBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/participant/viewProfileButton_1.png"))); // NOI18N
         viewProfileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewProfileBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMouseReleased(evt);
             }
         });
         getContentPane().add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
@@ -627,6 +640,18 @@ public class ParticipantModule extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewTeamBtnMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMouseReleased(evt);
+            }
         });
         getContentPane().add(viewTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
@@ -634,6 +659,18 @@ public class ParticipantModule extends javax.swing.JFrame {
         viewInstructionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewInstructionBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewInstructionBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewInstructionBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                viewInstructionBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                viewInstructionBtnMouseReleased(evt);
             }
         });
         getContentPane().add(viewInstructionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
@@ -643,6 +680,18 @@ public class ParticipantModule extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoutBtnMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseReleased(evt);
+            }
         });
         getContentPane().add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 630, -1, -1));
 
@@ -650,6 +699,18 @@ public class ParticipantModule extends javax.swing.JFrame {
         editProfileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editProfileBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editProfileBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editProfileBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                editProfileBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                editProfileBtnMouseReleased(evt);
             }
         });
         getContentPane().add(editProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
@@ -690,10 +751,10 @@ public class ParticipantModule extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_viewInstructionBtnMouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     private void participantNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantNameTextFieldActionPerformed
         // TODO add your handling code here:
@@ -819,6 +880,106 @@ public class ParticipantModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTextFieldMouseClicked
 
+    private void viewProfileBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseEntered
+        // TODO add your handling code here:
+        viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewprofileButton_2.png")));
+    }//GEN-LAST:event_viewProfileBtnMouseEntered
+
+    private void viewProfileBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseExited
+        // TODO add your handling code here:
+        viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewprofileButton_1.png")));
+    }//GEN-LAST:event_viewProfileBtnMouseExited
+
+    private void viewProfileBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMousePressed
+        // TODO add your handling code here:
+        viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewprofileButton_3.png")));
+    }//GEN-LAST:event_viewProfileBtnMousePressed
+
+    private void viewProfileBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseReleased
+        // TODO add your handling code here:
+        viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewprofileButton_2.png")));
+    }//GEN-LAST:event_viewProfileBtnMouseReleased
+
+    private void viewTeamBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseEntered
+        // TODO add your handling code here:
+         viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewTeamButton_2.png")));
+    }//GEN-LAST:event_viewTeamBtnMouseEntered
+
+    private void viewTeamBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseExited
+        // TODO add your handling code here:
+        viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewTeamButton_1.png")));
+    }//GEN-LAST:event_viewTeamBtnMouseExited
+
+    private void viewTeamBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMousePressed
+        // TODO add your handling code here:
+        viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewTeamButton_3.png")));
+    }//GEN-LAST:event_viewTeamBtnMousePressed
+
+    private void viewTeamBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseReleased
+        // TODO add your handling code here:
+        viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewTeamButton_2.png")));
+    }//GEN-LAST:event_viewTeamBtnMouseReleased
+
+    private void viewInstructionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMouseEntered
+        // TODO add your handling code here:
+        viewInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewInstructionButton_2.png")));
+    }//GEN-LAST:event_viewInstructionBtnMouseEntered
+
+    private void viewInstructionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMouseExited
+        // TODO add your handling code here:
+        viewInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewInstructionButton_1.png")));
+    }//GEN-LAST:event_viewInstructionBtnMouseExited
+
+    private void viewInstructionBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMousePressed
+        // TODO add your handling code here:
+        viewInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewInstructionButton_3.png")));
+    }//GEN-LAST:event_viewInstructionBtnMousePressed
+
+    private void viewInstructionBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMouseReleased
+        // TODO add your handling code here:
+        viewInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/viewInstructionButton_2.png")));
+    }//GEN-LAST:event_viewInstructionBtnMouseReleased
+
+    private void editProfileBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseEntered
+        // TODO add your handling code here:
+        editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/editProfileButton_2.png")));
+    }//GEN-LAST:event_editProfileBtnMouseEntered
+
+    private void editProfileBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseExited
+        // TODO add your handling code here:
+         editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/editProfileButton_1.png")));
+    }//GEN-LAST:event_editProfileBtnMouseExited
+
+    private void editProfileBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMousePressed
+        // TODO add your handling code here:
+         editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/editProfileButton_3.png")));
+    }//GEN-LAST:event_editProfileBtnMousePressed
+
+    private void editProfileBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseReleased
+        // TODO add your handling code here:
+         editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/editProfileButton_2.png")));
+    }//GEN-LAST:event_editProfileBtnMouseReleased
+
+    private void logoutBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseEntered
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/logOutButton_2.png")));
+    }//GEN-LAST:event_logoutBtnMouseEntered
+
+    private void logoutBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseExited
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/logOutButton_1.png")));
+    }//GEN-LAST:event_logoutBtnMouseExited
+
+    private void logoutBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMousePressed
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/logOutButton_3.png")));
+    }//GEN-LAST:event_logoutBtnMousePressed
+
+    private void logoutBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseReleased
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/logOutButton_2.png")));
+    }//GEN-LAST:event_logoutBtnMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -865,10 +1026,10 @@ public class ParticipantModule extends javax.swing.JFrame {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JLabel handleLabel;
+    private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel instructionPanel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
