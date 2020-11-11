@@ -1,6 +1,7 @@
 package Module;
 
 
+import ExceptionClasses.HandleIdNotFoundException;
 import Module.HomeFrame;
 import Module.ParticipantModule;
 import Object.Coach;
@@ -461,6 +462,13 @@ public class LoginFrame extends javax.swing.JFrame {
             PM.setVisible(true);
         }
         else{
+//            try{
+//               throw new HandleIdNotFoundException(id);
+//            }
+//            catch(HandleIdNotFoundException ex)
+//            {
+//                System.out.println(ex);
+//            }
             JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
         }
         

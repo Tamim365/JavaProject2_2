@@ -18,6 +18,7 @@ import java.util.Vector;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
 /**
@@ -52,6 +53,7 @@ public class AdminModule extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        
         this.addWindowListener(new WindowAdapter() 
         {
             public void windowClosing(WindowEvent evt) {
@@ -74,6 +76,9 @@ public class AdminModule extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    void renderAllTable(){
+        
     }
     public static boolean isValid(String email) 
     { 
@@ -112,6 +117,8 @@ public class AdminModule extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         participntPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        participantTableScrollPane = new javax.swing.JScrollPane();
+        participantTable = new javax.swing.JTable();
         profilePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
@@ -192,6 +199,50 @@ public class AdminModule extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setText("Participants");
         participntPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 310, 70));
+
+        participantTableScrollPane.setOpaque(false);
+
+        participantTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        participantTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Name", "University", "Handle ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        participantTable.setColumnSelectionAllowed(true);
+        participantTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        participantTable.setOpaque(false);
+        participantTable.setRowHeight(40);
+        participantTable.setRowMargin(1);
+        participantTable.getTableHeader().setResizingAllowed(false);
+        participantTable.getTableHeader().setReorderingAllowed(false);
+        participantTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                participantTableMouseClicked(evt);
+            }
+        });
+        participantTableScrollPane.setViewportView(participantTable);
+        participantTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        participntPanel.add(participantTableScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 770, -1));
 
         jTabbedPane1.addTab("tab3", participntPanel);
 
@@ -675,6 +726,15 @@ public class AdminModule extends javax.swing.JFrame {
          logoutButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/LogOutButton_2.png")));
     }//GEN-LAST:event_logoutButtonMouseReleased
 
+    private void participantTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_participantTableMouseClicked
+        // TODO add your handling code here:
+        JTable source = (JTable)evt.getSource();
+        int row = source.rowAtPoint( evt.getPoint() );
+        int column = source.columnAtPoint( evt.getPoint() );
+        String s=source.getModel().getValueAt(row, column)+"";
+        JOptionPane.showMessageDialog(null, s);
+    }//GEN-LAST:event_participantTableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -740,6 +800,8 @@ public class AdminModule extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel logoutButton;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JTable participantTable;
+    private javax.swing.JScrollPane participantTableScrollPane;
     private javax.swing.JLabel participantsButton;
     private javax.swing.JPanel participntPanel;
     private javax.swing.JPanel profilePanel;

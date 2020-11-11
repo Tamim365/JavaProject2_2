@@ -23,6 +23,8 @@ import java.util.Vector;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -65,8 +67,10 @@ public class ParticipantModule extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         instructionTable.getTableHeader().setFont(new Font("Segeo UI",Font.BOLD, 18));
-        ((DefaultTableCellRenderer)instructionTable.getTableHeader().getDefaultRenderer())
-    .setHorizontalAlignment(0);
+        ((DefaultTableCellRenderer)instructionTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(0);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        instructionTable.setDefaultRenderer(String.class, centerRenderer);
         this.addWindowListener(new WindowAdapter() 
         {
             public void windowClosing(WindowEvent evt) {
@@ -152,6 +156,7 @@ public class ParticipantModule extends javax.swing.JFrame {
         messages.addAll(participant.messages);
         DefaultTableModel tblModel = (DefaultTableModel) instructionTable.getModel();
         tblModel.setRowCount(0);
+        
         for(String[] st : messages) {
             if(st[0].equals("null")) continue;
             tblModel.addRow(st);
@@ -443,7 +448,6 @@ public class ParticipantModule extends javax.swing.JFrame {
         instructionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -465,13 +469,20 @@ public class ParticipantModule extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        instructionTable.setColumnSelectionAllowed(true);
         instructionTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         instructionTable.setOpaque(false);
         instructionTable.setRowHeight(40);
         instructionTable.setRowMargin(1);
         instructionTable.getTableHeader().setResizingAllowed(false);
         instructionTable.getTableHeader().setReorderingAllowed(false);
+        instructionTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                instructionTableMouseClicked(evt);
+            }
+        });
         instructionTableScrollPane.setViewportView(instructionTable);
+        instructionTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (instructionTable.getColumnModel().getColumnCount() > 0) {
             instructionTable.getColumnModel().getColumn(0).setResizable(false);
             instructionTable.getColumnModel().getColumn(1).setResizable(false);
@@ -1189,6 +1200,15 @@ public class ParticipantModule extends javax.swing.JFrame {
         // TODO add your handling code here:
         logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/participant/logOutButton_2.png")));
     }//GEN-LAST:event_logoutBtnMouseReleased
+
+    private void instructionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instructionTableMouseClicked
+        // TODO add your handling code here:
+        JTable source = (JTable)evt.getSource();
+        int row = source.rowAtPoint( evt.getPoint() );
+        int column = source.columnAtPoint( evt.getPoint() );
+        String s=source.getModel().getValueAt(row, column)+"";
+        JOptionPane.showMessageDialog(null, s);
+    }//GEN-LAST:event_instructionTableMouseClicked
 
     /**
      * @param args the command line arguments
