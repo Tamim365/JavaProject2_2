@@ -351,14 +351,14 @@ public class HomeFrame extends javax.swing.JFrame {
     private void eventDetailsButtonTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventDetailsButtonTwoMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        EventDetailsFrame ed = new EventDetailsFrame();
+        EventDetailsFrame ed = new EventDetailsFrame(allParticipantInfo , allCoachInfo, allTeamInfo);
         ed.setVisible(true);
     }//GEN-LAST:event_eventDetailsButtonTwoMouseClicked
 
     private void rulesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rulesButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        RulesFrame rf = new RulesFrame();
+        RulesFrame rf = new RulesFrame(allParticipantInfo , allCoachInfo, allTeamInfo);
         rf.setVisible(true);
     }//GEN-LAST:event_rulesButtonMouseClicked
 
