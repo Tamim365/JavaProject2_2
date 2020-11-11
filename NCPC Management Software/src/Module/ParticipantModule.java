@@ -10,17 +10,22 @@ import Object.CoachInfo;
 import Object.Participant;
 import Object.ParticipantInfo;
 import Object.Team;
+import Object.TeamInfo;
 import java.awt.event.KeyEvent;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
 import java.awt.List;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,12 +36,13 @@ public class ParticipantModule extends javax.swing.JFrame {
     HashMap<String, Participant> allParticipantInfo;
     HashMap<String, Coach> allCoachInfo;
     HashMap<String, Team> allTeamInfo;
+    Participant participant;
     
     public ParticipantModule() {
         setupFrame();
     }
     
-    public ParticipantModule(HashMap<String, Participant> PartInfo, Participant participant , HashMap<String, Coach> CoachInfo, HashMap<String, Team> teamInfo) {
+    public ParticipantModule(HashMap<String, Participant> PartInfo, Participant part , HashMap<String, Coach> CoachInfo, HashMap<String, Team> teamInfo) {
         allParticipantInfo = new HashMap<String, Participant>();
         allParticipantInfo.putAll(PartInfo);
         
@@ -47,6 +53,7 @@ public class ParticipantModule extends javax.swing.JFrame {
         allTeamInfo.putAll(teamInfo);
         
         setupFrame();
+        participant = part;
         String title = participant.getName();
         this.setTitle(title); 
         setValues(participant);
@@ -57,6 +64,9 @@ public class ParticipantModule extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        instructionTable.getTableHeader().setFont(new Font("Segeo UI",Font.BOLD, 18));
+        ((DefaultTableCellRenderer)instructionTable.getTableHeader().getDefaultRenderer())
+    .setHorizontalAlignment(0);
         this.addWindowListener(new WindowAdapter() 
         {
             public void windowClosing(WindowEvent evt) {
@@ -108,6 +118,44 @@ public class ParticipantModule extends javax.swing.JFrame {
         participantHandleIdTextField.setText(pt.handleId);
         participantEmailTextField.setText(pt.email);
         participantMobileTextField.setText(pt.mobile);
+    }
+    public void setTeamValue()
+    {
+        TeamInfo Ti = new TeamInfo(allTeamInfo);
+        Team team = Ti.find(participant.teamId);
+//        System.out.println(team);
+        ParticipantInfo pi = new ParticipantInfo(allParticipantInfo);
+//        System.out.println(team.member1);
+//        System.out.println(team.member2);
+//        System.out.println(team.member3);
+        String member1 = pi.find(team.member1).name + " (" + pi.find(team.member1).handleId + ")";
+        String member2 = pi.find(team.member2).name + " (" + pi.find(team.member2).handleId + ")";
+        String member3 = pi.find(team.member3).name + " (" + pi.find(team.member3).handleId + ")";
+        viewTeamTeamName.setText(team.teamName);
+        viewTeamUniversityName.setText(team.university);
+        viewTeamTeamId.setText(team.teamId);
+        viewTeamCoachName.setText(team.coachName);
+        viewTeamCoachEmail.setText(team.coahEmail);
+        viewTeamMember1.setText(member1);
+        viewTeamMember2.setText(member2);
+        viewTeamMember3.setText(member3);
+        
+        if(team.paymentStatus){
+            viewTeamPaymentStatus.setText("Payment Completed!");
+        }
+        else{
+            viewTeamPaymentStatus.setText("Payment Due");
+        }
+    }
+    void setInstructionTableData() {
+        ArrayList<String[]> messages = new ArrayList<String[]>();
+        messages.addAll(participant.messages);
+        DefaultTableModel tblModel = (DefaultTableModel) instructionTable.getModel();
+        tblModel.setRowCount(0);
+        for(String[] st : messages) {
+            if(st[0].equals("null")) continue;
+            tblModel.addRow(st);
+        }
     }
     public static boolean isValid(String email) 
     { 
@@ -166,11 +214,10 @@ public class ParticipantModule extends javax.swing.JFrame {
         addressLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        teamPanel = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         instructionPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
+        instructionTableScrollPane = new javax.swing.JScrollPane();
+        instructionTable = new javax.swing.JTable();
         editProfilePanel = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -203,6 +250,26 @@ public class ParticipantModule extends javax.swing.JFrame {
         mobileCheckLabel = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
+        viewNoTeamPanel = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        viewExistingTeamPanel = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        viewTeamTeamId = new javax.swing.JLabel();
+        viewTeamTeamName = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        viewTeamCoachEmail = new javax.swing.JLabel();
+        viewTeamCoachName = new javax.swing.JLabel();
+        viewTeamMember1 = new javax.swing.JLabel();
+        viewTeamPaymentStatus = new javax.swing.JLabel();
+        viewTeamMember2 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        viewTeamMember3 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        viewTeamUniversityName = new javax.swing.JLabel();
+        viewTeamUniversityName2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         searchList = new javax.swing.JList<>();
         homeButton = new javax.swing.JButton();
@@ -362,21 +429,6 @@ public class ParticipantModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab2", profilePanel);
 
-        teamPanel.setOpaque(false);
-        teamPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel16.setText("My Team");
-        teamPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 230, 60));
-
-        jLabel19.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Currently, you are not assigned to any team!");
-        teamPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, -1, -1));
-
-        jTabbedPane1.addTab("tab1", teamPanel);
-
         instructionPanel.setOpaque(false);
         instructionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -384,6 +436,49 @@ public class ParticipantModule extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 51, 51));
         jLabel17.setText("Instructions");
         instructionPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 290, 40));
+
+        instructionTableScrollPane.setOpaque(false);
+
+        instructionTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        instructionTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "From", "Subject", "Message"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        instructionTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        instructionTable.setOpaque(false);
+        instructionTable.setRowHeight(40);
+        instructionTable.setRowMargin(1);
+        instructionTable.getTableHeader().setResizingAllowed(false);
+        instructionTable.getTableHeader().setReorderingAllowed(false);
+        instructionTableScrollPane.setViewportView(instructionTable);
+        if (instructionTable.getColumnModel().getColumnCount() > 0) {
+            instructionTable.getColumnModel().getColumn(0).setResizable(false);
+            instructionTable.getColumnModel().getColumn(1).setResizable(false);
+            instructionTable.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        instructionPanel.add(instructionTableScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 770, -1));
 
         jTabbedPane1.addTab("tab3", instructionPanel);
 
@@ -580,6 +675,116 @@ public class ParticipantModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab3", editProfilePanel);
 
+        viewNoTeamPanel.setOpaque(false);
+        viewNoTeamPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel34.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel34.setText("My Team");
+        viewNoTeamPanel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 230, 60));
+
+        jLabel35.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Currently, You have no team");
+        viewNoTeamPanel.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 490, -1));
+
+        jTabbedPane1.addTab("tab1", viewNoTeamPanel);
+
+        viewExistingTeamPanel.setOpaque(false);
+        viewExistingTeamPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel40.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel40.setText("My Team");
+        viewExistingTeamPanel.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 230, 60));
+
+        viewTeamTeamId.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        viewTeamTeamId.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamTeamId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamTeamId.setText("Team_Id");
+        viewExistingTeamPanel.add(viewTeamTeamId, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 200, -1));
+
+        viewTeamTeamName.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        viewTeamTeamName.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamTeamName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamTeamName.setText("Team Name");
+        viewExistingTeamPanel.add(viewTeamTeamName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 490, -1));
+
+        jLabel66.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel66.setText("Coach:");
+        viewExistingTeamPanel.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 100, -1));
+
+        viewTeamCoachEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamCoachEmail.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamCoachEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamCoachEmail.setText("Coach_email");
+        viewExistingTeamPanel.add(viewTeamCoachEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 290, -1));
+
+        viewTeamCoachName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamCoachName.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamCoachName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamCoachName.setText("Coach_name");
+        viewExistingTeamPanel.add(viewTeamCoachName, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, 290, -1));
+
+        viewTeamMember1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamMember1.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamMember1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamMember1.setText("Member_name");
+        viewExistingTeamPanel.add(viewTeamMember1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 290, -1));
+
+        viewTeamPaymentStatus.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        viewTeamPaymentStatus.setForeground(new java.awt.Color(153, 255, 255));
+        viewTeamPaymentStatus.setText("Payment_Status");
+        viewExistingTeamPanel.add(viewTeamPaymentStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 150, -1));
+
+        viewTeamMember2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamMember2.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamMember2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamMember2.setText("Member_name");
+        viewExistingTeamPanel.add(viewTeamMember2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 290, -1));
+
+        jLabel72.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel72.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel72.setText("Member - 2:");
+        viewExistingTeamPanel.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 150, -1));
+
+        viewTeamMember3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewTeamMember3.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamMember3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamMember3.setText("Member_name");
+        viewExistingTeamPanel.add(viewTeamMember3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 290, -1));
+
+        jLabel74.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel74.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel74.setText("Member - 3:");
+        viewExistingTeamPanel.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 150, -1));
+
+        jLabel75.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel75.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel75.setText("Member - 1:");
+        viewExistingTeamPanel.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 150, -1));
+
+        jLabel76.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel76.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel76.setText("Payment Status:");
+        viewExistingTeamPanel.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 150, -1));
+
+        viewTeamUniversityName.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        viewTeamUniversityName.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamUniversityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamUniversityName.setText("University_Name");
+        viewExistingTeamPanel.add(viewTeamUniversityName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 490, -1));
+
+        viewTeamUniversityName2.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        viewTeamUniversityName2.setForeground(new java.awt.Color(255, 255, 255));
+        viewTeamUniversityName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTeamUniversityName2.setText("Team ID:");
+        viewExistingTeamPanel.add(viewTeamUniversityName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 100, -1));
+
+        jTabbedPane1.addTab("tab1", viewExistingTeamPanel);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, -30, 940, 820));
 
         jScrollPane2.setAutoscrolls(true);
@@ -733,27 +938,32 @@ public class ParticipantModule extends javax.swing.JFrame {
 
     private void viewTeamBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(2);
+        if(participant.teamId.equals("null")) jTabbedPane1.setSelectedComponent(viewNoTeamPanel);
+        else{
+            setTeamValue();
+            jTabbedPane1.setSelectedComponent(viewExistingTeamPanel);
+        }
     }//GEN-LAST:event_viewTeamBtnMouseClicked
 
     private void viewProfileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(1);
+        jTabbedPane1.setSelectedComponent(profilePanel);
     }//GEN-LAST:event_viewProfileBtnMouseClicked
 
     private void editProfileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(4);
+        jTabbedPane1.setSelectedComponent(editProfilePanel);
     }//GEN-LAST:event_editProfileBtnMouseClicked
 
     private void viewInstructionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(3);
+        setInstructionTableData();
+        jTabbedPane1.setSelectedComponent(instructionPanel);
     }//GEN-LAST:event_viewInstructionBtnMouseClicked
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(0);
+        jTabbedPane1.setSelectedComponent(homePanel);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void participantNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantNameTextFieldActionPerformed
@@ -1029,6 +1239,8 @@ public class ParticipantModule extends javax.swing.JFrame {
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel instructionPanel;
+    private javax.swing.JTable instructionTable;
+    private javax.swing.JScrollPane instructionTableScrollPane;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1037,10 +1249,8 @@ public class ParticipantModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1055,9 +1265,17 @@ public class ParticipantModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1081,11 +1299,22 @@ public class ParticipantModule extends javax.swing.JFrame {
     private javax.swing.JPanel profilePanel;
     private javax.swing.JList<String> searchList;
     private javax.swing.JTextField searchTextField;
-    private javax.swing.JPanel teamPanel;
     private javax.swing.JLabel tshirtLabel;
     private javax.swing.JLabel unilabel;
+    private javax.swing.JPanel viewExistingTeamPanel;
     private javax.swing.JLabel viewInstructionBtn;
+    private javax.swing.JPanel viewNoTeamPanel;
     private javax.swing.JLabel viewProfileBtn;
     private javax.swing.JLabel viewTeamBtn;
+    private javax.swing.JLabel viewTeamCoachEmail;
+    private javax.swing.JLabel viewTeamCoachName;
+    private javax.swing.JLabel viewTeamMember1;
+    private javax.swing.JLabel viewTeamMember2;
+    private javax.swing.JLabel viewTeamMember3;
+    private javax.swing.JLabel viewTeamPaymentStatus;
+    private javax.swing.JLabel viewTeamTeamId;
+    private javax.swing.JLabel viewTeamTeamName;
+    private javax.swing.JLabel viewTeamUniversityName;
+    private javax.swing.JLabel viewTeamUniversityName2;
     // End of variables declaration//GEN-END:variables
 }

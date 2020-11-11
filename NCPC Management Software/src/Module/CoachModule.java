@@ -60,7 +60,7 @@ public class CoachModule extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         //In Search
-        jScrollPane2.setVisible(false);
+        instructionToScrollPanel.setVisible(false);
         this.addWindowListener(new WindowAdapter() 
         {
             public void windowClosing(WindowEvent evt) {
@@ -96,8 +96,8 @@ public class CoachModule extends javax.swing.JFrame {
         addressLabel.setText(ch.presentAddress);
         genderLabel.setText(ch.gender);
         //In Search
-        jScrollPane2.setVisible(false);
-        searchList.removeAll();
+        instructionToScrollPanel.setVisible(false);
+        instructionToSearchList.removeAll();
         // In Edit Profile
         mobileCheckLabel.setText("");
         emailCheckLabel.setText("");
@@ -234,6 +234,17 @@ public class CoachModule extends javax.swing.JFrame {
         viewTeamUniversityName2 = new javax.swing.JLabel();
         instructionPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
+        instructionToScrollPanel = new javax.swing.JScrollPane();
+        instructionToSearchList = new javax.swing.JList<>();
+        instructionToSearchField = new javax.swing.JTextField();
+        jLabel64 = new javax.swing.JLabel();
+        sendAllCheckBox = new javax.swing.JCheckBox();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        instructionMessageTextArea = new javax.swing.JTextArea();
+        jLabel65 = new javax.swing.JLabel();
+        instructionSendBtn = new javax.swing.JButton();
+        jLabel67 = new javax.swing.JLabel();
+        instructionSubjectTextField = new javax.swing.JTextField();
         editProfilePanel = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -268,9 +279,6 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         editNewTeamPanel = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
-        searchTextField = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        searchList = new javax.swing.JList<>();
         jLabel36 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         editExistingTeamPanel = new javax.swing.JPanel();
@@ -598,6 +606,113 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel17.setText("Instructions");
         instructionPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 290, 40));
 
+        instructionToScrollPanel.setAutoscrolls(true);
+
+        instructionToSearchList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        instructionToSearchList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        instructionToSearchList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        instructionToSearchList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        instructionToSearchList.setOpaque(false);
+        instructionToSearchList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                instructionToSearchListKeyPressed(evt);
+            }
+        });
+        instructionToSearchList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                instructionToSearchListValueChanged(evt);
+            }
+        });
+        instructionToScrollPanel.setViewportView(instructionToSearchList);
+
+        instructionPanel.add(instructionToScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 480, 60));
+
+        instructionToSearchField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        instructionToSearchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                instructionToSearchFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                instructionToSearchFieldFocusLost(evt);
+            }
+        });
+        instructionToSearchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                instructionToSearchFieldMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                instructionToSearchFieldMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                instructionToSearchFieldMouseExited(evt);
+            }
+        });
+        instructionToSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                instructionToSearchFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                instructionToSearchFieldKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                instructionToSearchFieldKeyTyped(evt);
+            }
+        });
+        instructionPanel.add(instructionToSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 480, 40));
+
+        jLabel64.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel64.setText("Subject:");
+        instructionPanel.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        sendAllCheckBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        sendAllCheckBox.setForeground(new java.awt.Color(255, 255, 255));
+        sendAllCheckBox.setText("Send To All Members");
+        sendAllCheckBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                sendAllCheckBoxItemStateChanged(evt);
+            }
+        });
+        sendAllCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendAllCheckBoxActionPerformed(evt);
+            }
+        });
+        instructionPanel.add(sendAllCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 310, -1));
+
+        instructionMessageTextArea.setColumns(20);
+        instructionMessageTextArea.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        instructionMessageTextArea.setRows(5);
+        jScrollPane4.setViewportView(instructionMessageTextArea);
+
+        instructionPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 600, 230));
+
+        jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel65.setText("To:");
+        instructionPanel.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+
+        instructionSendBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        instructionSendBtn.setText("Send");
+        instructionSendBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                instructionSendBtnActionPerformed(evt);
+            }
+        });
+        instructionPanel.add(instructionSendBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 610, 130, 50));
+
+        jLabel67.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel67.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel67.setText("Message:");
+        instructionPanel.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        instructionSubjectTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        instructionPanel.add(instructionSubjectTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 480, 50));
+
         jTabbedPane1.addTab("tab3", instructionPanel);
 
         editProfilePanel.setOpaque(false);
@@ -794,64 +909,6 @@ public class CoachModule extends javax.swing.JFrame {
         jLabel35.setForeground(new java.awt.Color(255, 51, 51));
         jLabel35.setText("Edit Team");
         editNewTeamPanel.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 290, 40));
-
-        searchTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        searchTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                searchTextFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                searchTextFieldFocusLost(evt);
-            }
-        });
-        searchTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchTextFieldMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                searchTextFieldMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                searchTextFieldMouseExited(evt);
-            }
-        });
-        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                searchTextFieldKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchTextFieldKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                searchTextFieldKeyTyped(evt);
-            }
-        });
-        editNewTeamPanel.add(searchTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 240, 40));
-
-        jScrollPane2.setAutoscrolls(true);
-
-        searchList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        searchList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        searchList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        searchList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        searchList.setOpaque(false);
-        searchList.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                searchListKeyPressed(evt);
-            }
-        });
-        searchList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                searchListValueChanged(evt);
-            }
-        });
-        jScrollPane2.setViewportView(searchList);
-
-        editNewTeamPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 240, 60));
 
         jLabel36.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
@@ -1526,7 +1583,7 @@ public class CoachModule extends javax.swing.JFrame {
                 registerBtnActionPerformed(evt);
             }
         });
-        TeamRegistrationPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 600, 130, 40));
+        TeamRegistrationPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, 130, 40));
 
         jLabel53.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(255, 255, 255));
@@ -1619,67 +1676,6 @@ public class CoachModule extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldFocusGained
-
-    private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
-        // TODO add your handling code here:
-        jScrollPane2.setVisible(false);
-        searchList.removeAll();
-    }//GEN-LAST:event_searchTextFieldFocusLost
-
-    private void searchTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldMouseClicked
-
-    private void searchTextFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseEntered
-        // TODO add your handling code here
-    }//GEN-LAST:event_searchTextFieldMouseEntered
-
-    private void searchTextFieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldMouseExited
-
-    private void searchTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            if(searchList.getSelectedIndex() >= 0){
-                searchTextField.setText(searchList.getSelectedValue());
-            }
-        }
-    }//GEN-LAST:event_searchTextFieldKeyPressed
-
-    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
-        // TODO add your handling code here:
-        CharSequence s = searchTextField.getText().toString().trim();
-        if(s.length()<1)
-        {
-            jScrollPane2.setVisible(false);
-            searchList.removeAll();
-            return;
-        }
-        Vector<String> list = new Vector<String>();
-        for(String str : allParticipantInfo.keySet()) {
-            if(str.contains(s)){
-                list.add(str);
-            }
-        }
-        searchList.setListData(list);
-        if(list.size()>=1){
-            searchList.setSelectedIndex(0);
-            jScrollPane2.setVisible(true);
-        }
-        else{
-            jScrollPane2.setVisible(false);
-            searchList.removeAll();
-        }
-    }//GEN-LAST:event_searchTextFieldKeyReleased
-
-    private void searchTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldKeyTyped
-
     private void coachNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachNameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_coachNameTextFieldActionPerformed
@@ -1724,15 +1720,6 @@ public class CoachModule extends javax.swing.JFrame {
     private void coachUniversityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachUniversityTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_coachUniversityTextFieldActionPerformed
-
-    private void searchListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchListKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchListKeyPressed
-
-    private void searchListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_searchListValueChanged
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_searchListValueChanged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -2070,8 +2057,22 @@ public class CoachModule extends javax.swing.JFrame {
                 TI.writeData();
                 
                 coach.teamId = teamId;
+                allParticipantInfo.get(member1).teamId = teamId;
+                allParticipantInfo.get(member2).teamId = teamId;
+                allParticipantInfo.get(member3).teamId = teamId;
+                allParticipantInfo.get(member1).coachName = coach.name;
+                allParticipantInfo.get(member1).coachEmail = coach.email;
+                allParticipantInfo.get(member2).coachName = coach.name;
+                allParticipantInfo.get(member2).coachEmail = coach.email;
+                allParticipantInfo.get(member3).coachName = coach.name;
+                allParticipantInfo.get(member3).coachEmail = coach.email;
                 allCoachInfo.replace(coachEmail, coach);
                 
+                ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+                CoachInfo CI = new CoachInfo(allCoachInfo);
+                
+                PI.writeData();
+                CI.writeData();
                 
                 teamRegNameTextField.setText("");
                 searchTextFieldM1.setText("");
@@ -2255,6 +2256,133 @@ public class CoachModule extends javax.swing.JFrame {
         jTabbedPane1.setSelectedComponent(TeamRegistrationPanel);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void instructionToSearchListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_instructionToSearchListKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_instructionToSearchListKeyPressed
+
+    private void instructionToSearchListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_instructionToSearchListValueChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_instructionToSearchListValueChanged
+
+    private void instructionToSearchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_instructionToSearchFieldFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_instructionToSearchFieldFocusGained
+
+    private void instructionToSearchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_instructionToSearchFieldFocusLost
+        // TODO add your handling code here:
+        instructionToScrollPanel.setVisible(false);
+        instructionToScrollPanel.removeAll();
+    }//GEN-LAST:event_instructionToSearchFieldFocusLost
+
+    private void instructionToSearchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instructionToSearchFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_instructionToSearchFieldMouseClicked
+
+    private void instructionToSearchFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instructionToSearchFieldMouseEntered
+        // TODO add your handling code here
+    }//GEN-LAST:event_instructionToSearchFieldMouseEntered
+
+    private void instructionToSearchFieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instructionToSearchFieldMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_instructionToSearchFieldMouseExited
+
+    private void instructionToSearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_instructionToSearchFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(instructionToSearchList.getSelectedIndex() >= 0){
+                instructionToSearchField.setText(instructionToSearchList.getSelectedValue());
+            }
+        }
+    }//GEN-LAST:event_instructionToSearchFieldKeyPressed
+
+    private void instructionToSearchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_instructionToSearchFieldKeyReleased
+        // TODO add your handling code here:
+        CharSequence s = instructionToSearchField.getText().toString().trim();
+        if(s.length()<1)
+        {
+            instructionToScrollPanel.setVisible(false);
+            instructionToSearchList.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        instructionToSearchList.setListData(list);
+        if(list.size()>=1){
+            instructionToSearchList.setSelectedIndex(0);
+            instructionToScrollPanel.setVisible(true);
+        }
+        else{
+            instructionToScrollPanel.setVisible(false);
+            instructionToSearchList.removeAll();
+        }
+    }//GEN-LAST:event_instructionToSearchFieldKeyReleased
+
+    private void instructionToSearchFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_instructionToSearchFieldKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_instructionToSearchFieldKeyTyped
+
+    private void sendAllCheckBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sendAllCheckBoxItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange()==1) {
+            instructionToScrollPanel.setVisible(false);
+            instructionToSearchList.removeAll();
+            instructionToSearchField.setEditable(false);
+        }
+        else {
+            instructionToSearchField.setEditable(true);
+        }
+    }//GEN-LAST:event_sendAllCheckBoxItemStateChanged
+
+    private void instructionSendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructionSendBtnActionPerformed
+        // TODO add your handling code here:
+        try {
+            String msg = instructionMessageTextArea.getText().toString();
+            String subject = instructionSubjectTextField.getText().toString();
+            int opt = JOptionPane.showConfirmDialog(null, "Sent Message?","Confirmation",JOptionPane.YES_NO_OPTION);
+            if(opt == 0) 
+            {
+
+                if(sendAllCheckBox.isSelected()) {
+                TeamInfo Ti = new TeamInfo(allTeamInfo);
+                Team team = Ti.find(coach.teamId);
+                
+                allParticipantInfo.get(team.member1).addMessage(subject, msg);
+                allParticipantInfo.get(team.member2).addMessage(subject, msg);
+                allParticipantInfo.get(team.member3).addMessage(subject, msg);
+                }
+                else {
+                    String toWhom = instructionToSearchField.getText().toString();
+                    if(allParticipantInfo.containsKey(toWhom)) allParticipantInfo.get(toWhom).addMessage(subject, msg);
+                    else {
+                        JOptionPane.showMessageDialog(null, "Invaild HandleId", "Wrong", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
+                PI.writeData();
+                
+                instructionMessageTextArea.setText("");
+                instructionSubjectTextField.setText("");
+                instructionToSearchField.setText("");
+                sendAllCheckBox.setSelected(false);
+                
+                JOptionPane.showMessageDialog(null, "Message Sent!");
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to send", "Wrong", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_instructionSendBtnActionPerformed
+
+    private void sendAllCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendAllCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sendAllCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2326,7 +2454,13 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel handleNotFoundM5;
     private javax.swing.JLabel handleNotFoundM6;
     private javax.swing.JPanel homePanel;
+    private javax.swing.JTextArea instructionMessageTextArea;
     private javax.swing.JPanel instructionPanel;
+    private javax.swing.JButton instructionSendBtn;
+    private javax.swing.JTextField instructionSubjectTextField;
+    private javax.swing.JScrollPane instructionToScrollPanel;
+    private javax.swing.JTextField instructionToSearchField;
+    private javax.swing.JList<String> instructionToSearchList;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
@@ -2395,7 +2529,10 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel74;
@@ -2404,7 +2541,7 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPaneM1;
     private javax.swing.JScrollPane jScrollPaneM2;
     private javax.swing.JScrollPane jScrollPaneM3;
@@ -2420,20 +2557,19 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JPanel profilePanel;
     private javax.swing.JButton registerBtn;
     private javax.swing.JButton registerBtn1;
-    private javax.swing.JList<String> searchList;
     private javax.swing.JList<String> searchListM1;
     private javax.swing.JList<String> searchListM2;
     private javax.swing.JList<String> searchListM3;
     private javax.swing.JList<String> searchListM4;
     private javax.swing.JList<String> searchListM5;
     private javax.swing.JList<String> searchListM6;
-    private javax.swing.JTextField searchTextField;
     private javax.swing.JTextField searchTextFieldM1;
     private javax.swing.JTextField searchTextFieldM2;
     private javax.swing.JTextField searchTextFieldM3;
     private javax.swing.JTextField searchTextFieldM4;
     private javax.swing.JTextField searchTextFieldM5;
     private javax.swing.JTextField searchTextFieldM6;
+    private javax.swing.JCheckBox sendAllCheckBox;
     private javax.swing.JButton teamCompletePaymentBtn;
     private javax.swing.JButton teamRegCancelBtn;
     private javax.swing.JTextField teamRegNameTextField;

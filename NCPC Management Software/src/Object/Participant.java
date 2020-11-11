@@ -1,7 +1,9 @@
 
 package Object;
 
+import java.awt.List;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * 
@@ -18,6 +20,10 @@ public class Participant implements Serializable{
     public String tShirt;
     public String presentAddress;
     public String password;
+    public String teamId;
+    public String coachName;
+    public String coachEmail;
+    public ArrayList<String[]> messages;
     public Participant(){}
     public Participant(
         String name,
@@ -40,6 +46,13 @@ public class Participant implements Serializable{
         this.tShirt = tShirt;
         this.presentAddress = presentAddress;
         this.password = password;
+        this.teamId = "null";
+        this.coachEmail = "null";
+        this.coachName = "null";
+        String[] st = {"null", "null"};
+        messages = new ArrayList<String[]>();
+        messages.add(st);
+        
     }
     public String getId(){
         return handleId;
@@ -49,6 +62,10 @@ public class Participant implements Serializable{
     }
     public boolean match(String pass){
         return this.password.equals(pass);
+    }
+    public void addMessage(String sub, String msg) {
+        String[] messageStr = {coachName, sub, msg};
+        messages.add(messageStr);
     }
     public String toString(){
         String st = new String("Name: " + name + "\nhandleID: " + handleId + "\nUniversity: " + university + "\nEmail: " + email);
