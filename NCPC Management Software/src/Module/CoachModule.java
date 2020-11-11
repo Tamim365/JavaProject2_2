@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Vector;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
@@ -96,8 +97,21 @@ public class CoachModule extends javax.swing.JFrame {
         addressLabel.setText(ch.presentAddress);
         genderLabel.setText(ch.gender);
         //In Search
+        
         instructionToScrollPanel.setVisible(false);
         instructionToSearchList.removeAll();
+        
+        jScrollPaneM6.setVisible(false);
+        searchListM6.removeAll();
+        
+        jScrollPaneM5.setVisible(false);
+        searchListM5.removeAll();
+        
+        jScrollPaneM4.setVisible(false);
+        searchListM4.removeAll();
+        
+        
+        
         // In Edit Profile
         mobileCheckLabel.setText("");
         emailCheckLabel.setText("");
@@ -355,7 +369,7 @@ public class CoachModule extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         viewProfileBtn = new javax.swing.JLabel();
         viewTeamBtn = new javax.swing.JLabel();
-        viewInstructionBtn = new javax.swing.JLabel();
+        sendInstructionBtn = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JLabel();
         editProfileBtn = new javax.swing.JLabel();
         editTeamBtn = new javax.swing.JLabel();
@@ -1057,7 +1071,6 @@ public class CoachModule extends javax.swing.JFrame {
         });
         searchListM4.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         searchListM4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        searchListM4.setOpaque(false);
         searchListM4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 searchListM4KeyPressed(evt);
@@ -1082,7 +1095,6 @@ public class CoachModule extends javax.swing.JFrame {
         });
         searchListM5.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         searchListM5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        searchListM5.setOpaque(false);
         searchListM5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 searchListM5KeyPressed(evt);
@@ -1107,7 +1119,11 @@ public class CoachModule extends javax.swing.JFrame {
         });
         searchListM6.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         searchListM6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        searchListM6.setOpaque(false);
+        searchListM6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchListM6FocusLost(evt);
+            }
+        });
         searchListM6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 searchListM6KeyPressed(evt);
@@ -1627,6 +1643,18 @@ public class CoachModule extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewProfileBtnMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                viewProfileBtnMouseReleased(evt);
+            }
         });
         getContentPane().add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
 
@@ -1635,29 +1663,77 @@ public class CoachModule extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewTeamBtnMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                viewTeamBtnMouseReleased(evt);
+            }
         });
         getContentPane().add(viewTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
-        viewInstructionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/sendInstructionButton_1.png"))); // NOI18N
-        viewInstructionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        sendInstructionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/sendInstructionButton_1.png"))); // NOI18N
+        sendInstructionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewInstructionBtnMouseClicked(evt);
+                sendInstructionBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sendInstructionBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                sendInstructionBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                sendInstructionBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                sendInstructionBtnMouseReleased(evt);
             }
         });
-        getContentPane().add(viewInstructionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
+        getContentPane().add(sendInstructionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/logOutButton_1.png"))); // NOI18N
         logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoutBtnMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseReleased(evt);
+            }
         });
         getContentPane().add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 610, -1, -1));
 
-        editProfileBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/participant/editProfileButton_1.png"))); // NOI18N
+        editProfileBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/editProfileButton_1.png"))); // NOI18N
         editProfileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editProfileBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editProfileBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editProfileBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                editProfileBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                editProfileBtnMouseReleased(evt);
             }
         });
         getContentPane().add(editProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
@@ -1666,6 +1742,18 @@ public class CoachModule extends javax.swing.JFrame {
         editTeamBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editTeamBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editTeamBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editTeamBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                editTeamBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                editTeamBtnMouseReleased(evt);
             }
         });
         getContentPane().add(editTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, -1, -1));
@@ -1737,10 +1825,10 @@ public class CoachModule extends javax.swing.JFrame {
         else jTabbedPane1.setSelectedComponent(viewExistingTeamPanel);
     }//GEN-LAST:event_viewTeamBtnMouseClicked
 
-    private void viewInstructionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewInstructionBtnMouseClicked
+    private void sendInstructionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendInstructionBtnMouseClicked
         // TODO add your handling code here:
         jTabbedPane1.setSelectedComponent(instructionPanel);
-    }//GEN-LAST:event_viewInstructionBtnMouseClicked
+    }//GEN-LAST:event_sendInstructionBtnMouseClicked
 
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
         // TODO add your handling code here:
@@ -2101,6 +2189,8 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldM4FocusLost
         // TODO add your handling code here:
+        jScrollPaneM4.setVisible(false);
+       searchListM4.removeAll();
     }//GEN-LAST:event_searchTextFieldM4FocusLost
 
     private void searchTextFieldM4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldM4MouseClicked
@@ -2117,10 +2207,38 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM4KeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchListM4.getSelectedIndex() >= 0){
+                searchTextFieldM4.setText(searchListM4.getSelectedValue());
+            }
+        }
     }//GEN-LAST:event_searchTextFieldM4KeyPressed
 
     private void searchTextFieldM4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM4KeyReleased
         // TODO add your handling code here:
+        
+        CharSequence s = searchTextFieldM4.getText().toString().trim();
+        if(s.length()<1)
+        {
+            jScrollPaneM4.setVisible(false);
+            searchListM4.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchListM4.setListData(list);
+        if(list.size()>=1){
+            searchListM4.setSelectedIndex(0);
+            jScrollPaneM4.setVisible(true);
+        }
+        else{
+            jScrollPaneM4.setVisible(false);
+            searchListM4.removeAll();
+        }
     }//GEN-LAST:event_searchTextFieldM4KeyReleased
 
     private void searchTextFieldM4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM4KeyTyped
@@ -2133,6 +2251,8 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldM5FocusLost
         // TODO add your handling code here:
+        jScrollPaneM5.setVisible(false);
+        searchListM5.removeAll();
     }//GEN-LAST:event_searchTextFieldM5FocusLost
 
     private void searchTextFieldM5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldM5MouseClicked
@@ -2149,10 +2269,39 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM5KeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchListM5.getSelectedIndex() >= 0){
+                searchTextFieldM5.setText(searchListM5.getSelectedValue());
+            }
+        }
     }//GEN-LAST:event_searchTextFieldM5KeyPressed
 
     private void searchTextFieldM5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM5KeyReleased
         // TODO add your handling code here:
+        
+        CharSequence s = searchTextFieldM5.getText().toString().trim();
+        if(s.length()<1)
+        {
+            jScrollPaneM5.setVisible(false);
+            searchListM5.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchListM5.setListData(list);
+        if(list.size()>=1){
+            searchListM5.setSelectedIndex(0);
+            jScrollPaneM5.setVisible(true);
+        }
+        else{
+            jScrollPaneM5.setVisible(false);
+            searchListM5.removeAll();
+        }
+        
     }//GEN-LAST:event_searchTextFieldM5KeyReleased
 
     private void searchTextFieldM5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM5KeyTyped
@@ -2165,6 +2314,8 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldM6FocusLost
         // TODO add your handling code here:
+        jScrollPaneM6.setVisible(false);
+        searchListM6.removeAll();
     }//GEN-LAST:event_searchTextFieldM6FocusLost
 
     private void searchTextFieldM6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTextFieldM6MouseClicked
@@ -2181,10 +2332,42 @@ public class CoachModule extends javax.swing.JFrame {
 
     private void searchTextFieldM6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM6KeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if(searchListM6.getSelectedIndex() >= 0){
+                searchTextFieldM6.setText(searchListM6.getSelectedValue());
+            }
+        }
     }//GEN-LAST:event_searchTextFieldM6KeyPressed
 
     private void searchTextFieldM6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM6KeyReleased
         // TODO add your handling code here:
+        
+        CharSequence s = searchTextFieldM6.getText().toString().trim();
+        if(s.length()<1)
+        {
+            jScrollPaneM6.setVisible(false);
+            searchListM6.removeAll();
+            return;
+        }
+        Vector<String> list = new Vector<String>();
+        for(String str : allParticipantInfo.keySet()) {
+            if(str.contains(s)){
+                list.add(str);
+            }
+        }
+        searchListM6.setListData(list);
+        if(list.size()>=1){
+            searchListM6.setSelectedIndex(0);
+            jScrollPaneM6.setVisible(true);
+        }
+        else{
+            jScrollPaneM6.setVisible(false);
+            searchListM6.removeAll();
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_searchTextFieldM6KeyReleased
 
     private void searchTextFieldM6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldM6KeyTyped
@@ -2272,7 +2455,7 @@ public class CoachModule extends javax.swing.JFrame {
     private void instructionToSearchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_instructionToSearchFieldFocusLost
         // TODO add your handling code here:
         instructionToScrollPanel.setVisible(false);
-        instructionToScrollPanel.removeAll();
+        instructionToSearchList.removeAll();
     }//GEN-LAST:event_instructionToSearchFieldFocusLost
 
     private void instructionToSearchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instructionToSearchFieldMouseClicked
@@ -2382,6 +2565,130 @@ public class CoachModule extends javax.swing.JFrame {
     private void sendAllCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendAllCheckBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sendAllCheckBoxActionPerformed
+
+    private void viewProfileBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseEntered
+        // TODO add your handling code here:
+       viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewProfileButton_2.png")));
+    }//GEN-LAST:event_viewProfileBtnMouseEntered
+
+    private void viewProfileBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseExited
+        // TODO add your handling code here:
+        viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewProfileButton_1.png")));
+    }//GEN-LAST:event_viewProfileBtnMouseExited
+
+    private void viewProfileBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMousePressed
+        // TODO add your handling code here:
+        viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewProfileButton_3.png")));
+    }//GEN-LAST:event_viewProfileBtnMousePressed
+
+    private void viewProfileBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseReleased
+        // TODO add your handling code here:
+        viewProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewProfileButton_2.png")));
+    }//GEN-LAST:event_viewProfileBtnMouseReleased
+
+    private void viewTeamBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseEntered
+        // TODO add your handling code here:
+       viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewTeamButton_2.png")));
+    }//GEN-LAST:event_viewTeamBtnMouseEntered
+
+    private void viewTeamBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseExited
+        // TODO add your handling code here:
+        viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewTeamButton_1.png")));
+    }//GEN-LAST:event_viewTeamBtnMouseExited
+
+    private void viewTeamBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMousePressed
+        // TODO add your handling code here:
+        viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewTeamButton_3.png")));
+    }//GEN-LAST:event_viewTeamBtnMousePressed
+
+    private void viewTeamBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTeamBtnMouseReleased
+        // TODO add your handling code here:
+        viewTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/viewTeamButton_2.png")));
+    }//GEN-LAST:event_viewTeamBtnMouseReleased
+
+    private void sendInstructionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendInstructionBtnMouseEntered
+        // TODO add your handling code here:
+        sendInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/sendInstructionButton_2.png")));
+    }//GEN-LAST:event_sendInstructionBtnMouseEntered
+
+    private void sendInstructionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendInstructionBtnMouseExited
+        // TODO add your handling code here:
+        sendInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/sendInstructionButton_1.png")));
+    }//GEN-LAST:event_sendInstructionBtnMouseExited
+
+    private void sendInstructionBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendInstructionBtnMousePressed
+        // TODO add your handling code here:
+        sendInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/sendInstructionButton_3.png")));
+    }//GEN-LAST:event_sendInstructionBtnMousePressed
+
+    private void sendInstructionBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendInstructionBtnMouseReleased
+        // TODO add your handling code here:
+        sendInstructionBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/sendInstructionButton_2.png")));
+    }//GEN-LAST:event_sendInstructionBtnMouseReleased
+
+    private void editTeamBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTeamBtnMouseEntered
+        // TODO add your handling code here:
+        editTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editTeamButton_2.png")));
+    }//GEN-LAST:event_editTeamBtnMouseEntered
+
+    private void editTeamBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTeamBtnMouseExited
+        // TODO add your handling code here:
+        editTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editTeamButton_1.png")));
+    }//GEN-LAST:event_editTeamBtnMouseExited
+
+    private void editTeamBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTeamBtnMousePressed
+        // TODO add your handling code here:
+        editTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editTeamButton_3.png")));
+    }//GEN-LAST:event_editTeamBtnMousePressed
+
+    private void editTeamBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTeamBtnMouseReleased
+        // TODO add your handling code here:
+        editTeamBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editTeamButton_2.png")));
+    }//GEN-LAST:event_editTeamBtnMouseReleased
+
+    private void editProfileBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseEntered
+        // TODO add your handling code here:
+        editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editProfileButton_2.png")));
+    }//GEN-LAST:event_editProfileBtnMouseEntered
+
+    private void editProfileBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseExited
+        // TODO add your handling code here:
+        editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editProfileButton_1.png")));
+    }//GEN-LAST:event_editProfileBtnMouseExited
+
+    private void editProfileBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMousePressed
+        // TODO add your handling code here:
+        editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editProfileButton_3.png")));
+    }//GEN-LAST:event_editProfileBtnMousePressed
+
+    private void editProfileBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileBtnMouseReleased
+        // TODO add your handling code here:
+        editProfileBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/editProfileButton_2.png")));
+    }//GEN-LAST:event_editProfileBtnMouseReleased
+
+    private void logoutBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseEntered
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/logOutButton_2.png")));
+    }//GEN-LAST:event_logoutBtnMouseEntered
+
+    private void logoutBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseExited
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/logOutButton_1.png")));
+    }//GEN-LAST:event_logoutBtnMouseExited
+
+    private void logoutBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMousePressed
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/logOutButton_3.png")));
+    }//GEN-LAST:event_logoutBtnMousePressed
+
+    private void logoutBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseReleased
+        // TODO add your handling code here:
+        logoutBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/logOutButton_2.png")));
+    }//GEN-LAST:event_logoutBtnMouseReleased
+
+    private void searchListM6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchListM6FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchListM6FocusLost
 
     /**
      * @param args the command line arguments
@@ -2570,6 +2877,7 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JTextField searchTextFieldM5;
     private javax.swing.JTextField searchTextFieldM6;
     private javax.swing.JCheckBox sendAllCheckBox;
+    private javax.swing.JLabel sendInstructionBtn;
     private javax.swing.JButton teamCompletePaymentBtn;
     private javax.swing.JButton teamRegCancelBtn;
     private javax.swing.JTextField teamRegNameTextField;
@@ -2579,7 +2887,6 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JTextField universityRegNameTextField;
     private javax.swing.JTextField universityRegNameTextField1;
     private javax.swing.JPanel viewExistingTeamPanel;
-    private javax.swing.JLabel viewInstructionBtn;
     private javax.swing.JPanel viewNoTeamPanel;
     private javax.swing.JLabel viewProfileBtn;
     private javax.swing.JLabel viewTeamBtn;
