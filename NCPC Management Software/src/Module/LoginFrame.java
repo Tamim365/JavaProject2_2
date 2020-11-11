@@ -312,6 +312,11 @@ public class LoginFrame extends javax.swing.JFrame {
 
         adminLoginBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         adminLoginBtn.setText("Login");
+        adminLoginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminLoginBtnActionPerformed(evt);
+            }
+        });
         jPanel3.add(adminLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 130, 50));
 
         adminLoginTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -493,6 +498,21 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_coachLoginBtnActionPerformed
+
+    private void adminLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginBtnActionPerformed
+        // TODO add your handling code here:
+        String id = adminLoginTextField.getText().toString();
+        String password = new String(adminLoginPasswordField.getPassword());
+        
+        if(id.equals("admin") && password.equals("admin")){
+            this.setVisible(false);
+            AdminModule AM = new AdminModule(allParticipantInfo, allCoachInfo, allTeamInfo);
+            AM.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_adminLoginBtnActionPerformed
 
     /**
      * @param args the command line arguments
