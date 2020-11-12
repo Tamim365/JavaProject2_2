@@ -366,13 +366,13 @@ public class CoachModule extends javax.swing.JFrame {
         handleNotFoundM3 = new javax.swing.JLabel();
         handleNotFoundM1 = new javax.swing.JLabel();
         handleNotFoundM2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         viewProfileBtn = new javax.swing.JLabel();
         viewTeamBtn = new javax.swing.JLabel();
         sendInstructionBtn = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JLabel();
         editProfileBtn = new javax.swing.JLabel();
         editTeamBtn = new javax.swing.JLabel();
+        homeBtn = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1630,14 +1630,6 @@ public class CoachModule extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, -30, 940, 820));
 
-        jButton4.setText("Home");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 110, -1));
-
         viewProfileBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/viewProfileButton_1.png"))); // NOI18N
         viewProfileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1656,7 +1648,7 @@ public class CoachModule extends javax.swing.JFrame {
                 viewProfileBtnMouseReleased(evt);
             }
         });
-        getContentPane().add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
+        getContentPane().add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
         viewTeamBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/viewTeamButton_1.png"))); // NOI18N
         viewTeamBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1676,7 +1668,7 @@ public class CoachModule extends javax.swing.JFrame {
                 viewTeamBtnMouseReleased(evt);
             }
         });
-        getContentPane().add(viewTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+        getContentPane().add(viewTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
 
         sendInstructionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/sendInstructionButton_1.png"))); // NOI18N
         sendInstructionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1696,7 +1688,7 @@ public class CoachModule extends javax.swing.JFrame {
                 sendInstructionBtnMouseReleased(evt);
             }
         });
-        getContentPane().add(sendInstructionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
+        getContentPane().add(sendInstructionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
 
         logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/logOutButton_1.png"))); // NOI18N
         logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1736,7 +1728,7 @@ public class CoachModule extends javax.swing.JFrame {
                 editProfileBtnMouseReleased(evt);
             }
         });
-        getContentPane().add(editProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
+        getContentPane().add(editProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, -1, -1));
 
         editTeamBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/editTeamButton_1.png"))); // NOI18N
         editTeamBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1756,7 +1748,27 @@ public class CoachModule extends javax.swing.JFrame {
                 editTeamBtnMouseReleased(evt);
             }
         });
-        getContentPane().add(editTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, -1, -1));
+        getContentPane().add(editTeamBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, -1, -1));
+
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/ChomeButton_1.png"))); // NOI18N
+        homeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homeBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homeBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                homeBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                homeBtnMouseReleased(evt);
+            }
+        });
+        getContentPane().add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/participantModuleBG.jpg"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1808,11 +1820,6 @@ public class CoachModule extends javax.swing.JFrame {
     private void coachUniversityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachUniversityTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_coachUniversityTextFieldActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedComponent(homePanel);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void viewProfileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProfileBtnMouseClicked
         // TODO add your handling code here:
@@ -2690,6 +2697,31 @@ public class CoachModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchListM6FocusLost
 
+    private void homeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedComponent(homePanel);
+    }//GEN-LAST:event_homeBtnMouseClicked
+
+    private void homeBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseEntered
+        // TODO add your handling code here:
+        homeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/ChomeButton_2.png")));
+    }//GEN-LAST:event_homeBtnMouseEntered
+
+    private void homeBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseExited
+        // TODO add your handling code here:
+        homeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/ChomeButton_1.png")));
+    }//GEN-LAST:event_homeBtnMouseExited
+
+    private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
+        // TODO add your handling code here:
+        homeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/ChomeButton_3.png")));
+    }//GEN-LAST:event_homeBtnMousePressed
+
+    private void homeBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseReleased
+        // TODO add your handling code here:
+        homeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/instructor/ChomeButton_2.png")));
+    }//GEN-LAST:event_homeBtnMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -2760,6 +2792,7 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel handleNotFoundM4;
     private javax.swing.JLabel handleNotFoundM5;
     private javax.swing.JLabel handleNotFoundM6;
+    private javax.swing.JLabel homeBtn;
     private javax.swing.JPanel homePanel;
     private javax.swing.JTextArea instructionMessageTextArea;
     private javax.swing.JPanel instructionPanel;
@@ -2770,7 +2803,6 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JList<String> instructionToSearchList;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

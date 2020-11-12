@@ -309,6 +309,9 @@ public class AdminModule extends javax.swing.JFrame {
         teamCompletePaymentBtn = new javax.swing.JButton();
         viewTeamUniversityName = new javax.swing.JLabel();
         viewTeamUniversityName2 = new javax.swing.JLabel();
+        coachHomePanel = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         searchList = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
@@ -317,6 +320,7 @@ public class AdminModule extends javax.swing.JFrame {
         universityButton = new javax.swing.JLabel();
         logoutButton = new javax.swing.JLabel();
         slotDistributionButton = new javax.swing.JLabel();
+        coachHomeBtn = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -881,6 +885,19 @@ public class AdminModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab1", teamProfilePanel);
 
+        coachHomePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel28.setText("Home");
+        coachHomePanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 300, 60));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/homeBackground.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        coachHomePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTabbedPane1.addTab("tab8", coachHomePanel);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, -30, 940, 820));
 
         jScrollPane2.setAutoscrolls(true);
@@ -934,7 +951,7 @@ public class AdminModule extends javax.swing.JFrame {
                 participantsButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(participantsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+        getContentPane().add(participantsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
 
         coachesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/admin/coachesButton_1.png"))); // NOI18N
         coachesButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -954,7 +971,7 @@ public class AdminModule extends javax.swing.JFrame {
                 coachesButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(coachesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
+        getContentPane().add(coachesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         universityButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/admin/universityButton_1.png"))); // NOI18N
         universityButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -974,7 +991,7 @@ public class AdminModule extends javax.swing.JFrame {
                 universityButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(universityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
+        getContentPane().add(universityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
 
         logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/admin/LogOutButton_1.png"))); // NOI18N
         logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1014,7 +1031,27 @@ public class AdminModule extends javax.swing.JFrame {
                 slotDistributionButtonMouseReleased(evt);
             }
         });
-        getContentPane().add(slotDistributionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
+        getContentPane().add(slotDistributionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, -1, -1));
+
+        coachHomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/ChomeButton_3.png"))); // NOI18N
+        coachHomeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coachHomeBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                coachHomeBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                coachHomeBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                coachHomeBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                coachHomeBtnMouseReleased(evt);
+            }
+        });
+        getContentPane().add(coachHomeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/participantModuleBG.jpg"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1330,6 +1367,31 @@ public class AdminModule extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_teamProfileActionPerformed
 
+    private void coachHomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coachHomeBtnMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedComponent(coachHomePanel);
+    }//GEN-LAST:event_coachHomeBtnMouseClicked
+
+    private void coachHomeBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coachHomeBtnMouseEntered
+        // TODO add your handling code here:
+         coachHomeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/homeButton_2.png")));
+    }//GEN-LAST:event_coachHomeBtnMouseEntered
+
+    private void coachHomeBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coachHomeBtnMouseExited
+        // TODO add your handling code here:
+        coachHomeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/homeButton_1.png")));
+    }//GEN-LAST:event_coachHomeBtnMouseExited
+
+    private void coachHomeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coachHomeBtnMousePressed
+        // TODO add your handling code here:
+        coachHomeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/homeButton_3.png")));
+    }//GEN-LAST:event_coachHomeBtnMousePressed
+
+    private void coachHomeBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coachHomeBtnMouseReleased
+        // TODO add your handling code here:
+        coachHomeBtn.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/homeButton_2.png")));
+    }//GEN-LAST:event_coachHomeBtnMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -1371,6 +1433,8 @@ public class AdminModule extends javax.swing.JFrame {
     private javax.swing.JLabel addressLabel;
     private javax.swing.JLabel addressLabel1;
     private javax.swing.JButton coachDelete;
+    private javax.swing.JLabel coachHomeBtn;
+    private javax.swing.JPanel coachHomePanel;
     private javax.swing.JButton coachProfile;
     private javax.swing.JTable coachTable;
     private javax.swing.JScrollPane coachTableScrollPane1;
@@ -1406,9 +1470,11 @@ public class AdminModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel7;
