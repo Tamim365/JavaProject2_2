@@ -16,6 +16,6 @@ public class HandleIdNotFoundException extends Exception{
     public HandleIdNotFoundException(String Id)
     {
         super(Id + " Not Found");
-        JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Handle Id Not Found", "Wrong", JOptionPane.ERROR_MESSAGE);
     }
 }
