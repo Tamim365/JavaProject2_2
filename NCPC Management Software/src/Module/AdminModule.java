@@ -229,6 +229,9 @@ public class AdminModule extends javax.swing.JFrame {
 
         searchTextField = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        coachHomePanel = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         participntPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         participantTableScrollPane = new javax.swing.JScrollPane();
@@ -268,8 +271,6 @@ public class AdminModule extends javax.swing.JFrame {
         universityTable = new javax.swing.JTable();
         uniDelete = new javax.swing.JButton();
         teamProfile = new javax.swing.JButton();
-        slotDistPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         CoachProfilePanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         emailLabel1 = new javax.swing.JLabel();
@@ -309,17 +310,12 @@ public class AdminModule extends javax.swing.JFrame {
         teamCompletePaymentBtn = new javax.swing.JButton();
         viewTeamUniversityName = new javax.swing.JLabel();
         viewTeamUniversityName2 = new javax.swing.JLabel();
-        coachHomePanel = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         searchList = new javax.swing.JList<>();
-        jButton4 = new javax.swing.JButton();
         participantsButton = new javax.swing.JLabel();
         coachesButton = new javax.swing.JLabel();
         universityButton = new javax.swing.JLabel();
         logoutButton = new javax.swing.JLabel();
-        slotDistributionButton = new javax.swing.JLabel();
         coachHomeBtn = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
@@ -358,6 +354,19 @@ public class AdminModule extends javax.swing.JFrame {
             }
         });
         getContentPane().add(searchTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 83, 240, 40));
+
+        coachHomePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel28.setText("Home");
+        coachHomePanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 300, 60));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/homeBackground.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        coachHomePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTabbedPane1.addTab("tab8", coachHomePanel);
 
         participntPanel.setOpaque(false);
         participntPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -675,16 +684,6 @@ public class AdminModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab3", universityPanel);
 
-        slotDistPanel.setOpaque(false);
-        slotDistPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Slot Distribution");
-        slotDistPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 400, 70));
-
-        jTabbedPane1.addTab("tab5", slotDistPanel);
-
         CoachProfilePanel.setOpaque(false);
         CoachProfilePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -885,19 +884,6 @@ public class AdminModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab1", teamProfilePanel);
 
-        coachHomePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel28.setText("Home");
-        coachHomePanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 300, 60));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/homeBackground.png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        coachHomePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jTabbedPane1.addTab("tab8", coachHomePanel);
-
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, -30, 940, 820));
 
         jScrollPane2.setAutoscrolls(true);
@@ -924,14 +910,6 @@ public class AdminModule extends javax.swing.JFrame {
         jScrollPane2.setViewportView(searchList);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 240, 60));
-
-        jButton4.setText("Home");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         participantsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/admin/participantsButton_1.png"))); // NOI18N
         participantsButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1012,26 +990,6 @@ public class AdminModule extends javax.swing.JFrame {
             }
         });
         getContentPane().add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 630, -1, -1));
-
-        slotDistributionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/admin/slotDistributionButton_1.png"))); // NOI18N
-        slotDistributionButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                slotDistributionButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                slotDistributionButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                slotDistributionButtonMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                slotDistributionButtonMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                slotDistributionButtonMouseReleased(evt);
-            }
-        });
-        getContentPane().add(slotDistributionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, -1, -1));
 
         coachHomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttons/instructor/ChomeButton_3.png"))); // NOI18N
         coachHomeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1130,11 +1088,6 @@ public class AdminModule extends javax.swing.JFrame {
 
     }//GEN-LAST:event_searchListValueChanged
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void participantsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_participantsButtonMouseClicked
         // TODO add your handling code here:
         jTabbedPane1.setSelectedComponent(participntPanel);
@@ -1159,11 +1112,6 @@ public class AdminModule extends javax.swing.JFrame {
             home.setVisible(true);
         }
     }//GEN-LAST:event_logoutButtonMouseClicked
-
-    private void slotDistributionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slotDistributionButtonMouseClicked
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedComponent(slotDistPanel);
-    }//GEN-LAST:event_slotDistributionButtonMouseClicked
 
     private void participantsButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_participantsButtonMouseEntered
         // TODO add your handling code here:
@@ -1224,26 +1172,6 @@ public class AdminModule extends javax.swing.JFrame {
         // TODO add your handling code here:
         universityButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/universityButton_2.png")));
     }//GEN-LAST:event_universityButtonMouseReleased
-
-    private void slotDistributionButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slotDistributionButtonMouseEntered
-        // TODO add your handling code here:
-        slotDistributionButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/slotDistributionButton_2.png")));
-    }//GEN-LAST:event_slotDistributionButtonMouseEntered
-
-    private void slotDistributionButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slotDistributionButtonMouseExited
-        // TODO add your handling code here:
-        slotDistributionButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/slotDistributionButton_1.png")));
-    }//GEN-LAST:event_slotDistributionButtonMouseExited
-
-    private void slotDistributionButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slotDistributionButtonMousePressed
-        // TODO add your handling code here:
-        slotDistributionButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/slotDistributionButton_3.png")));
-    }//GEN-LAST:event_slotDistributionButtonMousePressed
-
-    private void slotDistributionButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slotDistributionButtonMouseReleased
-        // TODO add your handling code here:
-        slotDistributionButton.setIcon(new ImageIcon(getClass().getResource("/images/buttons/admin/slotDistributionButton_2.png")));
-    }//GEN-LAST:event_slotDistributionButtonMouseReleased
 
     private void logoutButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseEntered
         // TODO add your handling code here:
@@ -1449,7 +1377,6 @@ public class AdminModule extends javax.swing.JFrame {
     private javax.swing.JLabel genderLabel;
     private javax.swing.JLabel genderLabel1;
     private javax.swing.JLabel handleLabel;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1461,7 +1388,6 @@ public class AdminModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1500,8 +1426,6 @@ public class AdminModule extends javax.swing.JFrame {
     private javax.swing.JLabel positionLabel;
     private javax.swing.JList<String> searchList;
     private javax.swing.JTextField searchTextField;
-    private javax.swing.JPanel slotDistPanel;
-    private javax.swing.JLabel slotDistributionButton;
     private javax.swing.JButton teamCompletePaymentBtn;
     private javax.swing.JButton teamProfile;
     private javax.swing.JPanel teamProfilePanel;
