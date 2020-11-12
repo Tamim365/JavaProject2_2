@@ -5,6 +5,9 @@
  */
 package Module;
 
+import ExceptionClasses.HandleIdNotFoundException;
+import ExceptionClasses.TeamNotFoundException;
+import ExceptionClasses.WrongEmailException;
 import Object.Coach;
 import Object.CoachInfo;
 import Object.Participant;
@@ -1210,10 +1213,16 @@ public class AdminModule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)participantTable.getModel();
         int selectedRowIndex = participantTable.getSelectedRow();
         String id = model.getValueAt(selectedRowIndex, 2).toString();
-        if(allParticipantInfo.containsKey(id))
-        {
-            setPartcipantValue(allParticipantInfo.get(id));
-            jTabbedPane1.setSelectedComponent(participantProfilePanel);
+        try {
+            if(allParticipantInfo.containsKey(id))
+            {
+                setPartcipantValue(allParticipantInfo.get(id));
+                jTabbedPane1.setSelectedComponent(participantProfilePanel);
+            }
+            else throw new HandleIdNotFoundException(id);
+            
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_partProfileActionPerformed
 
@@ -1222,16 +1231,21 @@ public class AdminModule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)participantTable.getModel();
         int selectedRowIndex = participantTable.getSelectedRow();
         String id = model.getValueAt(selectedRowIndex, 2).toString();
-        if(allParticipantInfo.containsKey(id))
-        {          
-            allParticipantInfo.remove(id);
-            SetParticipantTable();
-            try {
-                ParticipantInfo pi = new ParticipantInfo(allParticipantInfo);
-                pi.writeData();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error Ocuured While Deleting", "Database Error", JOptionPane.ERROR_MESSAGE);
+        try {
+            if(allParticipantInfo.containsKey(id))
+            {          
+                allParticipantInfo.remove(id);
+                SetParticipantTable();
+                try {
+                    ParticipantInfo pi = new ParticipantInfo(allParticipantInfo);
+                    pi.writeData();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error Ocuured While Deleting", "Database Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+            else throw new HandleIdNotFoundException(id);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_partDeleteActionPerformed
 
@@ -1252,16 +1266,21 @@ public class AdminModule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)coachTable.getModel();
         int selectedRowIndex = coachTable.getSelectedRow();
         String id = model.getValueAt(selectedRowIndex, 2).toString();
-        if(allCoachInfo.containsKey(id))
-        {          
-            allCoachInfo.remove(id);
-            SetCoachTable();
-            try {
-                CoachInfo ci = new CoachInfo(allCoachInfo);
-                ci.writeData();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error Ocuured While Deleting", "Database Error", JOptionPane.ERROR_MESSAGE);
+        try {
+            if(allCoachInfo.containsKey(id))
+            {          
+                allCoachInfo.remove(id);
+                SetCoachTable();
+                try {
+                    CoachInfo ci = new CoachInfo(allCoachInfo);
+                    ci.writeData();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error Ocuured While Deleting", "Database Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+            else throw new WrongEmailException(id);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_coachDeleteActionPerformed
 
@@ -1270,16 +1289,21 @@ public class AdminModule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)universityTable.getModel();
         int selectedRowIndex = universityTable.getSelectedRow();
         String id = model.getValueAt(selectedRowIndex, 2).toString();
-        if(allTeamInfo.containsKey(id))
-        {
-            allTeamInfo.remove(id);
-            SetUniversityTable();
-            try {
-                TeamInfo ti = new TeamInfo(allTeamInfo);
-                ti.writeData();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error Ocuured While Deleting", "Database Error", JOptionPane.ERROR_MESSAGE);
+        try {
+            if(allTeamInfo.containsKey(id))
+            {
+                allTeamInfo.remove(id);
+                SetUniversityTable();
+                try {
+                    TeamInfo ti = new TeamInfo(allTeamInfo);
+                    ti.writeData();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error Ocuured While Deleting", "Database Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+            else throw new TeamNotFoundException(id);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_uniDeleteActionPerformed
 

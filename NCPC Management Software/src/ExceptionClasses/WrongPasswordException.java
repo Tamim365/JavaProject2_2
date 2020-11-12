@@ -16,7 +16,7 @@ public class WrongPasswordException extends Exception{
     public WrongPasswordException (String pass)
     {
         super(pass + "Is Wrong");
-        JOptionPane.showMessageDialog(null, "Password is Wrong", "Wrong", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Invalid Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
     }
     
 }

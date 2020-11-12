@@ -2,6 +2,7 @@ package Module;
 
 
 import ExceptionClasses.HandleIdNotFoundException;
+import ExceptionClasses.WrongPasswordException;
 import Module.HomeFrame;
 import Module.ParticipantModule;
 import Object.Coach;
@@ -16,6 +17,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -460,21 +463,15 @@ public class LoginFrame extends javax.swing.JFrame {
         String id = participantLoginTextField.getText().toString();
         String password = new String(partLoginPasswordField.getPassword());
         ParticipantInfo PI = new ParticipantInfo(allParticipantInfo);
-        if(PI.isValid(id) && PI.match(id, password)){
-            //JOptionPane.showMessageDialog(null, "Login Successful");
+        try{
+            if(PI.isValid(id) && PI.match(id, password)){
             this.setVisible(false);
             ParticipantModule PM = new ParticipantModule(allParticipantInfo, PI.find(id) , allCoachInfo, allTeamInfo);
             PM.setVisible(true);
         }
-        else{
-//            try{
-//               throw new HandleIdNotFoundException(id);
-//            }
-//            catch(HandleIdNotFoundException ex)
-//            {
-//                System.out.println(ex);
-//            }
-            JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
+            else throw new WrongPasswordException(password);
+        } catch (WrongPasswordException ex) {
+            System.out.println(ex);
         }
         
     }//GEN-LAST:event_partLoginBtnActionPerformed
@@ -484,18 +481,16 @@ public class LoginFrame extends javax.swing.JFrame {
         String email = coachLoginTextField.getText().toString();
         String password = new String(coachLoginPasswordField.getPassword());
         CoachInfo CI = new CoachInfo(allCoachInfo);
-        if(CI.isValid(email) && CI.match(email, password)){
-            //JOptionPane.showMessageDialog(null, "Login Successful");
-            this.setVisible(false);
-            TeamInfo TI = new TeamInfo(allTeamInfo);
-            //System.out.println(TI);
-            //System.out.println("Helllllllooooooo");
-            CoachModule CM = new CoachModule(allParticipantInfo, CI.find(email) , allCoachInfo, allTeamInfo);
-            //System.out.println("Helllllllooooooo2222222");
-            CM.setVisible(true);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Invaild Id or Password", "Wrong", JOptionPane.ERROR_MESSAGE);
+        try {
+            if(CI.isValid(email) && CI.match(email, password)){
+                this.setVisible(false);
+                TeamInfo TI = new TeamInfo(allTeamInfo);
+                CoachModule CM = new CoachModule(allParticipantInfo, CI.find(email) , allCoachInfo, allTeamInfo);
+                CM.setVisible(true);
+            }
+            else throw new WrongPasswordException(password);
+        } catch (WrongPasswordException ex) {
+            System.out.println(ex);
         }
     }//GEN-LAST:event_coachLoginBtnActionPerformed
 
