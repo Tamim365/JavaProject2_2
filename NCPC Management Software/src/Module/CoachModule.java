@@ -202,6 +202,7 @@ public class CoachModule extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         homePanel = new javax.swing.JPanel();
+        jLabel68 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         profilePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -380,6 +381,10 @@ public class CoachModule extends javax.swing.JFrame {
 
         homePanel.setOpaque(false);
         homePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgrounds/homeBackground.png"))); // NOI18N
+        jLabel68.setText("jLabel68");
+        homePanel.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
@@ -2872,6 +2877,7 @@ public class CoachModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel74;
